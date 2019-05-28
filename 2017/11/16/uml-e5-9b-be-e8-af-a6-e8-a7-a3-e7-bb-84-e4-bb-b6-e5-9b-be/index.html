@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        UML图详解——组件图｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2017/11/16/uml-e5-9b-be-e8-af-a6-e8-a7-a3-e7-bb-84-e4-bb-b6-e5-9b-be/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>UML图详解——组件图</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2017-11-16
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#UML" title="UML">UML</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            UML图详解——组件图
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h1><p>组件图（Component Diagram）又称为构件图，他描述的是在<strong>软件系统中</strong>遵从并实现一组<strong>接口</strong>的物理的、<strong>可替换的</strong>软件模块。 构件图=构件（Component）+接口（Interface）+关系（Relationship）+端口（Port）+连接器（Connector）</p>
+<ul>
+<li>在面向对象系统的<strong>物理方面</strong>进行建模要用到两种图：<strong>组件图和配置图。</strong></li>
+</ul>
+<h1 id="二、包含的元素"><a href="#二、包含的元素" class="headerlink" title="二、包含的元素"></a>二、包含的元素</h1><h2 id="1-组件（Component）-gt-构件"><a href="#1-组件（Component）-gt-构件" class="headerlink" title="1.组件（Component）-&gt;构件"></a>1.组件（Component）-&gt;构件</h2><ul>
+<li>组件是定义了良好接口的物理实现单元，是系统中可替换的物理部件。</li>
+<li>组件代表系统的一个物理实现块，代表逻辑模型元素如类、接口、协同等的物理打包。</li>
+<li>构件通过它的提供接口和请求接口展现行为。</li>
+<li>由于在UML2.0中，构件是一种类，因此构件具有属性、操作和可见性。这些概念的含义与在类图中定义的是一样的，只是在这里把这些概念应用在构件上。</li>
+</ul>
+<p><strong>组件的命名：</strong> 组件的名称有两种：简单名和路径名。并依据目标操作系统可以添加相应的扩展名，例如java和dll。  <strong>表示方式</strong>：组件用一个左侧带有突出两个小矩形的矩形来表示。 <img src="http://img.blog.csdn.net/20160612091008866?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt> <strong>UML2.0中表示方式</strong>：构件用加构造型《component》的矩形框来表示，左上角添加以前的构件符号，如果没有构件细节可在中央直接写上名字。 （构造型和左上角的图标可以二选一） <img src="http://img.blog.csdn.net/20160612092349042?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt> <strong>UML2.0把构件分为基本构件和包装构件</strong></p>
+<ul>
+<li><strong>基本构件</strong>注重于把构件定义为在系统中可执行的元素。</li>
+<li><strong>包装构件</strong>扩展了基本构件的概念，它注重于把构件定义为一组相关的元素，这组元素为开发过程的一部分。也即, 包装构件定义了构件的命名空间方面。在构件的命名空间中，可以包括类、接口、构件、包、用况、依赖（如映射）和制品。按照这种扩展，构件也具有如下的含义：可以用构件来装配大粒度的构件，方法为把所复用的构件作为大粒度构件的成分，并把它们的请求和提供接口连接在一起（简单理解：组件包含组件，组拼大组件）。</li>
+</ul>
+<p><strong>组件的种类</strong></p>
+<ol>
+<li>配置组件（Deployment Component）：运行系统需要配置的组件，是形成可执行文件的基础–操作系统、JAVA虚拟机、DBMS；</li>
+<li>工作产品组件（Work Product Component）：包括模型、源代码和用于创建配置组件的数据文件，它们是配置组件的来源–UML图、java类和数据库表；</li>
+<li>执行组件（Execution Component）：在运行时创建的组件，是最终可运行的系统产生的允许结果–.net组件</li>
+</ol>
+<h2 id="2-接口（Interface）"><a href="#2-接口（Interface）" class="headerlink" title="2.接口（Interface）"></a>2.接口（Interface）</h2><ul>
+<li>接口（interface）接口由一组操作组成，它指定了一个契约，这个契约必须由实现和使用这个接口的构件的所遵循。</li>
+</ul>
+<p><strong>接口分提供接口和请求接口</strong></p>
+<ul>
+<li>把构件实现的接口称为提供接口（供接口），这意味着构件的提供接口是给其它构件提供服务的。实现接口的构件支持由该接口所拥有的特征，包括接口拥有的约束。</li>
+<li>构件使用的接口被称为请求接口（需接口），即构件向其它构件请求服务时要遵循的接口</li>
+</ul>
+<p><strong>表示方式：</strong></p>
+<ul>
+<li>供接口用“棒棒糖”式的图形表示，即由一个封闭的圆形与一条直线组成。</li>
+<li>需接口用“插座”式的图形表示，即由一个半圆与一条直线组成。</li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20160612094857216?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt> <img src="http://img.blog.csdn.net/20160612095137145?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt> 在java语言中供接口通过关键字implements来显示地表示，需接口被类所使用的任何接口类型隐式地定义。</p>
+<h2 id="3-外部接口——端口"><a href="#3-外部接口——端口" class="headerlink" title="3.外部接口——端口"></a>3.外部接口——端口</h2><ul>
+<li>端口是UML2.0引入的概念</li>
+<li>端口描述了在构件与它的环境之间以及在构件与它的内部构件之间的一个显示地交互点</li>
+<li>端口是一个封装构件的显示的对外窗口，<strong>所有进出构件的交互都要通过端口。</strong></li>
+<li>使用端口能在更大的程度上增加构件的封装性和可替代性。</li>
+<li>端口是构件的一部分，端口的实例随着它们所属的构件的实例一起被创建和撤消。</li>
+</ul>
+<p><strong><1>接口与端口的关系</1></strong> 提供接口说明了通过端口来提供服务，请求接口说明了通过端口需要从其它构件获得服务。 一个构件可以通过一个特定端口同另一个构件通讯，而且通讯完全是通过由端口支持的接口来描述的。 <strong><2>表示方式</2></strong> 尾部加小方框的正常接口表示，小方框就被称为端口。 <img src="http://img.blog.csdn.net/20160612193146873?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
+<h2 id="4-连接器（Connector）——连接件"><a href="#4-连接器（Connector）——连接件" class="headerlink" title="4.连接器（Connector）——连接件"></a>4.连接器（Connector）——连接件</h2><p><strong>UML2.0提供两种类型的连接器：</strong></p>
+<ol>
+<li>代理连接器（Delegation Connector）——委托连接件：连接外部接口的端口和内部接口。</li>
+<li>组装连接器（Assembly Connector）——组装连接件：组件连接器表示构件之间的关系，它连接构件内部的类，将一个构件的供接口和一个构件的需接口捆绑在一起</li>
+</ol>
+<ul>
+<li>连接端口意味着请求端口要调用提供端口中的操作，以得到服务。</li>
+<li>立端口和接口的优点在于在设计时，两个构件彼此不需要了解对方的内部，只要它们的接口是相互兼容的即可。</li>
+<li>如果一个端口提供一个特定的接口而另一个端口需要这个接口，且接口是兼容的，那么这两个端口-便是可连接的。</li>
+</ul>
+<p><strong><1>组装连接件</1></strong> 有两种表示装配连接件的方法：</p>
+<ol>
+<li>如果要显式地把两个构件实例衔接在一起，在它们的端口之间画一条线即可。</li>
+<li>如果两个构件实例相连是由于它们有兼容的接口，则可以使用一个“球－穴”标记来表示构件实例之间的连接关系。</li>
+</ol>
+<p>装配连接件是两个构件实例间的连接件，它定义一个构件实例提供服务，另一个构件实例使用这些服务。装配连接件用于把一个请求接口或端口与一个提供接口或端口的连接起来。在执行时，消息起源于一个请求端口，沿着连接件传递，被交付到一个提供端口 <img src="http://img.blog.csdn.net/20160612202742269?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt> <strong><2>委托连接件</2></strong> 委托有这样的含义：具体的消息流将发生在所连接的端口之间，可能要跨越多个层次，最终到达要对消息进行处理的最终部件实例。这样，使用委托连接件可对构件行为的层次分解建模。 <strong>委托连接件把外部对构件端口的请求分发到构件内部的部件实例进行处理，或者通过构件端口把构件内部部件实例向构件外部的请求分发出去。</strong> 构件内部的一个部件可以是另一个构件或是一个类。注意，必须在两个提供端口间或两个请求端口间定义委托连接件。 注意事项： 因为构件是可以嵌套的，所以内部构件之间的连接（球-穴）是组装连接件，内部构件与端口之间的连接（实线箭头）是委托连接件。</p>
+<h2 id="4-依赖关系（Dependency）"><a href="#4-依赖关系（Dependency）" class="headerlink" title="4..依赖关系（Dependency）"></a>4..依赖关系（Dependency）</h2><p>组件图用依赖关系表示各组件之间存在的关系类型。 在UML中，组件图中依赖关系的表示方法与类图中依赖关系相同，都是一个由客户指向提供者的虚线箭头。 <img src="http://img.blog.csdn.net/20160612212746376?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
+<h1 id="三、相关概念比较"><a href="#三、相关概念比较" class="headerlink" title="三、相关概念比较"></a>三、相关概念比较</h1><h2 id="1-组件与类"><a href="#1-组件与类" class="headerlink" title="1.组件与类"></a>1.组件与类</h2><p><img src="http://img.blog.csdn.net/20160612094105737?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
+<h2 id="2-组件与包"><a href="#2-组件与包" class="headerlink" title="2.组件与包"></a>2.组件与包</h2><p>二者均为分组组织机制，但也有许多不同之处：</p>
+<ul>
+<li>一个组件代表一个物理的代码模块，而包可以包含成组的逻辑模型元素，也可以包含物理的组件；可以用包来组织用例(use case)，不可以用组件来组织用例。</li>
+<li>一个类可以出现在多个组件中，却只能在一个包中定义。</li>
+<li>配置图(deployment diagram)中，节点(node)中可以放组件，但不可以放包。</li>
+<li>包只是类型(type)，组件可以是实例也可以是类型。</li>
+<li>包可以作为开发视图(development view)，用于管理。组件可作为物理视图(physical view)，用于部署。但反之不然。</li>
+</ul>
+<h1 id="四、组件图建模技术"><a href="#四、组件图建模技术" class="headerlink" title="四、组件图建模技术"></a>四、组件图建模技术</h1><ol>
+<li>对系统中的组件建模–分解系统，考虑有关系统的组成管理、软件的重用和物理节点的配置等因素，把关系密切的可执行程序和对象分别归入组件，找出相应的类、接口等模型元素。</li>
+<li>对相应组件提供的接口建模。</li>
+<li>对组件之间的依赖关系建模。</li>
+<li>将逻辑设计映射成物理实现。</li>
+<li>对建模的结果进行精化和细化。</li>
+</ol>
+<p><img src="http://img.blog.csdn.net/20160613094757625?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/11/24/uml-e7-b1-bb-e5-9b-be-e4-b8-8e-e7-b1-bb-e7-9a-84-e5-85-b3-e7-b3-bb-e8-af-a6-e8-a7-a3/" data-toggle="tooltip" data-placement="top" title="UML类图与类的关系详解">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/11/12/java-e4-b8-adscanner-e7-9a-84nextintnextnextline-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/" data-toggle="tooltip" data-placement="top" title="Java中Scanner的nextInt(),next(),nextLine()方法总结">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、概念"><span class="toc-text">一、概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、包含的元素"><span class="toc-text">二、包含的元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-组件（Component）-gt-构件"><span class="toc-text">1.组件（Component）-&gt;构件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-接口（Interface）"><span class="toc-text">2.接口（Interface）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-外部接口——端口"><span class="toc-text">3.外部接口——端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-连接器（Connector）——连接件"><span class="toc-text">4.连接器（Connector）——连接件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-依赖关系（Dependency）"><span class="toc-text">4..依赖关系（Dependency）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、相关概念比较"><span class="toc-text">三、相关概念比较</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-组件与类"><span class="toc-text">1.组件与类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-组件与包"><span class="toc-text">2.组件与包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、组件图建模技术"><span class="toc-text">四、组件图建模技术</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#UML" title="UML">UML</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

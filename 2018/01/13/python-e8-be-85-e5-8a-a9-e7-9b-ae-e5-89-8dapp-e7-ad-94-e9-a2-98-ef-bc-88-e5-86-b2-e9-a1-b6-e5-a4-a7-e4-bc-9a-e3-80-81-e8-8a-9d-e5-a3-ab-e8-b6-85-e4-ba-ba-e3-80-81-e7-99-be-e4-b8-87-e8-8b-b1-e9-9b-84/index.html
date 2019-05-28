@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Python辅助目前app答题 （冲顶大会、芝士超人、百万英雄等等）｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2018/01/13/python-e8-be-85-e5-8a-a9-e7-9b-ae-e5-89-8dapp-e7-ad-94-e9-a2-98-ef-bc-88-e5-86-b2-e9-a1-b6-e5-a4-a7-e4-bc-9a-e3-80-81-e8-8a-9d-e5-a3-ab-e8-b6-85-e4-ba-ba-e3-80-81-e7-99-be-e4-b8-87-e8-8b-b1-e9-9b-84/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Python辅助目前app答题 （冲顶大会、芝士超人、百万英雄等等）</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2018-01-13
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#软件下载" title="软件下载">软件下载</a>
+                        
+                        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Python辅助目前app答题 （冲顶大会、芝士超人、百万英雄等等）
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p> <a href="https://github.com/Skyexu" target="_blank" rel="noopener"><img src="https://avatars2.githubusercontent.com/u/18477491?s=40&amp;v=4" alt="@Skyexu"></a> <a href="https://github.com/Skyexu" target="_blank" rel="noopener">Skyexu</a> <a href="https://github.com/Skyexu/TopSup/commit/f91cc86e9bb734015c783dc82ebf138acc51c4a8" title="fix: someting #" target="_blank" rel="noopener">fix: someting #</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/tree/master/baiduApiVersion" title="baiduApiVersion" target="_blank" rel="noopener">baiduApiVersion</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/c18c1e646b717322d65a465d4c056fea3678f313" title="fix: 搜索 URL 参数乱码，iOS 版本的百度 OCR 报错 (#30) * Fix typos im -&gt; img * Fix url parse" target="_blank" rel="noopener">fix: 搜索 URL 参数乱码，iOS 版本的百度 OCR 报错 (</a><a href="https://github.com/Skyexu/TopSup/pull/30" target="_blank" rel="noopener">#30</a><a href="https://github.com/Skyexu/TopSup/commit/c18c1e646b717322d65a465d4c056fea3678f313" title="fix: 搜索 URL 参数乱码，iOS 版本的百度 OCR 报错 (#30) * Fix typos im -&gt; img * Fix url parse" target="_blank" rel="noopener">)</a></p>
+<p>2 days ago</p>
+<p><a href="https://github.com/Skyexu/TopSup/tree/master/common" title="common" target="_blank" rel="noopener">common</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/9f3129a6b33ec3650d4f4a50814bd0627f7eb421" title="docs: fix" target="_blank" rel="noopener">docs: fix</a></p>
+<p>15 hours ago</p>
+<p><a href="https://github.com/Skyexu/TopSup/tree/master/config" title="config" target="_blank" rel="noopener">config</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/8f589173b780a98ad3f76e433a7de0ed9e444bf2" title="accept: asseywang" target="_blank" rel="noopener">accept: asseywang</a></p>
+<p>2 days ago</p>
+<p><a href="https://github.com/Skyexu/TopSup/tree/master/resources" title="resources" target="_blank" rel="noopener">resources</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/9f3129a6b33ec3650d4f4a50814bd0627f7eb421" title="docs: fix" target="_blank" rel="noopener">docs: fix</a></p>
+<p>15 hours ago</p>
+<p><a href="https://github.com/Skyexu/TopSup/tree/master/simpleVersion" title="simpleVersion" target="_blank" rel="noopener">simpleVersion</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/1c25aa98e9e0d65e207e48fab7c2637aefc85ebe" title="feat: 加入网页分析，选项词频统计，增强识别效果" target="_blank" rel="noopener">feat: 加入网页分析，选项词频统计，增强识别效果</a></p>
+<p>4 days ago</p>
+<p><a href="https://github.com/Skyexu/TopSup/blob/master/.gitignore" title=".gitignore" target="_blank" rel="noopener">.gitignore</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/9f3129a6b33ec3650d4f4a50814bd0627f7eb421" title="docs: fix" target="_blank" rel="noopener">docs: fix</a></p>
+<p>15 hours ago</p>
+<p><a href="https://github.com/Skyexu/TopSup/blob/master/GetImgTool.py" title="GetImgTool.py" target="_blank" rel="noopener">GetImgTool.py</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/1c25aa98e9e0d65e207e48fab7c2637aefc85ebe" title="feat: 加入网页分析，选项词频统计，增强识别效果" target="_blank" rel="noopener">feat: 加入网页分析，选项词频统计，增强识别效果</a></p>
+<p>4 days ago</p>
+<p><a href="https://github.com/Skyexu/TopSup/blob/master/GetQuestionTessAndroid.py" title="GetQuestionTessAndroid.py" target="_blank" rel="noopener">GetQuestionTessAndroid.py</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/f91cc86e9bb734015c783dc82ebf138acc51c4a8" title="fix: someting #" target="_blank" rel="noopener">fix: someting #</a></p>
+<p>13 hours ago</p>
+<p><a href="https://github.com/Skyexu/TopSup/blob/master/GetQuestionTessIos.py" title="GetQuestionTessIos.py" target="_blank" rel="noopener">GetQuestionTessIos.py</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/78a8aa602b37ceb79b44aa2dae47e25281121ecb" title="feat: 增加循环，优化逻辑和显示 ，无需重复加载,增加部分手机截图设置。 加了个彩蛋" target="_blank" rel="noopener">feat: 增加循环，优化逻辑和显示 ，无需重复加载,增加部分手机截图设置。 加了个彩蛋</a></p>
+<p>3 days ago</p>
+<p><a href="https://github.com/Skyexu/TopSup/blob/master/README.md" title="README.md" target="_blank" rel="noopener">README.md</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/f91cc86e9bb734015c783dc82ebf138acc51c4a8" title="fix: someting #" target="_blank" rel="noopener">fix: someting #</a></p>
+<p>13 hours ago</p>
+<p><a href="https://github.com/Skyexu/TopSup/blob/master/__init__.py" title="__init__.py" target="_blank" rel="noopener">__init__.py</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/1c25aa98e9e0d65e207e48fab7c2637aefc85ebe" title="feat: 加入网页分析，选项词频统计，增强识别效果" target="_blank" rel="noopener">feat: 加入网页分析，选项词频统计，增强识别效果</a></p>
+<p>4 days ago</p>
+<p><a href="https://github.com/Skyexu/TopSup/blob/master/screenshot.png" title="screenshot.png" target="_blank" rel="noopener">screenshot.png</a></p>
+<p><a href="https://github.com/Skyexu/TopSup/commit/9f3129a6b33ec3650d4f4a50814bd0627f7eb421" title="docs: fix" target="_blank" rel="noopener">docs: fix</a></p>
+<p>15 hours ago</p>
+<h1 id="答题辅助"><a href="#答题辅助" class="headerlink" title="答题辅助"></a>答题辅助</h1><p>这两天冲顶大会直播答题 APP 突然火了起来，萌生了使用截图，文字识别，搜索来做个小辅助的想法。使用文字识别搜索，只能增加准确率，保证不了全对。 <strong>非常感谢关注，欢迎大家PR新的想法和优化。</strong> <a href="https://github.com/Skyexu/TopSup/blob/master/resources/screenshot.png" target="_blank" rel="noopener"><img src="https://github.com/Skyexu/TopSup/raw/master/resources/screenshot.png" alt></a> 灵感来自：</p>
+<blockquote>
+<p><a href="https://github.com/wangshub/wechat_jump_game" target="_blank" rel="noopener">微信跳一跳辅助</a> <a href="https://livc.io/blog/204" target="_blank" rel="noopener">程序员如何玩转《冲顶大会》？</a></p>
+</blockquote>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a><a href="https://github.com/Skyexu/TopSup#更新日志" target="_blank" rel="noopener"></a>更新日志</h2><ul>
+<li>2018.01.12<ul>
+<li>修复 windows 命令行颜色乱码，处理一些识别错误</li>
+</ul>
+</li>
+<li>2018.01.11<ul>
+<li>修复搜索可能的乱码等一些问题，多线程加快执行</li>
+</ul>
+</li>
+<li>2018.01.10<ul>
+<li>增加循环，无需重复加载，优化逻辑和显示 来自 <a href="https://github.com/Skyexu/TopSup/issues/7" target="_blank" rel="noopener">issue #7</a>。增加部分手机截图设置</li>
+<li>增加了截图传输效率，修改了识别参数，对图像进行灰度转化，去干扰，增加了识别准确率。结果判断使用了三种方式，对不同问题可以参考不同结果。</li>
+</ul>
+</li>
+</ul>
+<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a><a href="https://github.com/Skyexu/TopSup#版本说明" target="_blank" rel="noopener"></a>版本说明</h2><ul>
+<li>谷歌 Tesseract<ul>
+<li><a href="https://github.com/Skyexu/TopSup/blob/master/simpleVersion" target="_blank" rel="noopener">简单访问浏览器版本</a></li>
+<li>最新版本：本目录</li>
+</ul>
+</li>
+<li><a href="https://github.com/Skyexu/TopSup/tree/master/baiduApiVersion" target="_blank" rel="noopener">百度 OCR 版本</a>：只实现了简单浏览器搜索，参考本目录代码可改</li>
+</ul>
+<h2 id="具体做法"><a href="#具体做法" class="headerlink" title="具体做法"></a><a href="https://github.com/Skyexu/TopSup#具体做法" target="_blank" rel="noopener"></a>具体做法</h2><ol>
+<li>ADB 获取手机截屏</li>
+</ol>
+<p>adb shell screencap -p /sdcard/screenshot.png<br>adb pull /sdcard/screenshot.png .</p>
+<ol start="2">
+<li>OCR 识别题目与选项文字</li>
+</ol>
+<p><a href="https://github.com/Skyexu/TopSup/blob/master/resources/cut.png" target="_blank" rel="noopener"><img src="https://github.com/Skyexu/TopSup/raw/master/resources/cut.png" alt></a> ​ 两个方法：</p>
+<ul>
+<li>谷歌 <a href="https://github.com/madmaze/pytesseract" target="_blank" rel="noopener">Tesseract</a> ，安装软件即可，接下来主要使用这个方法</li>
+<li><a href="https://cloud.baidu.com/product/ocr" target="_blank" rel="noopener">百度 OCR</a> ，<a href="https://github.com/Skyexu/TopSup/blob/master" target="_blank" rel="noopener">需要</a>注册百度 API，每天调用次数有限</li>
+</ul>
+<ol start="3">
+<li>搜索判断</li>
+</ol>
+<h2 id="结果判断方式"><a href="#结果判断方式" class="headerlink" title="结果判断方式"></a><a href="https://github.com/Skyexu/TopSup#结果判断方式" target="_blank" rel="noopener"></a>结果判断方式</h2><ol>
+<li>直接打开浏览器搜索问题 <a href="https://github.com/Skyexu/TopSup/blob/master/resources/result.png" target="_blank" rel="noopener"><img src="https://github.com/Skyexu/TopSup/raw/master/resources/result.png" alt></a></li>
+<li>题目+每个选项都通过搜索引擎搜索，从网页代码中提取搜索结果计数</li>
+<li>只用题目进行搜索，统计结果页面代码中包含选项的词频</li>
+</ol>
+<p>以下为两个示例结果 <a href="https://github.com/Skyexu/TopSup/blob/master/resources/result2.png" target="_blank" rel="noopener"><img src="https://github.com/Skyexu/TopSup/raw/master/resources/result2.png" alt></a> <a href="https://github.com/Skyexu/TopSup/blob/master/resources/result3.png" target="_blank" rel="noopener"><img src="https://github.com/Skyexu/TopSup/raw/master/resources/result3.png" alt></a> 参考了 <a href="https://hackernoon.com/i-hacked-hq-trivia-but-heres-how-they-can-stop-me-68750ed16365" target="_blank" rel="noopener">I Hacked HQ Trivia But Here’s How They Can Stop Me</a></p>
+<h2 id="使用步骤-谷歌-Tesseract"><a href="#使用步骤-谷歌-Tesseract" class="headerlink" title="使用步骤 (谷歌 Tesseract)"></a><a href="https://github.com/Skyexu/TopSup#使用步骤-谷歌-tesseract" target="_blank" rel="noopener"></a>使用步骤 (谷歌 <a href="https://github.com/madmaze/pytesseract" target="_blank" rel="noopener">Tesseract</a>)</h2><h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a><a href="https://github.com/Skyexu/TopSup#android" target="_blank" rel="noopener"></a>Android</h3><h4 id="1-安装-ADB"><a href="#1-安装-ADB" class="headerlink" title="1. 安装 ADB"></a><a href="https://github.com/Skyexu/TopSup#1-安装-adb" target="_blank" rel="noopener"></a>1. 安装 ADB</h4><p><strong>windows</strong> 下载地址：<a href="https://adb.clockworkmod.com/" target="_blank" rel="noopener">https://adb.clockworkmod.com/</a> <strong>Mac</strong> 使用 brew 进行安装 <code>brew cask install android-platform-tools</code> 安装完后插入安卓设备且安卓已打开 USB 调试模式，终端输入 <code>adb devices</code> ，显示设备号则表示成功。我手上的机子是坚果 pro1，第一次不成功,查看设备管理器有叹号，使用 <a href="https://www.smartisan.com/apps/handshaker" target="_blank" rel="noopener">handshaker</a> 加载驱动后成功，也可以使用豌豆荚之类的试试。</p>
+<pre><code>List of devices attached
+6934dc33    device
+</code></pre><p>若不成功，可以参考<a href="https://github.com/wangshub/wechat_jump_game/wiki/Android-%E5%92%8C-iOS-%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4" target="_blank" rel="noopener">Android 和 iOS 操作步骤</a>进行修改</p>
+<h4 id="2-安装-python-3"><a href="#2-安装-python-3" class="headerlink" title="2. 安装 python 3"></a><a href="https://github.com/Skyexu/TopSup#2-安装-python-3" target="_blank" rel="noopener"></a>2. 安装 python 3</h4><h4 id="3-安装所需-python-包"><a href="#3-安装所需-python-包" class="headerlink" title="3. 安装所需 python 包"></a><a href="https://github.com/Skyexu/TopSup#3-安装所需-python-包" target="_blank" rel="noopener"></a>3. 安装所需 python 包</h4><p>命令行：</p>
+<pre><code>pip install pytesseract
+pip install pillow  
+pip install requests
+pip install colorama
+</code></pre><h4 id="4-安装-谷歌-Tesseract"><a href="#4-安装-谷歌-Tesseract" class="headerlink" title="4. 安装 谷歌 Tesseract"></a><a href="https://github.com/Skyexu/TopSup#4-安装-谷歌-tesseract" target="_blank" rel="noopener"></a>4. 安装 谷歌 Tesseract</h4><p>Windows下链接： <em>推荐使用安装版，在安装时选择增加中文简体语言包</em></p>
+<ul>
+<li>安装版： <a href="https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-setup-3.05.01.exe" target="_blank" rel="noopener">https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-setup-3.05.01.exe</a></li>
+<li>免安装版： <a href="https://github.com/parrot-office/tesseract/releases/download/3.5.1/tesseract-Win64.zip" target="_blank" rel="noopener">https://github.com/parrot-office/tesseract/releases/download/3.5.1/tesseract-Win64.zip</a> <em>免安装版需要下载<a href="https://github.com/tesseract-ocr/tesseract/wiki/Data-Files" target="_blank" rel="noopener">中文语言包</a>，放置到Tesseract的<code>tessdata</code>目录下</em></li>
+</ul>
+<p>其他系统： <a href="https://github.com/tesseract-ocr/tesseract/wiki" target="_blank" rel="noopener">https://github.com/tesseract-ocr/tesseract/wiki</a></p>
+<h4 id="5-修改-common-ocr-py-代码相应目录信息"><a href="#5-修改-common-ocr-py-代码相应目录信息" class="headerlink" title="5. 修改 common/ocr.py 代码相应目录信息"></a><a href="https://github.com/Skyexu/TopSup#5-修改--commonocrpy-代码相应目录信息" target="_blank" rel="noopener"></a>5. 修改 <code>common/ocr.py</code> 代码相应目录信息</h4><pre><code># win环境
+# tesseract 路径
+pytesseract.pytesseract.tesseract_cmd = &apos;C:\\Program Files (x86)\\Tesseract-OCR\\tesseract&apos;
+# 语言包目录和参数
+tessdata_dir_config = &apos;--tessdata-dir &quot;C:\\Program Files (x86)\\Tesseract-OCR\\tessdata&quot; --psm 6&apos;
+
+# mac 环境 记得自己安装训练文件
+# tesseract 路径
+#pytesseract.pytesseract.tesseract_cmd = &apos;/usr/local/Cellar/tesseract/3.05.01/bin/tesseract&apos;
+# 语言包目录和参数
+#tessdata_dir_config = &apos;--tessdata-dir &quot;/usr/local/Cellar/tesseract/3.05.01/share/tessdata/&quot; --psm 6&apos;
+</code></pre><h4 id="6-运行脚本"><a href="#6-运行脚本" class="headerlink" title="6. 运行脚本"></a><a href="https://github.com/Skyexu/TopSup#6-运行脚本" target="_blank" rel="noopener"></a>6. 运行脚本</h4><p><code>python GetQuestionTessAndroid.py</code> 会自动识别文字并打开浏览器 <strong>注： 可以用 <code>GetImgTool.py</code> 调整题目截取位置</strong> 可以到<a href="https://github.com/Skyexu/TopSup/blob/master/config/devicesCutConfig.txt" target="_blank" rel="noopener">这里</a>查看部分手机截图设置 若屏幕分辨率不同，请在 <code>ocr.py</code> 中自行修改代码即可</p>
+<pre><code># 切割题目和选项位置，左上角坐标和右下角坐标,自行测试分辨率
+question_im = image.crop((50, 350, 1000, 560)) # 坚果 pro1
+choices_im = image.crop((75, 535, 990, 1150))
+# question = img.crop((75, 315, 1167, 789)) # iPhone 7P
+</code></pre><h3 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a><a href="https://github.com/Skyexu/TopSup#ios" target="_blank" rel="noopener"></a>IOS</h3><p><strong>部分朋友成功</strong></p>
+<ul>
+<li>需要安装 WDA 进行截图，参考<ul>
+<li><a href="https://testerhome.com/topics/7220" target="_blank" rel="noopener">iOS 真机如何安装 WebDriverAgent</a></li>
+<li><a href="https://github.com/wangshub/wechat_jump_game/wiki/Android-%E5%92%8C-iOS-%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4" target="_blank" rel="noopener">Android 和 iOS 操作步骤</a></li>
+</ul>
+</li>
+<li>安装 <a href="https://github.com/openatx/facebook-wda" target="_blank" rel="noopener">python-wda</a></li>
+<li>其他步骤相同。</li>
+<li><code>python GetQuestionTessIos.py</code></li>
+</ul>
+<h2 id="使用步骤-百度-OCR"><a href="#使用步骤-百度-OCR" class="headerlink" title="使用步骤 (百度 OCR)"></a><a href="https://github.com/Skyexu/TopSup#使用步骤-百度-ocr" target="_blank" rel="noopener"></a>使用步骤 (百度 OCR)</h2><p>请移步，<a href="https://github.com/Skyexu/TopSup/blob/master/baiduApiVersion" target="_blank" rel="noopener">链接</a></p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a><a href="https://github.com/Skyexu/TopSup#其它" target="_blank" rel="noopener"></a>其它</h2><ul>
+<li>Tesseract 参数，若识别有问题可以更改参数解决 <a href="https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc" target="_blank" rel="noopener">https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc</a></li>
+<li>三种方法可以选择，可以加#注释掉只保留一个方法</li>
+<li>windows 命令行有很多乱码问题，建议使用 cmder 作为命令工具，可以支持 linux 命令</li>
+<li>建了个Q群<code>565159762</code>有兴趣的朋友可以互相交流互相帮助</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a href="https://github.com/Skyexu/TopSup#总结" target="_blank" rel="noopener"></a>总结</h2><p>有了 ADB 截图，怕是各种小辅助都可以玩了。python 写小脚本真的很方便。</p>
+<h2 id="Next"><a href="#Next" class="headerlink" title="Next"></a><a href="https://github.com/Skyexu/TopSup#next" target="_blank" rel="noopener"></a>Next</h2><ul>
+<li>文字识别后 nlp 处理一下关系，然后搜索不同选择结果</li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/01/13/pythoncderror/" data-toggle="tooltip" data-placement="top" title="Python运行冲顶大会报错">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/01/06/uml-e4-b8-ad-e5-90-88-e6-88-90-ef-bc-88composition-ef-bc-89-e5-92-8c-e8-81-9a-e5-90-88-ef-bc-88aggregation-ef-bc-89-e7-9a-84-e5-8c-ba-e5-88-ab/" data-toggle="tooltip" data-placement="top" title="UML中合成（Composition）和聚合（Aggregation）的区别">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#答题辅助"><span class="toc-text">答题辅助</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#更新日志"><span class="toc-text">更新日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本说明"><span class="toc-text">版本说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体做法"><span class="toc-text">具体做法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果判断方式"><span class="toc-text">结果判断方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用步骤-谷歌-Tesseract"><span class="toc-text">使用步骤 (谷歌 Tesseract)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android"><span class="toc-text">Android</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-安装-ADB"><span class="toc-text">1. 安装 ADB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-安装-python-3"><span class="toc-text">2. 安装 python 3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-安装所需-python-包"><span class="toc-text">3. 安装所需 python 包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-安装-谷歌-Tesseract"><span class="toc-text">4. 安装 谷歌 Tesseract</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-修改-common-ocr-py-代码相应目录信息"><span class="toc-text">5. 修改 common/ocr.py 代码相应目录信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-运行脚本"><span class="toc-text">6. 运行脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IOS"><span class="toc-text">IOS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用步骤-百度-OCR"><span class="toc-text">使用步骤 (百度 OCR)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其它"><span class="toc-text">其它</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next"><span class="toc-text">Next</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#软件下载" title="软件下载">软件下载</a>
+                        
+                        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

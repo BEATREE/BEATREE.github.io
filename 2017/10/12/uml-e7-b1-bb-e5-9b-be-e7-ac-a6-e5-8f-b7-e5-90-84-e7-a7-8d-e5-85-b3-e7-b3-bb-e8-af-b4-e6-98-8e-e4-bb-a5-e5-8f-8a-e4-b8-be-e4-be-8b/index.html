@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        UML类图符号 各种关系说明以及举例｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2017/10/12/uml-e7-b1-bb-e5-9b-be-e7-ac-a6-e5-8f-b7-e5-90-84-e7-a7-8d-e5-85-b3-e7-b3-bb-e8-af-b4-e6-98-8e-e4-bb-a5-e5-8f-8a-e4-b8-be-e4-be-8b/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>UML类图符号 各种关系说明以及举例</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2017-10-12
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#UML类图" title="UML类图">UML类图</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            UML类图符号 各种关系说明以及举例
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p>UML中描述对象和类之间相互关系的方式包括：依赖，关联，聚合，组合，泛化，实现等。   <strong>表示关系的强弱</strong>：组合&gt;聚合&gt;关联&gt;依赖 相互间关系 聚合是表明对象之间的整体与部分关系的关联，而组合是表明整体与部分之间有相同生命周期关系的聚合。而关联与依赖的关系是，依赖描述了对象之间的调用关系，而关联描述了对象之间的结构关系。</p>
+<h2 id="依赖（Dependency）-虚线箭头表示"><a href="#依赖（Dependency）-虚线箭头表示" class="headerlink" title="依赖（Dependency）:虚线箭头表示"></a>依赖（Dependency）:虚线箭头表示</h2><p><strong>依赖（Dependency）</strong>：元素A的变化会影响元素B，但反之不成立，那么B和A的关系是依赖关系，B依赖A；类属关系和实现关系在语义上讲也是依赖关系，但由于其有更特殊的用途，所以被单独描述。uml中用带箭头的虚线表示，箭头指向被依赖元素。</p>
+<p>1、依赖关系也是类与类之间的联结 2、依赖总是单向的。（#add 注意，要避免双向依赖。一般来说，不应该存在双向依赖。） 3、依赖关系在 <a href="http://lib.csdn.net/base/javase" title="Java SE知识库" target="_blank" rel="noopener">Java</a> 或 C++ 语言中体现为局部变量、方法的参数或者对静态方法的调用。</p>
+<h3 id="java-view-plain-copy"><a href="#java-view-plain-copy" class="headerlink" title="[java] view plain copy"></a><strong>[java]</strong> <a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="view plain" target="_blank" rel="noopener">view plain</a> <a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="copy" target="_blank" rel="noopener">copy</a></h3><h3 id="print"><a href="#print" class="headerlink" title="print ?   "></a><a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="print" target="_blank" rel="noopener">print </a><a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="?" target="_blank" rel="noopener">?  </a><a href="https://code.csdn.net/snippets/151320" title="在CODE上查看代码片" target="_blank" rel="noopener"><img src="https://code.csdn.net/assets/CODE_ico.png" alt="在CODE上查看代码片"> </a><a href="https://code.csdn.net/snippets/151320/fork" title="派生到我的代码片" target="_blank" rel="noopener"><img src="https://code.csdn.net/assets/ico_fork.svg" alt="派生到我的代码片"></a></h3><p>class Person{<br>    void buy(Car car){};<br>}  </p>
+<p><a href="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202343915.jpg" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202343915.jpg" alt></a> 虚线加箭头    </p>
+<h2 id="关联（Association）：实线箭头表示"><a href="#关联（Association）：实线箭头表示" class="headerlink" title="关联（Association）：实线箭头表示"></a>关联（Association）：实线箭头表示</h2><p><strong>关联（Association）</strong>：元素间的结构化关系，是一种弱关系，被关联的元素间通常可以被独立的考虑。uml中用实线表示Association关系，箭头指向被依赖元素。 1、关联关系是类与类之间的联结，它使一个类知道另一个类的属性和方法。 2、关联可以是双向的，也可以是单向的（#add还有自身关联）。双向的关联可以有两个箭头或者没有箭头，单向的关联有一个箭头。 3、在 Java 或 c++ 中，关联关系是通过使用成员变量来实现的。</p>
+<h3 id="java-view-plain-copy-1"><a href="#java-view-plain-copy-1" class="headerlink" title="[java] view plain copy"></a><strong>[java]</strong> <a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="view plain" target="_blank" rel="noopener">view plain</a> <a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="copy" target="_blank" rel="noopener">copy</a></h3><h3 id="print-1"><a href="#print-1" class="headerlink" title="print?"></a><a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="print" target="_blank" rel="noopener">print</a><a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="?" target="_blank" rel="noopener">?</a><a href="https://code.csdn.net/snippets/151320" title="在CODE上查看代码片" target="_blank" rel="noopener"><img src="https://code.csdn.net/assets/CODE_ico.png" alt="在CODE上查看代码片"></a><a href="https://code.csdn.net/snippets/151320/fork" title="派生到我的代码片" target="_blank" rel="noopener"><img src="https://code.csdn.net/assets/ico_fork.svg" alt="派生到我的代码片"></a></h3><p>class 徒弟{<br>}<br>class 唐僧{<br>     private List&lt;徒弟&gt; tdlist;<br>}  </p>
+<p><a href="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202362840.jpg" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202362840.jpg" alt></a></p>
+<h2 id="聚合（Aggregation）：带空心菱形头表示"><a href="#聚合（Aggregation）：带空心菱形头表示" class="headerlink" title="聚合（Aggregation）：带空心菱形头表示"></a>聚合（Aggregation）：带空心菱形头表示</h2><p><strong>聚合（Aggregation）</strong>：关联关系的一种特例，表示部分和整体（整体 has a 部分）的关系。uml中用带空心菱形头的实线表示，菱形头指向整体。 1、聚合关系是关联关系的一种，是强的关联关系。 2、聚合是整体和部分之间的关系，例如汽车由引擎、轮胎以及其它零件组成。 3、聚合关系也是通过成员变量来实现的。但是，关联关系所涉及的两个类处在同一个层次上，而聚合关系中，两个类处于不同的层次上，一个代表整体，一个代表部分。 4、关联与聚合仅仅从 Java 或 C++ 语法上是无法分辨的，必须考察所涉及的类之间的逻辑关系。</p>
+<h3 id="java-view-plain-copy-2"><a href="#java-view-plain-copy-2" class="headerlink" title="[java] view plain copy"></a><strong>[java]</strong> <a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="view plain" target="_blank" rel="noopener">view plain</a> <a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="copy" target="_blank" rel="noopener">copy</a></h3><h3 id="print-2"><a href="#print-2" class="headerlink" title="print?"></a><a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="print" target="_blank" rel="noopener">print</a><a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="?" target="_blank" rel="noopener">?</a><a href="https://code.csdn.net/snippets/151320" title="在CODE上查看代码片" target="_blank" rel="noopener"><img src="https://code.csdn.net/assets/CODE_ico.png" alt="在CODE上查看代码片"></a><a href="https://code.csdn.net/snippets/151320/fork" title="派生到我的代码片" target="_blank" rel="noopener"><img src="https://code.csdn.net/assets/ico_fork.svg" alt="派生到我的代码片"></a></h3><p>class 引擎{  </p>
+<p>}<br>class 轮胎{  </p>
+<p>}<br>class 汽车{<br>       private 引擎 engine;<br>       private 轮胎 tyre[4];<br>}  </p>
+<p><a href="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202324493.jpg" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202324493.jpg" alt></a></p>
+<h2 id="组合（Composition）：带实心菱形头的实线表示"><a href="#组合（Composition）：带实心菱形头的实线表示" class="headerlink" title="组合（Composition）：带实心菱形头的实线表示"></a>组合（Composition）：带实心菱形头的实线表示</h2><p><strong>组合（Composition）</strong>：组合是聚合关系的变种，表示元素间更强的组合关系。如果是组合关系，如果整体被破坏则个体一定会被破坏，而聚合的个体则可能是被多个整体所共享的，不一定会随着某个整体的破坏而被破坏。uml中用带实心菱形头的实线表示Composition关系，菱形头指向整体。   1、合成关系是关联关系的一种，是比聚合关系还要强的关系。 2、它要求普通的聚合关系中代表整体的对象负责代表部分的对象的生命周期。</p>
+<h3 id="java-view-plain-copy-3"><a href="#java-view-plain-copy-3" class="headerlink" title="[java] view plain copy"></a><strong>[java]</strong> <a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="view plain" target="_blank" rel="noopener">view plain</a> <a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="copy" target="_blank" rel="noopener">copy</a></h3><h3 id="print-3"><a href="#print-3" class="headerlink" title="print?"></a><a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="print" target="_blank" rel="noopener">print</a><a href="http://blog.csdn.net/zhshulin/article/details/18088633#" title="?" target="_blank" rel="noopener">?</a><a href="https://code.csdn.net/snippets/151320" title="在CODE上查看代码片" target="_blank" rel="noopener"><img src="https://code.csdn.net/assets/CODE_ico.png" alt="在CODE上查看代码片"></a><a href="https://code.csdn.net/snippets/151320/fork" title="派生到我的代码片" target="_blank" rel="noopener"><img src="https://code.csdn.net/assets/ico_fork.svg" alt="派生到我的代码片"></a></h3><p>class 肢{<br>}<br>class 人{<br>     private 肢   limb[4];<br>}  </p>
+<p><a href="http://www.teenshare.club/wp-content/uploads/2017/10/201710120238223.jpg" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2017/10/201710120238223.jpg" alt></a></p>
+<p>一般是实心菱形加实线箭头表示</p>
+<h2 id="一般化关系-泛化和实现-："><a href="#一般化关系-泛化和实现-：" class="headerlink" title="一般化关系(泛化和实现)："></a>一般化关系(泛化和实现)：</h2><p>表示类与类之间的继承关系，接口与接口之间的继承关系，或类对接口的实现关系。一般化关系是子类指向父类的，或从实现接口的类指向被实现的接口，与继承或实现的方向相反。如下图所示： <a href="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202385574.jpg" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202385574.jpg" alt></a> 一般化关系    </p>
+<h3 id="泛化（Generalization）："><a href="#泛化（Generalization）：" class="headerlink" title="泛化（Generalization）："></a>泛化（Generalization）：</h3><p><strong>泛化</strong>（Generalization）：通常所说的继承（特殊个体 is kind of 一般个体）关系，不必多解释了。uml中用带空心箭头的实线表示，箭头指向一般个体。   带空心箭头的实线线表示 泛化表示一个更泛化的元素和一个更具体的元素之间的关系。泛化是用于对继承进行建模的UML元素。在Java中，用<em>extends</em>关键字来直接表示这种关系。 泛化关系表示类与类之间的继承关系，接口与接口之间的继承关系。 <a href="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202393567.gif" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202393567.gif" alt></a></p>
+<h3 id="实现（Realization）：空心箭头和虚线表示"><a href="#实现（Realization）：空心箭头和虚线表示" class="headerlink" title="实现（Realization）：空心箭头和虚线表示"></a>实现（Realization）：空心箭头和虚线表示</h3><p><strong>实现（Realize）</strong>：元素A定义一个约定，元素B实现这个约定，则B和A的关系是Realize，B realize A。这个关系最常用于接口。uml中用空心箭头和虚线表示，箭头指向定义约定的元素。 实现关系指定两个实体之间的一个合同。换言之，一个实体定义一个合同，而另一个实体保证履行该合同。对Java应用程序进行建模时，实现关系可直接用<em>implements</em>关键字来表示。 <a href="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202400110.gif" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2017/10/2017101202400110.gif" alt></a></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/10/12/jsp-response-sendredirect-e4-b8-8d-e8-b7-b3-e8-bd-ac-e7-9a-84-e5-8e-9f-e5-9b-a0-e5-88-86-e6-9e-90-e5-8f-8a-e8-a7-a3-e5-86-b3/" data-toggle="tooltip" data-placement="top" title="JSP response.sendRedirect不跳转的原因分析及解决">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/09/17/wordpress-e4-b8-ba-e5-af-bc-e8-88-aa-e6-a0-8f-e6-b7-bb-e5-8a-a0-e5-8f-af-e7-88-b1-e5-9b-be-e6-a0-87/" data-toggle="tooltip" data-placement="top" title="WordPress为导航栏添加可爱图标">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖（Dependency）-虚线箭头表示"><span class="toc-text">依赖（Dependency）:虚线箭头表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-view-plain-copy"><span class="toc-text">[java] view plain copy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#print"><span class="toc-text">print ?   </span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关联（Association）：实线箭头表示"><span class="toc-text">关联（Association）：实线箭头表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-view-plain-copy-1"><span class="toc-text">[java] view plain copy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#print-1"><span class="toc-text">print?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚合（Aggregation）：带空心菱形头表示"><span class="toc-text">聚合（Aggregation）：带空心菱形头表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-view-plain-copy-2"><span class="toc-text">[java] view plain copy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#print-2"><span class="toc-text">print?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组合（Composition）：带实心菱形头的实线表示"><span class="toc-text">组合（Composition）：带实心菱形头的实线表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-view-plain-copy-3"><span class="toc-text">[java] view plain copy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#print-3"><span class="toc-text">print?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一般化关系-泛化和实现-："><span class="toc-text">一般化关系(泛化和实现)：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#泛化（Generalization）："><span class="toc-text">泛化（Generalization）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现（Realization）：空心箭头和虚线表示"><span class="toc-text">实现（Realization）：空心箭头和虚线表示</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#UML类图" title="UML类图">UML类图</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

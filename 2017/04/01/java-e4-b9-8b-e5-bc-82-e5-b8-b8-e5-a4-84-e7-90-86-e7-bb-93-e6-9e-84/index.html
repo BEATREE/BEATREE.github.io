@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        JAVA之异常处理结构｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2017/04/01/java-e4-b9-8b-e5-bc-82-e5-b8-b8-e5-a4-84-e7-90-86-e7-bb-93-e6-9e-84/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>JAVA之异常处理结构</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2017-04-01
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#JAVA" title="JAVA">JAVA</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            JAVA之异常处理结构
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a><strong>异常处理</strong></h1><h2 id="本章要点"><a href="#本章要点" class="headerlink" title="本章要点"></a><strong>本章要点</strong></h2><ul>
+<li><h4 id="理解异常和错误处理"><a href="#理解异常和错误处理" class="headerlink" title="理解异常和错误处理"></a>理解异常和错误处理</h4></li>
+<li><h4 id="理解JAVA的异常层次结构及异常分类"><a href="#理解JAVA的异常层次结构及异常分类" class="headerlink" title="理解JAVA的异常层次结构及异常分类"></a>理解JAVA的异常层次结构及异常分类</h4></li>
+<li><h4 id="掌握基本的异常处理编程"><a href="#掌握基本的异常处理编程" class="headerlink" title="掌握基本的异常处理编程"></a>掌握基本的异常处理编程</h4></li>
+</ul>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a><strong>异常</strong></h2><ul>
+<li><h4 id="异常-Exception-又称例外—是在程序运行过程中发生的、会打断程序正常执行的事件。"><a href="#异常-Exception-又称例外—是在程序运行过程中发生的、会打断程序正常执行的事件。" class="headerlink" title="异常(Exception)又称例外—是在程序运行过程中发生的、会打断程序正常执行的事件。"></a>异常(Exception)又称例外—是在程序运行过程中发生的、会打断程序正常执行的事件。</h4></li>
+<li><h4 id="例如：除0-ArithmeticException-、没有给对象开辟内存空间时会出现空指针异常-NullPointException-、文件找不到-FileNotFoundException-、数组元素下标越界-ArrayIndexOutOfBoundsException-等。这些事件的发生将阻碍程序的正常运行。为了增加程序的容错性、健壮性，程序设计时，必须考虑到可能发生的异常情况并做出相应的处理。"><a href="#例如：除0-ArithmeticException-、没有给对象开辟内存空间时会出现空指针异常-NullPointException-、文件找不到-FileNotFoundException-、数组元素下标越界-ArrayIndexOutOfBoundsException-等。这些事件的发生将阻碍程序的正常运行。为了增加程序的容错性、健壮性，程序设计时，必须考虑到可能发生的异常情况并做出相应的处理。" class="headerlink" title="例如：除0(ArithmeticException)、没有给对象开辟内存空间时会出现空指针异常(NullPointException)、文件找不到(FileNotFoundException)、数组元素下标越界(ArrayIndexOutOfBoundsException)等。这些事件的发生将阻碍程序的正常运行。为了增加程序的容错性、健壮性，程序设计时，必须考虑到可能发生的异常情况并做出相应的处理。"></a>例如：除0<strong>(ArithmeticException)</strong>、没有给对象开辟内存空间时会出现<strong>空指针异常(NullPointException)</strong>、<strong>文件找不到(FileNotFoundException)</strong>、<strong>数组元素下标越界(ArrayIndexOutOfBoundsException)</strong>等。这些事件的发生将阻碍程序的正常运行。为了增加程序的<strong>容错性</strong>、<strong>健壮性</strong>，程序设计时，必须考虑到可能发生的异常情况并做出相应的处理。</h4></li>
+<li><h4 id="设计程序时必须考虑可能发生的异常事件并作出相应的处理。传统程序设计时，要由编程者自己测试出错发生的原因，通过-i-f-语句判断是否出现了异常事件，并进行相应的处理。"><a href="#设计程序时必须考虑可能发生的异常事件并作出相应的处理。传统程序设计时，要由编程者自己测试出错发生的原因，通过-i-f-语句判断是否出现了异常事件，并进行相应的处理。" class="headerlink" title="设计程序时必须考虑可能发生的异常事件并作出相应的处理。传统程序设计时，要由编程者自己测试出错发生的原因，通过 i f 语句判断是否出现了异常事件，并进行相应的处理。"></a>设计程序时必须考虑可能发生的异常事件并作出相应的处理。传统程序设计时，要由编程者自己测试出错发生的原因，通过 i f 语句判断是否出现了异常事件，并进行相应的处理。</h4></li>
+</ul>
+<ul>
+<li><h4 id="传统异常处理存在的困难和问题"><a href="#传统异常处理存在的困难和问题" class="headerlink" title="传统异常处理存在的困难和问题"></a>传统异常处理存在的困难和问题</h4></li>
+</ul>
+<h4 id="Ⅰ-写程序难"><a href="#Ⅰ-写程序难" class="headerlink" title="Ⅰ 写程序难"></a><strong>Ⅰ</strong> 写程序难</h4><h4 id="★-大部分精力花在出错处理上了"><a href="#★-大部分精力花在出错处理上了" class="headerlink" title="★ 大部分精力花在出错处理上了"></a>★ 大部分精力花在出错处理上了</h4><h4 id="Ⅱ-只把能够想到的错误考虑到"><a href="#Ⅱ-只把能够想到的错误考虑到" class="headerlink" title="Ⅱ 只把能够想到的错误考虑到"></a><strong>Ⅱ</strong> 只把能够想到的错误考虑到</h4><h4 id="★-对以外的情况无法处理"><a href="#★-对以外的情况无法处理" class="headerlink" title="★ 对以外的情况无法处理"></a>★ 对以外的情况无法处理</h4><h4 id="Ⅲ-程序可读性差"><a href="#Ⅲ-程序可读性差" class="headerlink" title="Ⅲ 程序可读性差"></a><strong>Ⅲ</strong> 程序可读性差</h4><h4 id="★-大量的错误处理代码混杂在程序中"><a href="#★-大量的错误处理代码混杂在程序中" class="headerlink" title="★ 大量的错误处理代码混杂在程序中"></a>★ 大量的错误处理代码混杂在程序中</h4><h4 id="Ⅳ-出错返回的信息量太少"><a href="#Ⅳ-出错返回的信息量太少" class="headerlink" title="Ⅳ 出错返回的信息量太少"></a><strong>Ⅳ</strong> 出错返回的信息量太少</h4><h4 id="★-无法更确切的了解错误状况或原因"><a href="#★-无法更确切的了解错误状况或原因" class="headerlink" title="★ 无法更确切的了解错误状况或原因"></a>★ 无法更确切的了解错误状况或原因</h4><h2 id="异常层次结构及分类"><a href="#异常层次结构及分类" class="headerlink" title="异常层次结构及分类"></a><strong>异常层次结构及分类</strong></h2><p>[caption id=”attachment_379” align=”alignnone” width=”852”]<a href="http://www.teenshare.club/wp-content/uploads/2017/04/default-1.png" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2017/04/default-1.png" alt></a> 异常层次结构及分类[/caption]</p>
+<h2 id="Error-与-Exception"><a href="#Error-与-Exception" class="headerlink" title="Error**与**Exception"></a><strong>Error**</strong>与<strong>**Exception</strong></h2><h4 id="1-Throwable-以下的异常都可以被捕获"><a href="#1-Throwable-以下的异常都可以被捕获" class="headerlink" title="1.Throwable**以下的异常都可以被捕获**"></a>1.<strong>Throwable**</strong>以下的异常都可以被捕获**</h4><h4 id="2-所有-Error类及其子类代表java运行时系统中可能发生的异常情况，是致命的，即程序遇到了非常严重的不正常状态，不能简单恢复执行，这就是错误-。如：内存耗尽、系统内部错误等，通常我们（应用程序）不应捕获这些异常。"><a href="#2-所有-Error类及其子类代表java运行时系统中可能发生的异常情况，是致命的，即程序遇到了非常严重的不正常状态，不能简单恢复执行，这就是错误-。如：内存耗尽、系统内部错误等，通常我们（应用程序）不应捕获这些异常。" class="headerlink" title="2.所有**Error类及其子类代表java运行时系统中可能发生的异常情况，是致命的，即程序遇到了非常严重的不正常状态，不能简单恢复执行，这就是错误**。如：内存耗尽、系统内部错误等，通常我们（应用程序）不应捕获这些异常。"></a>2.<strong>所有**</strong>Error<strong><strong>类及其子类代表</strong></strong>java<strong><strong>运行时</strong></strong>系统中<strong><strong>可能发生的异常情况，是</strong></strong>致命的<strong><strong>，即程序遇到了非常严重的不正常状态，</strong></strong>不能简单恢复执行<strong><strong>，这就是</strong></strong>错误<strong>**。如：内存耗尽、系统内部错误等，通常我们（应用程序）不应捕获这些异常。</strong></h4><h4 id="3-所有-Exception类及其子类代表java程序中可能发生的异常情况，是非致命的，通过某种修正后程序还能继续执行。这类错误叫作异常。如：文件不存在、无效的下标、空引用、网络断开、打印机脱机、磁盘满了等，通常我们（应用程序）可以捕获这些异常。"><a href="#3-所有-Exception类及其子类代表java程序中可能发生的异常情况，是非致命的，通过某种修正后程序还能继续执行。这类错误叫作异常。如：文件不存在、无效的下标、空引用、网络断开、打印机脱机、磁盘满了等，通常我们（应用程序）可以捕获这些异常。" class="headerlink" title="3.所有**Exception类及其子类代表java程序中可能发生的异常情况，是非致命的，通过某种修正后程序还能继续执行。这类错误叫作异常。如：文件不存在、无效的下标、空引用、网络断开、打印机脱机、磁盘满了等，通常我们（应用程序）可以捕获这些异常。**"></a>3.<strong>所有**</strong>Exception<strong><strong>类及其子类代表</strong></strong>java<strong><strong>程序中</strong></strong>可能发生的异常情况，是<strong><strong>非致命的</strong></strong>，<strong><strong>通过某种修正后程序还能继续执行</strong></strong>。这类错误叫作<strong><strong>异常</strong></strong>。如：文件不存在、无效的下标、空引用、网络断开、打印机脱机、磁盘满了等，通常我们（应用程序）可以捕获这些异常。**</h4><p>Exception分类</p>
+<h4 id="Exception是要重点掌握的，它也分为两类：-（1）受控异常-检查异常-：java编译器对受控异常强制执行捕获或者声明"><a href="#Exception是要重点掌握的，它也分为两类：-（1）受控异常-检查异常-：java编译器对受控异常强制执行捕获或者声明" class="headerlink" title="Exception是要重点掌握的，它也分为两类： （1）受控异常(检查异常)：java编译器对受控异常强制执行捕获或者声明"></a>Exception是要重点掌握的，它也分为两类： （1）受控异常(检查异常)：java编译器对受控异常强制执行捕获或者声明</h4><h4 id="（2）不受控异常（非检查异常）：java编译器不会检查代码以确定是捕获或者声明不受控异常。尽管编译器对不受控异常没有捕获或者声明的强制要求，但在知道可能发生这种异常时应提供合适的异常处理代码。"><a href="#（2）不受控异常（非检查异常）：java编译器不会检查代码以确定是捕获或者声明不受控异常。尽管编译器对不受控异常没有捕获或者声明的强制要求，但在知道可能发生这种异常时应提供合适的异常处理代码。" class="headerlink" title="（2）不受控异常（非检查异常）：java编译器不会检查代码以确定是捕获或者声明不受控异常。尽管编译器对不受控异常没有捕获或者声明的强制要求，但在知道可能发生这种异常时应提供合适的异常处理代码。"></a>（2）不受控异常（非检查异常）：java编译器不会检查代码以确定是捕获或者声明不受控异常。尽管编译器对不受控异常没有捕获或者声明的强制要求，但在知道可能发生这种异常时应提供合适的异常处理代码。</h4><pre><code>|—— IOException
+</code></pre><hr>
+<pre><code>|—— AWTException
+</code></pre><hr>
+<h2 id="Exception-——"><a href="#Exception-——" class="headerlink" title="Exception  ——|"></a>Exception  ——|</h2><pre><code>|—— ClassNotFoundException
+</code></pre><hr>
+<pre><code>|—— NoSuchMethodException
+</code></pre><hr>
+<h2 id="不受控异常"><a href="#不受控异常" class="headerlink" title="不受控异常"></a><strong>不受控异常</strong></h2><p>  [caption id=”attachment_380” align=”alignnone” width=”851”]<a href="http://www.teenshare.club/wp-content/uploads/2017/04/default.png" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2017/04/default.png" alt></a> 异常层次结构及分类[/caption]</p>
+<h2 id="异常处理-1"><a href="#异常处理-1" class="headerlink" title="异常处理"></a>异常处理</h2><ul>
+<li><h3 id="try-catch-结构"><a href="#try-catch-结构" class="headerlink" title="try-catch**结构**"></a><strong>try-catch**</strong>结构**</h3></li>
+<li><h4 id="try"><a href="#try" class="headerlink" title="try{"></a><strong>try{</strong></h4></li>
+<li><h4 id="可能产生异常的代码"><a href="#可能产生异常的代码" class="headerlink" title="//**可能产生异常的代码**"></a><strong>//**</strong>可能产生异常的代码**</h4></li>
+<li><h4 id><a href="#" class="headerlink" title="}"></a><strong>}</strong></h4></li>
+<li><h4 id="catch-someException-e"><a href="#catch-someException-e" class="headerlink" title="catch(**someException e){**"></a><strong>catch(**</strong>someException<strong> </strong>e){**</h4></li>
+<li><h4 id="处理异常的代码"><a href="#处理异常的代码" class="headerlink" title="//**处理异常的代码**"></a><strong>//**</strong>处理异常的代码**</h4></li>
+<li><h4 id="-1"><a href="#-1" class="headerlink" title="}"></a><strong>}</strong></h4></li>
+<li><h4 id="catch-someException-e-1"><a href="#catch-someException-e-1" class="headerlink" title="catch(**someException e){**"></a><strong>catch(**</strong>someException<strong> </strong>e){**</h4></li>
+<li><h4 id="处理异常的代码-1"><a href="#处理异常的代码-1" class="headerlink" title="//**处理异常的代码**"></a><strong>//**</strong>处理异常的代码**</h4></li>
+<li><h4 id="-2"><a href="#-2" class="headerlink" title="}"></a><strong>}</strong></h4></li>
+</ul>
+<ul>
+<li><h3 id="try-catch-finally-结构"><a href="#try-catch-finally-结构" class="headerlink" title="try-catch-finally**结构**"></a><strong>try-catch-finally**</strong>结构**</h3></li>
+<li><h4 id="try-1"><a href="#try-1" class="headerlink" title="try{"></a><strong>try{</strong></h4></li>
+<li><h4 id="可能产生异常的代码-1"><a href="#可能产生异常的代码-1" class="headerlink" title="//**可能产生异常的代码**"></a><strong>//**</strong>可能产生异常的代码**</h4></li>
+<li><h4 id="catch-someException-e-2"><a href="#catch-someException-e-2" class="headerlink" title="}catch(**someException e){**"></a><strong>}catch(**</strong>someException<strong> </strong>e){**</h4></li>
+<li><h4 id="处理异常的代码-2"><a href="#处理异常的代码-2" class="headerlink" title="//**处理异常的代码**"></a><strong>//**</strong>处理异常的代码**</h4></li>
+<li><h4 id="finally"><a href="#finally" class="headerlink" title="} finally{"></a><strong>} finally{</strong></h4></li>
+<li><h4 id="必须执行的代码"><a href="#必须执行的代码" class="headerlink" title="//**必须执行的代码**"></a><strong>//**</strong>必须执行的代码**</h4></li>
+<li><h4 id="-3"><a href="#-3" class="headerlink" title="}"></a><strong>}</strong></h4></li>
+</ul>
+<h2 id="异常处理-2"><a href="#异常处理-2" class="headerlink" title="异常处理"></a><strong>异常处理</strong></h2><ul>
+<li><strong>注意：</strong></li>
+<li><strong>catch**</strong>和<strong><strong>finally</strong></strong>必须至少有一个跟在<strong>**try</strong> <strong>后面</strong></li>
+<li><strong>如果不发生异常**</strong>,<strong><strong>则</strong></strong>catch<strong>**块中的代码不会被执行</strong></li>
+<li><strong>不论是否发生异常**</strong>finally<strong>**块中的代码一定会被执行</strong></li>
+</ul>
+<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a><strong>自定义异常</strong></h2><h3 id="用户为什么要自定义异常？"><a href="#用户为什么要自定义异常？" class="headerlink" title="用户为什么要自定义异常？"></a><strong>用户为什么要自定义异常？</strong></h3><h4 id="Java-类库中定义的异常主要用来处理编程中一些常见的运行错误，这些错误是系统可以预见和自动识别的。"><a href="#Java-类库中定义的异常主要用来处理编程中一些常见的运行错误，这些错误是系统可以预见和自动识别的。" class="headerlink" title="Java**类库中定义的异常主要用来处理编程中一些常见的运行错误，这些错误是系统可以预见和自动识别的。**"></a><strong>Java**</strong>类库中定义的异常主要用来处理编程中一些常见的运行错误，这些错误是系统可以预见和自动识别的。**</h4><p><strong>若用户程序有其特殊的逻辑要求，需要通过**</strong>Java<strong>**的异常处理机制来处理用户自定义的异常。</strong></p>
+<h3 id="如何自定义异常？"><a href="#如何自定义异常？" class="headerlink" title="如何自定义异常？"></a><strong>如何自定义异常？</strong></h3><ol>
+<li><strong>创建一个类，必须继承**</strong>Exception<strong>**类</strong></li>
+<li><strong>在可能抛出自定义异常方法的方法头中声明该异常</strong></li>
+<li><strong>在方法体中指明需要抛出自定义异常对象的位置</strong>★ <strong>创建异常对象</strong>★ <strong>使用**</strong>throw<strong>**子句抛出异常</strong></li>
+</ol>
+<h2 id="自定义异常（例）"><a href="#自定义异常（例）" class="headerlink" title="自定义异常（例）"></a><strong>自定义异常（例）</strong></h2><h3 id="在可能抛出自定义异常方法的方法头中声明该异常"><a href="#在可能抛出自定义异常方法的方法头中声明该异常" class="headerlink" title="在可能抛出自定义异常方法的方法头中声明该异常"></a><strong>在可能抛出自定义异常方法的方法头中声明该异常</strong></h3><h4 id="public-static-void-show-int-score"><a href="#public-static-void-show-int-score" class="headerlink" title="public static void show(**int score)**"></a><strong>public static void show(**</strong>int<strong> </strong>score)**</h4><h4 id="throws-NumberRangeException"><a href="#throws-NumberRangeException" class="headerlink" title="throws NumberRangeException**{**"></a><strong>throws</strong> <strong>NumberRangeException**</strong>{**</h4><h4 id="if-score-lt-0-score-gt-100"><a href="#if-score-lt-0-score-gt-100" class="headerlink" title="      if(score&lt;0||score&gt;100){"></a><strong>      if(score&lt;0||score&gt;100){</strong></h4><h4 id="NumberRangeException-e"><a href="#NumberRangeException-e" class="headerlink" title="NumberRangeException e="></a><strong>NumberRangeException</strong> <strong>e=</strong></h4><h4 id="new-NumberRangeException-“输入的数字不在指定的范围！请重新输入。“"><a href="#new-NumberRangeException-“输入的数字不在指定的范围！请重新输入。“" class="headerlink" title="new NumberRangeException**(“输入的数字不在指定的范围！请重新输入。“);**"></a><strong>new</strong> <strong>NumberRangeException**</strong>(“<strong><strong>输入的数字不在指定的范围！请重新输入。</strong></strong>“);**</h4><h4 id="throw-e"><a href="#throw-e" class="headerlink" title="throw e;"></a><strong>throw e;</strong></h4><h4 id="-4"><a href="#-4" class="headerlink" title="      }"></a><strong>      }</strong></h4><h4 id="else"><a href="#else" class="headerlink" title="else{"></a><strong>else{</strong></h4><h4 id="int-s-score-10"><a href="#int-s-score-10" class="headerlink" title="int s=score/10;"></a><strong>int</strong> <strong>s=score/10;</strong></h4><h4 id="switch-s"><a href="#switch-s" class="headerlink" title="  switch(s){"></a><strong>  switch(s){</strong></h4><h4 id="case-10"><a href="#case-10" class="headerlink" title="  case 10:"></a><strong>  case 10:</strong></h4><h4 id="case-9-System-out-println-“A”-break"><a href="#case-9-System-out-println-“A”-break" class="headerlink" title="  case 9:System.out.println(“A”);break;"></a><strong>  case 9:System.out.println(“A”);break;</strong></h4><h4 id="case-8-System-out-println-“B”-break"><a href="#case-8-System-out-println-“B”-break" class="headerlink" title="  case 8:System.out.println(“B”);break;"></a><strong>  case 8:System.out.println(“B”);break;</strong></h4><h4 id="case-7-System-out-println-“C”-break"><a href="#case-7-System-out-println-“C”-break" class="headerlink" title="  case 7:System.out.println(“C”);break;"></a><strong>  case 7:System.out.println(“C”);break;</strong></h4><h4 id="case-6-System-out-println-“D”-break"><a href="#case-6-System-out-println-“D”-break" class="headerlink" title="  case 6:System.out.println(“D”);break;"></a><strong>  case 6:System.out.println(“D”);break;</strong></h4><h4 id="default-System-out-println-“E”"><a href="#default-System-out-println-“E”" class="headerlink" title="default:System.out.println**(“E”);  }**"></a><strong>default:System.out.println**</strong>(“E”);  }**</h4><h4 id="-5"><a href="#-5" class="headerlink" title="      }"></a><strong>      }</strong></h4><h4 id="-6"><a href="#-6" class="headerlink" title="}"></a><strong>}</strong></h4><h2 id="show-方法的调用"><a href="#show-方法的调用" class="headerlink" title=" show()**方法的调用**"></a> <strong>show()**</strong>方法的调用**</h2><h4 id="public-static-void-main-String-args"><a href="#public-static-void-main-String-args" class="headerlink" title="public static void main(String[] args**) {**"></a><strong>public static void main(String[]</strong> <strong>args**</strong>) {**</h4><h4 id="int-score-Integer-parseInt-args-0"><a href="#int-score-Integer-parseInt-args-0" class="headerlink" title="int score = Integer.parseInt**(args[0]);**"></a><strong>int</strong> <strong>score =</strong> <strong>Integer.parseInt**</strong>(<strong><strong>args</strong></strong>[0]);**</h4><h4 id="try-2"><a href="#try-2" class="headerlink" title="       try{"></a><strong>       try{</strong></h4><h4 id="show-score"><a href="#show-score" class="headerlink" title="             show(score);"></a><strong>             show(score);</strong></h4><h4 id="catch-NumberRangeException-e"><a href="#catch-NumberRangeException-e" class="headerlink" title="       }catch(**NumberRangeException e){**"></a><strong>       }catch(**</strong>NumberRangeException<strong> </strong>e){**</h4><h4 id="System-out-println-e-getMessage"><a href="#System-out-println-e-getMessage" class="headerlink" title="System.out.println**(e.getMessage());**"></a><strong>System.out.println**</strong>(<strong><strong>e.getMessage</strong></strong>());**</h4><h4 id="-7"><a href="#-7" class="headerlink" title="      }"></a><strong>      }</strong></h4><h4 id="-8"><a href="#-8" class="headerlink" title="}"></a><strong>}</strong></h4><h2 id="throws与throw"><a href="#throws与throw" class="headerlink" title=" throws与throw"></a><strong> throws与throw</strong></h2><ul>
+<li><h4 id="1-throws-用于抛出方法层次的异常，并且直接由这些方法调用异常处理类来处理该异常，所以它常用在方法的后面。比如-public-static-void-main-String-args-throws-IOException"><a href="#1-throws-用于抛出方法层次的异常，并且直接由这些方法调用异常处理类来处理该异常，所以它常用在方法的后面。比如-public-static-void-main-String-args-throws-IOException" class="headerlink" title="1.throws 用于抛出方法层次的异常，并且直接由这些方法调用异常处理类来处理该异常，所以它常用在方法的后面。比如 public static void main(String[] args) throws IOException"></a>1.throws 用于抛出方法层次的异常，并且直接由这些方法调用异常处理类来处理该异常，所以它常用在方法的后面。比如 public static void main(String[] args) throws IOException</h4></li>
+<li><h4 id="2-throw-用于方法块里面的代码，比throws的层次要低，表示它抛出异常，-但它不会处理它，而是由方法块的throws-Exception来调用异常处理类来处理。"><a href="#2-throw-用于方法块里面的代码，比throws的层次要低，表示它抛出异常，-但它不会处理它，而是由方法块的throws-Exception来调用异常处理类来处理。" class="headerlink" title="2.throw 用于方法块里面的代码，比throws的层次要低，表示它抛出异常， 但它不会处理它，而是由方法块的throws Exception来调用异常处理类来处理。"></a>2.throw 用于方法块里面的代码，比throws的层次要低，表示它抛出异常， 但它不会处理它，而是由方法块的throws Exception来调用异常处理类来处理。</h4></li>
+</ul>
+<h4 id="转载请注明：转自：TeenShare梯云分享"><a href="#转载请注明：转自：TeenShare梯云分享" class="headerlink" title="转载请注明：转自：TeenShare梯云分享"></a>转载请注明：转自：<a href="http://www.teenshare.club/" target="_blank" rel="noopener">TeenShare梯云分享</a></h4>
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/04/08/java-e8-af-bb-e5-86-99properties-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6/" data-toggle="tooltip" data-placement="top" title="Java 读写Properties配置文件">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/03/30/opms-1-3-e5-8f-91-e5-b8-83-ef-bc-8c-e9-a1-b9-e7-9b-ae-e5-92-8c-oa-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/" data-toggle="tooltip" data-placement="top" title="OPMS 1.3 发布，项目和 OA 管理系统">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#异常处理"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#本章要点"><span class="toc-text">本章要点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#理解异常和错误处理"><span class="toc-text">理解异常和错误处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#理解JAVA的异常层次结构及异常分类"><span class="toc-text">理解JAVA的异常层次结构及异常分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#掌握基本的异常处理编程"><span class="toc-text">掌握基本的异常处理编程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常"><span class="toc-text">异常</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#异常-Exception-又称例外—是在程序运行过程中发生的、会打断程序正常执行的事件。"><span class="toc-text">异常(Exception)又称例外—是在程序运行过程中发生的、会打断程序正常执行的事件。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#例如：除0-ArithmeticException-、没有给对象开辟内存空间时会出现空指针异常-NullPointException-、文件找不到-FileNotFoundException-、数组元素下标越界-ArrayIndexOutOfBoundsException-等。这些事件的发生将阻碍程序的正常运行。为了增加程序的容错性、健壮性，程序设计时，必须考虑到可能发生的异常情况并做出相应的处理。"><span class="toc-text">例如：除0(ArithmeticException)、没有给对象开辟内存空间时会出现空指针异常(NullPointException)、文件找不到(FileNotFoundException)、数组元素下标越界(ArrayIndexOutOfBoundsException)等。这些事件的发生将阻碍程序的正常运行。为了增加程序的容错性、健壮性，程序设计时，必须考虑到可能发生的异常情况并做出相应的处理。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设计程序时必须考虑可能发生的异常事件并作出相应的处理。传统程序设计时，要由编程者自己测试出错发生的原因，通过-i-f-语句判断是否出现了异常事件，并进行相应的处理。"><span class="toc-text">设计程序时必须考虑可能发生的异常事件并作出相应的处理。传统程序设计时，要由编程者自己测试出错发生的原因，通过 i f 语句判断是否出现了异常事件，并进行相应的处理。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#传统异常处理存在的困难和问题"><span class="toc-text">传统异常处理存在的困难和问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ⅰ-写程序难"><span class="toc-text">Ⅰ 写程序难</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#★-大部分精力花在出错处理上了"><span class="toc-text">★ 大部分精力花在出错处理上了</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ⅱ-只把能够想到的错误考虑到"><span class="toc-text">Ⅱ 只把能够想到的错误考虑到</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#★-对以外的情况无法处理"><span class="toc-text">★ 对以外的情况无法处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ⅲ-程序可读性差"><span class="toc-text">Ⅲ 程序可读性差</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#★-大量的错误处理代码混杂在程序中"><span class="toc-text">★ 大量的错误处理代码混杂在程序中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ⅳ-出错返回的信息量太少"><span class="toc-text">Ⅳ 出错返回的信息量太少</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#★-无法更确切的了解错误状况或原因"><span class="toc-text">★ 无法更确切的了解错误状况或原因</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#异常层次结构及分类"><span class="toc-text">异常层次结构及分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Error-与-Exception"><span class="toc-text">Error**与**Exception</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Throwable-以下的异常都可以被捕获"><span class="toc-text">1.Throwable**以下的异常都可以被捕获**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-所有-Error类及其子类代表java运行时系统中可能发生的异常情况，是致命的，即程序遇到了非常严重的不正常状态，不能简单恢复执行，这就是错误-。如：内存耗尽、系统内部错误等，通常我们（应用程序）不应捕获这些异常。"><span class="toc-text">2.所有**Error类及其子类代表java运行时系统中可能发生的异常情况，是致命的，即程序遇到了非常严重的不正常状态，不能简单恢复执行，这就是错误**。如：内存耗尽、系统内部错误等，通常我们（应用程序）不应捕获这些异常。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-所有-Exception类及其子类代表java程序中可能发生的异常情况，是非致命的，通过某种修正后程序还能继续执行。这类错误叫作异常。如：文件不存在、无效的下标、空引用、网络断开、打印机脱机、磁盘满了等，通常我们（应用程序）可以捕获这些异常。"><span class="toc-text">3.所有**Exception类及其子类代表java程序中可能发生的异常情况，是非致命的，通过某种修正后程序还能继续执行。这类错误叫作异常。如：文件不存在、无效的下标、空引用、网络断开、打印机脱机、磁盘满了等，通常我们（应用程序）可以捕获这些异常。**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Exception是要重点掌握的，它也分为两类：-（1）受控异常-检查异常-：java编译器对受控异常强制执行捕获或者声明"><span class="toc-text">Exception是要重点掌握的，它也分为两类： （1）受控异常(检查异常)：java编译器对受控异常强制执行捕获或者声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）不受控异常（非检查异常）：java编译器不会检查代码以确定是捕获或者声明不受控异常。尽管编译器对不受控异常没有捕获或者声明的强制要求，但在知道可能发生这种异常时应提供合适的异常处理代码。"><span class="toc-text">（2）不受控异常（非检查异常）：java编译器不会检查代码以确定是捕获或者声明不受控异常。尽管编译器对不受控异常没有捕获或者声明的强制要求，但在知道可能发生这种异常时应提供合适的异常处理代码。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exception-——"><span class="toc-text">Exception  ——|</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不受控异常"><span class="toc-text">不受控异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常处理-1"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#try-catch-结构"><span class="toc-text">try-catch**结构**</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#try"><span class="toc-text">try{</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可能产生异常的代码"><span class="toc-text">//**可能产生异常的代码**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#"><span class="toc-text">}</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#catch-someException-e"><span class="toc-text">catch(**someException e){**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#处理异常的代码"><span class="toc-text">//**处理异常的代码**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#-1"><span class="toc-text">}</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#catch-someException-e-1"><span class="toc-text">catch(**someException e){**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#处理异常的代码-1"><span class="toc-text">//**处理异常的代码**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#-2"><span class="toc-text">}</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#try-catch-finally-结构"><span class="toc-text">try-catch-finally**结构**</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#try-1"><span class="toc-text">try{</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可能产生异常的代码-1"><span class="toc-text">//**可能产生异常的代码**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#catch-someException-e-2"><span class="toc-text">}catch(**someException e){**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#处理异常的代码-2"><span class="toc-text">//**处理异常的代码**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#finally"><span class="toc-text">} finally{</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#必须执行的代码"><span class="toc-text">//**必须执行的代码**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#-3"><span class="toc-text">}</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常处理-2"><span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义异常"><span class="toc-text">自定义异常</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用户为什么要自定义异常？"><span class="toc-text">用户为什么要自定义异常？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-类库中定义的异常主要用来处理编程中一些常见的运行错误，这些错误是系统可以预见和自动识别的。"><span class="toc-text">Java**类库中定义的异常主要用来处理编程中一些常见的运行错误，这些错误是系统可以预见和自动识别的。**</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何自定义异常？"><span class="toc-text">如何自定义异常？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义异常（例）"><span class="toc-text">自定义异常（例）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在可能抛出自定义异常方法的方法头中声明该异常"><span class="toc-text">在可能抛出自定义异常方法的方法头中声明该异常</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#public-static-void-show-int-score"><span class="toc-text">public static void show(**int score)**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#throws-NumberRangeException"><span class="toc-text">throws NumberRangeException**{**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#if-score-lt-0-score-gt-100"><span class="toc-text">      if(score&lt;0||score&gt;100){</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NumberRangeException-e"><span class="toc-text">NumberRangeException e=</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#new-NumberRangeException-“输入的数字不在指定的范围！请重新输入。“"><span class="toc-text">new NumberRangeException**(“输入的数字不在指定的范围！请重新输入。“);**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#throw-e"><span class="toc-text">throw e;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#-4"><span class="toc-text">      }</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#else"><span class="toc-text">else{</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#int-s-score-10"><span class="toc-text">int s=score/10;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#switch-s"><span class="toc-text">  switch(s){</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#case-10"><span class="toc-text">  case 10:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#case-9-System-out-println-“A”-break"><span class="toc-text">  case 9:System.out.println(“A”);break;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#case-8-System-out-println-“B”-break"><span class="toc-text">  case 8:System.out.println(“B”);break;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#case-7-System-out-println-“C”-break"><span class="toc-text">  case 7:System.out.println(“C”);break;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#case-6-System-out-println-“D”-break"><span class="toc-text">  case 6:System.out.println(“D”);break;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#default-System-out-println-“E”"><span class="toc-text">default:System.out.println**(“E”);  }**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#-5"><span class="toc-text">      }</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#-6"><span class="toc-text">}</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#show-方法的调用"><span class="toc-text"> show()**方法的调用**</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#public-static-void-main-String-args"><span class="toc-text">public static void main(String[] args**) {**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#int-score-Integer-parseInt-args-0"><span class="toc-text">int score = Integer.parseInt**(args[0]);**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#try-2"><span class="toc-text">       try{</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#show-score"><span class="toc-text">             show(score);</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#catch-NumberRangeException-e"><span class="toc-text">       }catch(**NumberRangeException e){**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#System-out-println-e-getMessage"><span class="toc-text">System.out.println**(e.getMessage());**</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#-7"><span class="toc-text">      }</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#-8"><span class="toc-text">}</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#throws与throw"><span class="toc-text"> throws与throw</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-throws-用于抛出方法层次的异常，并且直接由这些方法调用异常处理类来处理该异常，所以它常用在方法的后面。比如-public-static-void-main-String-args-throws-IOException"><span class="toc-text">1.throws 用于抛出方法层次的异常，并且直接由这些方法调用异常处理类来处理该异常，所以它常用在方法的后面。比如 public static void main(String[] args) throws IOException</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-throw-用于方法块里面的代码，比throws的层次要低，表示它抛出异常，-但它不会处理它，而是由方法块的throws-Exception来调用异常处理类来处理。"><span class="toc-text">2.throw 用于方法块里面的代码，比throws的层次要低，表示它抛出异常， 但它不会处理它，而是由方法块的throws Exception来调用异常处理类来处理。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#转载请注明：转自：TeenShare梯云分享"><span class="toc-text">转载请注明：转自：TeenShare梯云分享</span></a></li></ol></li>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#JAVA" title="JAVA">JAVA</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

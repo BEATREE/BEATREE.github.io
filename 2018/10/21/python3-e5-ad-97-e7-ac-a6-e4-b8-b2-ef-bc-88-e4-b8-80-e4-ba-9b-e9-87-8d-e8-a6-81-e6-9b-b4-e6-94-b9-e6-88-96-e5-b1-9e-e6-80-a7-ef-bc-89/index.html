@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Python3 字符串 （一些重要更改或属性）｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2018/10/21/python3-e5-ad-97-e7-ac-a6-e4-b8-b2-ef-bc-88-e4-b8-80-e4-ba-9b-e9-87-8d-e8-a6-81-e6-9b-b4-e6-94-b9-e6-88-96-e5-b1-9e-e6-80-a7-ef-bc-89/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Python3 字符串 （一些重要更改或属性）</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2018-10-21
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#学习心得" title="学习心得">学习心得</a>
+                        
+                        <a class="tag" href="/tags/#个人日志" title="个人日志">个人日志</a>
+                        
+                        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Python3 字符串 （一些重要更改或属性）
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p>即使我们对Python不是太深入的了解，但我们也应该知道一些关于Python的“绯闻”吧！ 就是，Python 2长大后变成了Python3，然后女大十八变嘛，她就为了获得更多人的青睐，放弃了一些自己原来的属性，这也就是Python 2 和Python 3的不同。 这篇文章，我们就说一下Python 3 的字符串吧！   字符串是 Python 中最常用的数据类型。我们可以使用引号( ‘ 或 “ )来创建字符串。 字符串可以堪称是字符的集合或列表。 创建字符串很简单，只要为变量分配一个值即可。例如：</p>
+<p>var1 = ‘Hello World!’<br>var2 = “Runoob”</p>
+<h2 id="Python-访问字符串中的值"><a href="#Python-访问字符串中的值" class="headerlink" title="Python 访问字符串中的值"></a>Python 访问字符串中的值</h2><p>Python <strong>不支持单字符类型</strong>，单字符在 Python 中也是作为一个字符串使用。 Python 访问子字符串，可以<strong>使用方括号[]来截取字符串，</strong></p>
+<p>var1 = ‘Hello World!’<br>var2 = “Runoob”<br>print (“var1[0]: “, var1[0])<br>print (“var2[1:5]: “, var2[1:5])</p>
+<p>（那这是什么意思呢？别急，下边的表格就告诉你） 以上实例执行结果： </p>
+<p>var1[0]: H</p>
+<p>var2[1:5]: unoo</p>
+<p>即方括号[]中的数字就是索引，从0开始，</p>
+<p>[ : ]</p>
+<p>截取字符串中的一部分，遵循左闭右开原则，str[0,2] 是不包含第 3 个字符的。</p>
+<p>a[1:4] 输出结果 ell</p>
+<hr>
+<h2 id="Python字符串更新"><a href="#Python字符串更新" class="headerlink" title="Python字符串更新"></a>Python字符串更新</h2><p>你可以截取字符串的一部分并与其他字段拼接，如下实例：</p>
+<p>var1 = ‘Hello World!’<br>print (“已更新字符串 : “, var1[:6] + ‘Runoob!’)</p>
+<h2 id="Python转义字符"><a href="#Python转义字符" class="headerlink" title="Python转义字符"></a>Python转义字符</h2><p>在需要在字符中使用特殊字符时，python用反斜杠(\)转义字符。如下表：</p>
+<p>转义字符</p>
+<p>描述</p>
+<p>\(在行尾时)</p>
+<p>续行符</p>
+<p>\\</p>
+<p>反斜杠符号</p>
+<p>\‘</p>
+<p>单引号</p>
+<p>\“</p>
+<p>双引号</p>
+<p>\a</p>
+<p>响铃</p>
+<p>\b</p>
+<p>退格(Backspace)</p>
+<p>\e</p>
+<p>转义</p>
+<p>\000</p>
+<p>空</p>
+<p>\n</p>
+<p>换行</p>
+<p>\v</p>
+<p>纵向制表符</p>
+<p>\t</p>
+<p>横向制表符</p>
+<p>\r</p>
+<p>回车</p>
+<p>\f</p>
+<p>换页</p>
+<p>\oyy</p>
+<p>八进制数，yy代表的字符，例如：\o12代表换行</p>
+<p>\xyy</p>
+<p>十六进制数，yy代表的字符，例如：\x0a代表换行</p>
+<p>\other</p>
+<p>其它的字符以普通格式输出</p>
+<h2 id="Python字符串运算符"><a href="#Python字符串运算符" class="headerlink" title="Python字符串运算符"></a>Python字符串运算符</h2><p>下表实例变量a值为字符串 “Hello”，b变量值为 “Python”：</p>
+<p>操作符</p>
+<p>描述</p>
+<p>实例</p>
+<p>+</p>
+<p>字符串连接</p>
+<p>a + b 输出结果： HelloPython</p>
+<p>*</p>
+<p>重复输出字符串</p>
+<p>a*2 输出结果：HelloHello</p>
+<p>[]</p>
+<p>通过索引获取字符串中字符</p>
+<p>a[1] 输出结果 e</p>
+<p>[ : ]</p>
+<p>截取字符串中的一部分，遵循左闭右开原则，str[0,2] 是不包含第 3 个字符的。</p>
+<p>a[1:4] 输出结果 ell</p>
+<p>in</p>
+<p>成员运算符 - 如果字符串中包含给定的字符返回 True</p>
+<p>‘H’ in a 输出结果 True</p>
+<p>not in</p>
+<p>成员运算符 - 如果字符串中不包含给定的字符返回 True</p>
+<p>‘M’ not in a 输出结果 True</p>
+<p>r/R</p>
+<p>原始字符串 - 原始字符串：所有的字符串都是直接按照字面的意思来使用，没有转义特殊或不能打印的字符。 原始字符串除在字符串的第一个引号前加上字母 r（可以大小写）以外，与普通字符串有着几乎完全相同的语法。</p>
+<p>print( r’\n’ )print( R’\n’ )</p>
+<p>%</p>
+<p>格式字符串</p>
+<p>请看下一节内容。</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/10/22/python-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-ba-8c-ef-bc-88turtle-e5-ba-93-ef-bc-89/" data-toggle="tooltip" data-placement="top" title="Python学习笔记二 （turtle库）">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/10/21/python-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-b8-80-ef-bc-88-e5-88-9d-e8-af-86python-ef-bc-89/" data-toggle="tooltip" data-placement="top" title="Python学习笔记一（初识Python）">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-访问字符串中的值"><span class="toc-text">Python 访问字符串中的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python字符串更新"><span class="toc-text">Python字符串更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python转义字符"><span class="toc-text">Python转义字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python字符串运算符"><span class="toc-text">Python字符串运算符</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#学习心得" title="学习心得">学习心得</a>
+                        
+                        <a class="tag" href="/tags/#个人日志" title="个人日志">个人日志</a>
+                        
+                        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

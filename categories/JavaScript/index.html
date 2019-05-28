@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/categories/JavaScript/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="false" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+
+<!-- Page Header -->
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
+    <div class="row">
+        <header class="intro-header">
+            <div class="container">
+                <div class="site-heading text-center">
+                    <div class="about-me">
+                        <!--移动端头部显示-->
+                        <img src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+                        <h5><a href="/about/">做棵大树</a></h5>
+                        <p>BE BRAVE AND AMBITIOUS, STRONG BUT MODEST.</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+<!-- Main Content -->
+<div class="container custom-haojen-container">
+    <!-- Post Container -->
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
+            <!-- Main Content -->
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2019/03/23/jsonp-e5-8e-9f-e7-90-86-e8-af-a6-e8-a7-a3-e5-bf-ab-e9-80-9f-e4-ba-86-e8-a7-a3jsonp-e6-a6-82-e5-bf-b5/">
+        <h2 class="post-title">
+            JSONP原理详解——快速了解JSONP概念
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-23
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+在学习 VUE 前端的时候，对 JSONP 的概念和原理不够了解，于是就去网上搜了相关内容。 本篇文章为转载内容。
+
+什么是JSONP？先说说JSONP是怎么产生的：其实网上关于JSONP的讲解有很多，但却千篇一律，而且云里雾里，对于很多刚接触的人来讲理解起来有些困难，着用自己的方式来阐释一下..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2018/07/25/javascript-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e7-ac-ac-e4-b8-80-e8-ae-b0/">
+        <h2 class="post-title">
+            JavaScript学习笔记第一记
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-07-25
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                准备工作实际上对于JavaScript脚本的编写，并不需要什么特殊的软件，它实际上和html（超文本标记语言相似）只需要 一个普通的文本编辑器 和 一个WEB浏览器 就足够了。 需要注意的是，用 JavaScript编写的代码必须通过HTML或者XHTML文档才能执行。有两种方法可以做到：
+
+将..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2017/05/22/js-e5-ae-9e-e7-8e-b0-e5-9b-be-e7-89-87-e6-97-a0-e7-bc-9d-e6-bb-9a-e5-8a-a8-e7-89-b9-e6-95-88/">
+        <h2 class="post-title">
+            js实现图片无缝滚动特效
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-05-22
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                这篇文章主要介绍了js实现图片无缝循环滚动特效的相关资料,本实例在网页中较为常见，需要的朋友可以参考下首先，无缝滚动的第一个重点就是——动。关于怎么让页面的元素节点动起来，这就得学明白关于JavaScript中定时器的相关知识。
+　　JS中的创建定时器的方法包括两种：setTimeout和set..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2017/04/15/javascript-e7-ac-ac-e4-b8-80-e5-a4-a9-e5-ad-a6-e4-b9-a0/">
+        <h2 class="post-title">
+            javascript第一天学习
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-04-15
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                JavaScript 是世界上最流行的编程语言。
+这门语言可用于 HTML 和 web，更可广泛用于服务器、PC、笔记本电脑、平板电脑和智能手机等设备。
+
+JavaScript 是脚本语言JavaScript 是一种轻量级的编程语言。
+JavaScript 是可插入 HTML 页面的编程代码。
+..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2017/04/15/javascript-e7-ae-80-e4-bb-8b/">
+        <h2 class="post-title">
+            JavaScript简介
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-04-15
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。
+在1995年时，由Ne..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+
+<!-- 翻页 pager -->
+
+<ul class="pager">
+    
+    
+</ul>
+
+
+        </div>
+        <!-- Sidebar Container -->
+        <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+
+            <!-- About Me -->
+            <section class="visible-md visible-lg" style="padding: 0 18px">
+                <div class="short-about">
+                    <!--侧边栏头像-->
+                    
+                    <img src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+                    
+                    <h5><a href="/about/">做棵大树</a></h5>
+                    
+                    <p>BE BRAVE AND AMBITIOUS, STRONG BUT MODEST.</p>
+                    
+                    <hr>
+                    <!-- SNS Link 社交 -->
+                    <ul class="list-inline">
+                        
+                        
+                        
+                        <li>
+                            <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+
+                        
+                        <li>
+                            <a target="_blank" href="http://weibo.com/2562244197">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+
+                        
+
+                        
+                        <li>
+                            <a target="_blank" href="https://github.com/BEATREE">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+
+                        
+                        <li>
+                            <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Featured Tags  标签 -->
+            
+            <section>
+                <div class="tags">
+                    
+                    
+                    <a href="/tags/#Hibernate" title="Hibernate" rel="3">Hibernate</a>
+                    
+                    
+                    
+                    <a href="/tags/#优秀文章收藏" title="优秀文章收藏" rel="6">优秀文章收藏</a>
+                    
+                    
+                    
+                    <a href="/tags/#程序错误日志" title="程序错误日志" rel="6">程序错误日志</a>
+                    
+                    
+                    
+                    <a href="/tags/#HTML5和CSS3" title="HTML5和CSS3" rel="2">HTML5和CSS3</a>
+                    
+                    
+                    
+                    <a href="/tags/#学习心得" title="学习心得" rel="32">学习心得</a>
+                    
+                    
+                    
+                    <a href="/tags/#好玩的玩意儿" title="好玩的玩意儿" rel="2">好玩的玩意儿</a>
+                    
+                    
+                    
+                    <a href="/tags/#实用的软件" title="实用的软件" rel="7">实用的软件</a>
+                    
+                    
+                    
+                    <a href="/tags/#拓展知识" title="拓展知识" rel="12">拓展知识</a>
+                    
+                    
+                    
+                    <a href="/tags/#JSP" title="JSP" rel="9">JSP</a>
+                    
+                    
+                    
+                    <a href="/tags/#Adobe 软件" title="Adobe 软件" rel="3">Adobe 软件</a>
+                    
+                    
+                    
+                    <a href="/tags/#JAVA" title="JAVA" rel="18">JAVA</a>
+                    
+                    
+                    
+                    <a href="/tags/#学校题目作业" title="学校题目作业" rel="3">学校题目作业</a>
+                    
+                    
+                    
+                    <a href="/tags/#二叉树" title="二叉树" rel="2">二叉树</a>
+                    
+                    
+                    
+                    <a href="/tags/#数据结构" title="数据结构" rel="3">数据结构</a>
+                    
+                    
+                    
+                    <a href="/tags/#eclipse" title="eclipse" rel="3">eclipse</a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="/tags/#MyEclipse" title="MyEclipse" rel="2">MyEclipse</a>
+                    
+                    
+                    
+                    <a href="/tags/#JavaScript" title="JavaScript" rel="6">JavaScript</a>
+                    
+                    
+                    
+                    <a href="/tags/#小知识" title="小知识" rel="10">小知识</a>
+                    
+                    
+                    
+                    <a href="/tags/#struts" title="struts" rel="7">struts</a>
+                    
+                    
+                    
+                    <a href="/tags/#框架" title="框架" rel="2">框架</a>
+                    
+                    
+                    
+                    <a href="/tags/#个人日志" title="个人日志" rel="4">个人日志</a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="/tags/#Photoshop" title="Photoshop" rel="3">Photoshop</a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="/tags/#软件下载" title="软件下载" rel="4">软件下载</a>
+                    
+                    
+                    
+                    <a href="/tags/#Python" title="Python" rel="8">Python</a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="/tags/#UML" title="UML" rel="3">UML</a>
+                    
+                    
+                    
+                    <a href="/tags/#UML类图" title="UML类图" rel="2">UML类图</a>
+                    
+                    
+                    
+                    <a href="/tags/#win10" title="win10" rel="4">win10</a>
+                    
+                    
+                    
+                    <a href="/tags/#wordpress" title="wordpress" rel="5">wordpress</a>
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </section>
+            
+
+            
+            <hr>
+            <h5 style="text-align: center;">Friends</h5>
+            <ul class="list-inline" style="text-align: center;">
+                
+                <li><a href="https://teenshare.club" target="_blank">梯云博客</a></li>
+                
+            </ul>
+            
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

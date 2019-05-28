@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Java中常用的代码汇总｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2017/05/02/java-e4-b8-ad-e5-b8-b8-e7-94-a8-e7-9a-84-e4-bb-a3-e7-a0-81-e6-b1-87-e6-80-bb/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Java中常用的代码汇总</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2017-05-02
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#拓展知识" title="拓展知识">拓展知识</a>
+                        
+                        <a class="tag" href="/tags/#JAVA" title="JAVA">JAVA</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Java中常用的代码汇总
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p>本文给大家分享了20个常用的java代码，都是别人项目中使用过的代码，这里推荐给大家，有需要的小伙伴可以参考下.</p>
+<p><strong>1. 字符串有整型的相互转换</strong></p>
+<p>String a = String.valueOf(2);   //integer to numeric string int i = Integer.parseInt(a); //numeric string to an int</p>
+<p><strong>2. 向文件末尾添加内容</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p><code>BufferedWriter out =</code> <code>null`</code>;`</p>
+<p><code>try`</code>{`</p>
+<p><code>out =</code> <code>new`</code>BufferedWriter(<code>new</code>FileWriter(”filename”,<code></code>true<code></code>));`</p>
+<p><code>out.write(”aString”);</code></p>
+<p><code>}</code> <code>catch`</code>(IOException e) {`</p>
+<p><code>// error processing code</code></p>
+<p><code>}</code> <code>finally`</code>{`</p>
+<p><code>if`</code>(out !=<code></code>null<code></code>) {`</p>
+<p><code>out.close();</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><strong>3. 得到当前方法的名字</strong></p>
+<p>String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();</p>
+<p><strong>4. 转字符串到日期</strong></p>
+<p>java.util.Date = java.text.DateFormat.getDateInstance().parse(date String); 或者是： SimpleDateFormat format = new SimpleDateFormat( “dd.MM.yyyy” ); Date date = format.parse( myString );</p>
+<p><strong>5. 使用JDBC链接Oracle</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p>19</p>
+<p>20</p>
+<p>21</p>
+<p>22</p>
+<p>23</p>
+<p>24</p>
+<p>25</p>
+<p>26</p>
+<p>27</p>
+<p>28</p>
+<p>29</p>
+<p>30</p>
+<p>31</p>
+<p>32</p>
+<p>33</p>
+<p>34</p>
+<p>35</p>
+<p>36</p>
+<p>37</p>
+<p>38</p>
+<p><code>public`</code>class<code></code>OracleJdbcTest`</p>
+<p><code>{</code></p>
+<p><code>String driverClass =</code> <code>&quot;oracle.jdbc.driver.OracleDriver&quot;`</code>;`</p>
+<p><code>Connection con;</code></p>
+<p><code>public`</code>void<code>init(FileInputStream fs)` `throws</code>ClassNotFoundException, SQLException, FileNotFoundException, IOException`</p>
+<p><code>{</code></p>
+<p><code>Properties props =</code> <code>new`</code>Properties();`</p>
+<p><code>props.load(fs);</code></p>
+<p><code>String url = props.getProperty(`</code>“db.url”<code></code>);`</p>
+<p><code>String userName = props.getProperty(`</code>“db.user”<code></code>);`</p>
+<p><code>String password = props.getProperty(`</code>“db.password”<code></code>);`</p>
+<p><code>Class.forName(driverClass);</code></p>
+<p><code>con=DriverManager.getConnection(url, userName, password);</code></p>
+<p><code>}</code></p>
+<p><code>public`</code>void<code>fetch()` `throws</code>SQLException, IOException`</p>
+<p><code>{</code></p>
+<p><code>PreparedStatement ps = con.prepareStatement(`</code>“select SYSDATE from dual”<code></code>);`</p>
+<p><code>ResultSet rs = ps.executeQuery();</code></p>
+<p><code>while`</code>(rs.next())`</p>
+<p><code>{</code></p>
+<p><code>// do the thing you do</code></p>
+<p><code>}</code></p>
+<p><code>rs.close();</code></p>
+<p><code>ps.close();</code></p>
+<p><code>}</code></p>
+<p><code>public`</code>static<code>void</code>main(String[] args)`</p>
+<p><code>{</code></p>
+<p><code>OracleJdbcTest test =</code> <code>new`</code>OracleJdbcTest();`</p>
+<p><code>test.init();</code></p>
+<p><code>test.fetch();</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><strong>6. 把 Java util.Date 转成 sql.Date</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p><code>java.util.Date utilDate =</code> <code>new`</code>java.util.Date();`</p>
+<p><code>java.sql.Date sqlDate =</code> <code>new`</code>java.sql.Date(utilDate.getTime());`</p>
+<p><strong>7. 使用NIO进行快速的文件拷贝</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p>19</p>
+<p>20</p>
+<p>21</p>
+<p>22</p>
+<p>23</p>
+<p>24</p>
+<p>25</p>
+<p>26</p>
+<p>27</p>
+<p>28</p>
+<p>29</p>
+<p>30</p>
+<p><code>public`</code>static<code>void</code>fileCopy( File in, File out )`</p>
+<p><code>throws`</code>IOException`</p>
+<p><code>{</code></p>
+<p><code>FileChannel inChannel =</code> <code>new`</code>FileInputStream( in ).getChannel();`</p>
+<p><code>FileChannel outChannel =</code> <code>new`</code>FileOutputStream( out ).getChannel();`</p>
+<p><code>try</code></p>
+<p><code>{</code></p>
+<p><code>//     inChannel.transferTo(0, inChannel.size(), outChannel);   // original -- apparently has trouble copying large files on Windows</code></p>
+<p><code>// magic number for Windows, 64Mb - 32Kb)</code></p>
+<p><code>int`</code>maxCount = (<code>64</code><em><code></code>1024<code></code></em><code></code>1024<code>) - (</code>32<code>*` `1024</code>);`</p>
+<p><code>long`</code>size = inChannel.size();`</p>
+<p><code>long`</code>position =<code></code>0<code></code>;`</p>
+<p><code>while`</code>( position &lt; size )`</p>
+<p><code>{</code></p>
+<p><code>position += inChannel.transferTo( position, maxCount, outChannel );</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><code>finally</code></p>
+<p><code>{</code></p>
+<p><code>if`</code>( inChannel !=<code></code>null<code></code>)`</p>
+<p><code>{</code></p>
+<p><code>inChannel.close();</code></p>
+<p><code>}</code></p>
+<p><code>if`</code>( outChannel !=<code></code>null<code></code>)`</p>
+<p><code>{</code></p>
+<p><code>outChannel.close();</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><strong>8. 创建图片的缩略图</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p>19</p>
+<p>20</p>
+<p>21</p>
+<p>22</p>
+<p>23</p>
+<p>24</p>
+<p>25</p>
+<p>26</p>
+<p>27</p>
+<p>28</p>
+<p>29</p>
+<p>30</p>
+<p>31</p>
+<p>32</p>
+<p>33</p>
+<p>34</p>
+<p>35</p>
+<p>36</p>
+<p>37</p>
+<p>38</p>
+<p><code>private`</code>void<code>createThumbnail(String filename,` `int</code>thumbWidth,<code></code>int<code>thumbHeight,` `int</code>quality, String outFilename)`</p>
+<p><code>throws`</code>InterruptedException, FileNotFoundException, IOException`</p>
+<p><code>{</code></p>
+<p><code>// load image from filename</code></p>
+<p><code>Image image = Toolkit.getDefaultToolkit().getImage(filename);</code></p>
+<p><code>MediaTracker mediaTracker =</code> <code>new`</code>MediaTracker(<code>new</code>Container());`</p>
+<p><code>mediaTracker.addImage(image,</code> <code>0`</code>);`</p>
+<p><code>mediaTracker.waitForID(`</code>0<code></code>);`</p>
+<p><code>// use this to test for errors at this point: System.out.println(mediaTracker.isErrorAny());</code></p>
+<p><code>// determine thumbnail size from WIDTH and HEIGHT</code></p>
+<p><code>double`</code>thumbRatio = (<code>double</code>)thumbWidth / (<code>double</code>)thumbHeight;`</p>
+<p><code>int`</code>imageWidth = image.getWidth(<code>null</code>);`</p>
+<p><code>int`</code>imageHeight = image.getHeight(<code>null</code>);`</p>
+<p><code>double`</code>imageRatio = (<code>double</code>)imageWidth / (<code>double</code>)imageHeight;`</p>
+<p><code>if`</code>(thumbRatio &lt; imageRatio) {`</p>
+<p><code>thumbHeight = (`</code>int<code></code>)(thumbWidth / imageRatio);`</p>
+<p><code>}</code> <code>else`</code>{`</p>
+<p><code>thumbWidth = (`</code>int<code></code>)(thumbHeight * imageRatio);`</p>
+<p><code>}</code></p>
+<p><code>// draw original image to thumbnail image object and</code></p>
+<p><code>// scale it to the new size on-the-fly</code></p>
+<p><code>BufferedImage thumbImage =</code> <code>new`</code>BufferedImage(thumbWidth, thumbHeight, BufferedImage.TYPE_INT_RGB);`</p>
+<p><code>Graphics2D graphics2D = thumbImage.createGraphics();</code></p>
+<p><code>graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);</code></p>
+<p><code>graphics2D.drawImage(image,</code> <code>0`</code>,<code></code>0<code>, thumbWidth, thumbHeight,` `null</code>);`</p>
+<p><code>// save thumbnail image to outFilename</code></p>
+<p><code>BufferedOutputStream out =</code> <code>new`</code>BufferedOutputStream(<code>new</code>FileOutputStream(outFilename));`</p>
+<p><code>JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);</code></p>
+<p><code>JPEGEncodeParam param = encoder.getDefaultJPEGEncodeParam(thumbImage);</code></p>
+<p><code>quality = Math.max(`</code>0<code>, Math.min(quality,` `100</code>));`</p>
+<p><code>param.setQuality((`</code>float<code>)quality /` `100</code>.0f,<code></code>false<code></code>);`</p>
+<p><code>encoder.setJPEGEncodeParam(param);</code></p>
+<p><code>encoder.encode(thumbImage);</code></p>
+<p><code>out.close();</code></p>
+<p><code>}</code></p>
+<p><strong>9.创建 JSON 格式的数据</strong></p>
+<p>并下面这个JAR 文件：json-rpc-1.0.jar (75 kb)/<a href="http://t.cn/Rz0bhUA" target="_blank" rel="noopener">http://t.cn/Rz0bhUA</a></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p><code>import`</code>org.json.JSONObject;`</p>
+<p><code>...</code></p>
+<p><code>...</code></p>
+<p><code>JSONObject json =</code> <code>new`</code>JSONObject();`</p>
+<p><code>json.put(`</code>“city”<code>,` `&quot;Mumbai&quot;</code>);`</p>
+<p><code>json.put(`</code>“country”<code>,` `&quot;India&quot;</code>);`</p>
+<p><code>...</code></p>
+<p><code>String output = json.toString();</code></p>
+<p><code>...</code></p>
+<p><strong>10. 使用iText JAR生成PDF</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p>19</p>
+<p>20</p>
+<p>21</p>
+<p>22</p>
+<p>23</p>
+<p>24</p>
+<p>25</p>
+<p>26</p>
+<p>27</p>
+<p>28</p>
+<p>29</p>
+<p>30</p>
+<p><code>import`</code>java.io.File;`</p>
+<p><code>import`</code>java.io.FileOutputStream;`</p>
+<p><code>import`</code>java.io.OutputStream;`</p>
+<p><code>import`</code>java.util.Date;`</p>
+<p><code>import`</code>com.lowagie.text.Document;`</p>
+<p><code>import`</code>com.lowagie.text.Paragraph;`</p>
+<p><code>import`</code>com.lowagie.text.pdf.PdfWriter;`</p>
+<p><code>public`</code>class<code></code>GeneratePDF {`</p>
+<p><code>public`</code>static<code>void</code>main(String[] args) {`</p>
+<p><code>try`</code>{`</p>
+<p><code>OutputStream file =</code> <code>new`</code>FileOutputStream(<code>new</code>File(<code>&quot;C:\\Test.pdf&quot;</code>));`</p>
+<p><code>Document document =</code> <code>new`</code>Document();`</p>
+<p><code>PdfWriter.getInstance(document, file);</code></p>
+<p><code>document.open();</code></p>
+<p><code>document.add(`</code>new<code>Paragraph(</code>“Hello Kiran”<code></code>));`</p>
+<p><code>document.add(`</code>new<code>Paragraph(</code>new<code></code>Date().toString()));`</p>
+<p><code>document.close();</code></p>
+<p><code>file.close();</code></p>
+<p><code>}</code> <code>catch`</code>(Exception e) {`</p>
+<p><code>e.printStackTrace();</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><strong>11. HTTP 代理设置</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p><code>System.getProperties().put(`</code>“http.proxyHost”<code>,` `&quot;someProxyURL&quot;</code>);`</p>
+<p><code>System.getProperties().put(`</code>“http.proxyPort”<code>,` `&quot;someProxyPort&quot;</code>);`</p>
+<p><code>System.getProperties().put(`</code>“http.proxyUser”<code>,` `&quot;someUserName&quot;</code>);`</p>
+<p><code>System.getProperties().put(`</code>“http.proxyPassword”<code>,` `&quot;somePassword&quot;</code>);`</p>
+<p><strong>12. 单实例Singleton 示例</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p><code>public`</code>class<code></code>SimpleSingleton {`</p>
+<p><code>private`</code>static<code>SimpleSingleton singleInstance =` `new</code>SimpleSingleton();`</p>
+<p><code>//Marking default constructor private</code></p>
+<p><code>//to avoid direct instantiation.</code></p>
+<p><code>private`</code>SimpleSingleton() {`</p>
+<p><code>}</code></p>
+<p><code>//Get instance for class SimpleSingleton</code></p>
+<p><code>public`</code>static<code></code>SimpleSingleton getInstance() {`</p>
+<p><code>return`</code>singleInstance;`</p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><strong>13. 抓屏程序</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p>19</p>
+<p>20</p>
+<p><code>import`</code>java.awt.Dimension;`</p>
+<p><code>import`</code>java.awt.Rectangle;`</p>
+<p><code>import`</code>java.awt.Robot;`</p>
+<p><code>import`</code>java.awt.Toolkit;`</p>
+<p><code>import`</code>java.awt.image.BufferedImage;`</p>
+<p><code>import`</code>javax.imageio.ImageIO;`</p>
+<p><code>import`</code>java.io.File;`</p>
+<p><code>...</code></p>
+<p><code>public`</code>void<code>captureScreen(String fileName)` `throws</code>Exception {`</p>
+<p><code>Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();</code></p>
+<p><code>Rectangle screenRectangle =</code> <code>new`</code>Rectangle(screenSize);`</p>
+<p><code>Robot robot =</code> <code>new`</code>Robot();`</p>
+<p><code>BufferedImage image = robot.createScreenCapture(screenRectangle);</code></p>
+<p><code>ImageIO.write(image,</code> <code>&quot;png&quot;`</code>,<code></code>new<code></code>File(fileName));`</p>
+<p><code>}</code></p>
+<p><code>...</code></p>
+<p><strong>14. 列出文件和目录</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p>19</p>
+<p>20</p>
+<p>21</p>
+<p>22</p>
+<p>23</p>
+<p>24</p>
+<p>25</p>
+<p>26</p>
+<p>27</p>
+<p>28</p>
+<p>29</p>
+<p>30</p>
+<p><code>File dir =</code> <code>new`</code>File(<code>&quot;directoryName&quot;</code>);`</p>
+<p><code>String[] children = dir.list();</code></p>
+<p><code>if`</code>(children ==<code></code>null<code></code>) {`</p>
+<p><code>// Either dir does not exist or is not a directory</code></p>
+<p><code>}</code> <code>else`</code>{`</p>
+<p><code>for`</code>(<code>int</code>i=<code>0</code>; i &lt; children.length; i++) {`</p>
+<p><code>// Get filename of file or directory</code></p>
+<p><code>String filename = children[i];</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><code>// It is also possible to filter the list of returned files.</code></p>
+<p><code>// This example does not return any files that start with `.&#39;.</code></p>
+<p><code>FilenameFilter filter =</code> <code>new`</code>FilenameFilter() {`</p>
+<p><code>public`</code>boolean<code></code>accept(File dir, String name) {`</p>
+<p><code>return`</code>!name.startsWith(<code>&quot;.&quot;</code>);`</p>
+<p><code>}</code></p>
+<p><code>};</code></p>
+<p><code>children = dir.list(filter);</code></p>
+<p><code>// The list of files can also be retrieved as File objects</code></p>
+<p><code>File[] files = dir.listFiles();</code></p>
+<p><code>// This filter only returns directories</code></p>
+<p><code>FileFilter fileFilter =</code> <code>new`</code>FileFilter() {`</p>
+<p><code>public`</code>boolean<code></code>accept(File file) {`</p>
+<p><code>return`</code>file.isDirectory();`</p>
+<p><code>}</code></p>
+<p><code>};</code></p>
+<p><code>files = dir.listFiles(fileFilter);</code></p>
+<p><strong>15. 创建ZIP和JAR文件</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p>19</p>
+<p>20</p>
+<p>21</p>
+<p>22</p>
+<p>23</p>
+<p>24</p>
+<p>25</p>
+<p>26</p>
+<p>27</p>
+<p>28</p>
+<p>29</p>
+<p>30</p>
+<p>31</p>
+<p>32</p>
+<p>33</p>
+<p>34</p>
+<p>35</p>
+<p>36</p>
+<p>37</p>
+<p>38</p>
+<p>39</p>
+<p>40</p>
+<p>41</p>
+<p>42</p>
+<p>43</p>
+<p>44</p>
+<p>45</p>
+<p>46</p>
+<p>47</p>
+<p>48</p>
+<p>49</p>
+<p>50</p>
+<p><code>import`</code>java.util.zip.*;`</p>
+<p><code>import`</code>java.io.*;`</p>
+<p><code>public`</code>class<code></code>ZipIt {`</p>
+<p><code>public`</code>static<code>void</code>main(String args[])<code></code>throws<code></code>IOException {`</p>
+<p><code>if`</code>(args.length &lt;<code></code>2<code></code>) {`</p>
+<p><code>System.err.println(`</code>“usage: java ZipIt Zip.zip file1 file2 file3”<code></code>);`</p>
+<p><code>System.exit(-`</code>1<code></code>);`</p>
+<p><code>}</code></p>
+<p><code>File zipFile =</code> <code>new`</code>File(args[<code>0</code>]);`</p>
+<p><code>if`</code>(zipFile.exists()) {`</p>
+<p><code>System.err.println(`</code>“Zip file already exists, please try another”<code></code>);`</p>
+<p><code>System.exit(-`</code>2<code></code>);`</p>
+<p><code>}</code></p>
+<p><code>FileOutputStream fos =</code> <code>new`</code>FileOutputStream(zipFile);`</p>
+<p><code>ZipOutputStream zos =</code> <code>new`</code>ZipOutputStream(fos);`</p>
+<p><code>int`</code>bytesRead;`</p>
+<p><code>byte`</code>[] buffer =<code></code>new<code>byte</code>[<code>1024</code>];`</p>
+<p><code>CRC32 crc =</code> <code>new`</code>CRC32();`</p>
+<p><code>for`</code>(<code>int</code>i=<code>1</code>, n=args.length; i &lt; n; i++) {`</p>
+<p><code>String name = args[i];</code></p>
+<p><code>File file =</code> <code>new`</code>File(name);`</p>
+<p><code>if`</code>(!file.exists()) {`</p>
+<p><code>System.err.println(`</code>“Skipping: “<code></code>+ name);`</p>
+<p><code>continue`</code>;`</p>
+<p><code>}</code></p>
+<p><code>BufferedInputStream bis =</code> <code>new`</code>BufferedInputStream(`</p>
+<p><code>new`</code>FileInputStream(file));`</p>
+<p><code>crc.reset();</code></p>
+<p><code>while`</code>((bytesRead = bis.read(buffer)) != -<code>1</code>) {`</p>
+<p><code>crc.update(buffer,</code> <code>0`</code>, bytesRead);`</p>
+<p><code>}</code></p>
+<p><code>bis.close();</code></p>
+<p><code>// Reset to beginning of input stream</code></p>
+<p><code>bis =</code> <code>new`</code>BufferedInputStream(`</p>
+<p><code>new`</code>FileInputStream(file));`</p>
+<p><code>ZipEntry entry =</code> <code>new`</code>ZipEntry(name);`</p>
+<p><code>entry.setMethod(ZipEntry.STORED);</code></p>
+<p><code>entry.setCompressedSize(file.length());</code></p>
+<p><code>entry.setSize(file.length());</code></p>
+<p><code>entry.setCrc(crc.getValue());</code></p>
+<p><code>zos.putNextEntry(entry);</code></p>
+<p><code>while`</code>((bytesRead = bis.read(buffer)) != -<code>1</code>) {`</p>
+<p><code>zos.write(buffer,</code> <code>0`</code>, bytesRead);`</p>
+<p><code>}</code></p>
+<p><code>bis.close();</code></p>
+<p><code>}</code></p>
+<p><code>zos.close();</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><strong>16. 解析/读取XML 文件</strong> XML文件</p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p><code>&lt;?xml version=`</code>“1.0”<code></code>?&gt;`</p>
+<p><code>&lt;students&gt;</code></p>
+<p><code>&lt;student&gt;</code></p>
+<p><code>&lt;name&gt;John&lt;/name&gt;</code></p>
+<p><code>&lt;grade&gt;B&lt;/grade&gt;</code></p>
+<p><code>&lt;age&gt;`</code>12<code></code>`</p>
+<p><code>&lt;/student&gt;</code></p>
+<p><code>&lt;student&gt;</code></p>
+<p><code>&lt;name&gt;Mary&lt;/name&gt;</code></p>
+<p><code>&lt;grade&gt;A&lt;/grade&gt;</code></p>
+<p><code>&lt;age&gt;`</code>11<code></code>`</p>
+<p><code>&lt;/student&gt;</code></p>
+<p><code>&lt;student&gt;</code></p>
+<p><code>&lt;name&gt;Simon&lt;/name&gt;</code></p>
+<p><code>&lt;grade&gt;A&lt;/grade&gt;</code></p>
+<p><code>&lt;age&gt;`</code>18<code></code>`</p>
+<p><code>&lt;/student&gt;</code></p>
+<p><code>&lt;/students&gt;</code></p>
+<p>Java代码</p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p>19</p>
+<p>20</p>
+<p>21</p>
+<p>22</p>
+<p>23</p>
+<p>24</p>
+<p>25</p>
+<p>26</p>
+<p>27</p>
+<p>28</p>
+<p>29</p>
+<p>30</p>
+<p>31</p>
+<p>32</p>
+<p>33</p>
+<p>34</p>
+<p>35</p>
+<p>36</p>
+<p>37</p>
+<p>38</p>
+<p>39</p>
+<p>40</p>
+<p>41</p>
+<p>42</p>
+<p>43</p>
+<p>44</p>
+<p>45</p>
+<p>46</p>
+<p>47</p>
+<p>48</p>
+<p>49</p>
+<p>50</p>
+<p>51</p>
+<p>52</p>
+<p>53</p>
+<p>54</p>
+<p>55</p>
+<p>56</p>
+<p>57</p>
+<p>58</p>
+<p>59</p>
+<p>60</p>
+<p>61</p>
+<p>62</p>
+<p>63</p>
+<p>64</p>
+<p>65</p>
+<p>66</p>
+<p>67</p>
+<p>68</p>
+<p>69</p>
+<p>70</p>
+<p>71</p>
+<p>72</p>
+<p>73</p>
+<p><code>&lt;span style=`</code>“font-family:Arial;font-size:14px;”<code>&gt;</code>package<code></code>net.viralpatel.java.xmlparser;`</p>
+<p><code>import`</code>java.io.File;`</p>
+<p><code>import`</code>javax.xml.parsers.DocumentBuilder;`</p>
+<p><code>import`</code>javax.xml.parsers.DocumentBuilderFactory;`</p>
+<p><code>import`</code>org.w3c.dom.Document;`</p>
+<p><code>import`</code>org.w3c.dom.Element;`</p>
+<p><code>import`</code>org.w3c.dom.Node;`</p>
+<p><code>import`</code>org.w3c.dom.NodeList;`</p>
+<p><code>public`</code>class<code></code>XMLParser {`</p>
+<p><code>public`</code>void<code></code>getAllUserNames(String fileName) {`</p>
+<p><code>try`</code>{`</p>
+<p><code>DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</code></p>
+<p><code>DocumentBuilder db = dbf.newDocumentBuilder();</code></p>
+<p><code>File file =</code> <code>new`</code>File(fileName);`</p>
+<p><code>if`</code>(file.exists()) {`</p>
+<p><code>Document doc = db.parse(file);</code></p>
+<p><code>Element docEle = doc.getDocumentElement();</code></p>
+<p><code>// Print root element of the document</code></p>
+<p><code>System.out.println(`</code>“Root element of the document: “`</p>
+<p><code>+ docEle.getNodeName());</code></p>
+<p><code>NodeList studentList = docEle.getElementsByTagName(`</code>“student”<code></code>);`</p>
+<p><code>// Print total student elements in document</code></p>
+<p><code>System.out</code></p>
+<p><code>.println(`</code>“Total students: “<code></code>+ studentList.getLength());`</p>
+<p><code>if`</code>(studentList !=<code></code>null<code>&amp;&amp; studentList.getLength() &gt;` `0</code>) {`</p>
+<p><code>for`</code>(<code>int</code>i =<code></code>0<code></code>; i &lt; studentList.getLength(); i++) {`</p>
+<p><code>Node node = studentList.item(i);</code></p>
+<p><code>if`</code>(node.getNodeType() == Node.ELEMENT_NODE) {`</p>
+<p><code>System.out</code></p>
+<p><code>.println(`</code>“=====================”<code></code>);`</p>
+<p><code>Element e = (Element) node;</code></p>
+<p><code>NodeList nodeList = e.getElementsByTagName(`</code>“name”<code></code>);`</p>
+<p><code>System.out.println(`</code>“Name: “`</p>
+<p><code>+ nodeList.item(`</code>0<code>).getChildNodes().item(</code>0<code></code>)`</p>
+<p><code>.getNodeValue());</code></p>
+<p><code>nodeList = e.getElementsByTagName(`</code>“grade”<code></code>);`</p>
+<p><code>System.out.println(`</code>“Grade: “`</p>
+<p><code>+ nodeList.item(`</code>0<code>).getChildNodes().item(</code>0<code></code>)`</p>
+<p><code>.getNodeValue());</code></p>
+<p><code>nodeList = e.getElementsByTagName(`</code>“age”<code></code>);`</p>
+<p><code>System.out.println(`</code>“Age: “`</p>
+<p><code>+ nodeList.item(`</code>0<code>).getChildNodes().item(</code>0<code></code>)`</p>
+<p><code>.getNodeValue());</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><code>}</code> <code>else`</code>{`</p>
+<p><code>System.exit(`</code>1<code></code>);`</p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><code>}</code> <code>catch`</code>(Exception e) {`</p>
+<p><code>System.out.println(e);</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><code>public`</code>static<code>void</code>main(String[] args) {`</p>
+<p><code>XMLParser parser =</code> <code>new`</code>XMLParser();`</p>
+<p><code>parser.getAllUserNames(`</code>“c:\test.xml”<code></code>);`</p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><strong>17. 把 Array 转换成 Map</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p><code>import`</code>java.util.Map;`</p>
+<p><code>import`</code>org.apache.commons.lang.ArrayUtils;`</p>
+<p><code>public`</code>class<code></code>Main {`</p>
+<p><code>public`</code>static<code>void</code>main(String[] args) {`</p>
+<p><code>String[][] countries = { {</code> <code>&quot;United States&quot;`</code>,<code></code>“New York”<code>}, {` `&quot;United Kingdom&quot;</code>,<code></code>“London”<code></code>},`</p>
+<p><code>{</code> <code>&quot;Netherland&quot;`</code>,<code></code>“Amsterdam”<code>}, {` `&quot;Japan&quot;</code>,<code></code>“Tokyo”<code>}, {` `&quot;France&quot;</code>,<code></code>“Paris”<code></code>} };`</p>
+<p><code>Map countryCapitals = ArrayUtils.toMap(countries);</code></p>
+<p><code>System.out.println(`</code>“Capital of Japan is “<code>+ countryCapitals.get(</code>“Japan”<code></code>));`</p>
+<p><code>System.out.println(`</code>“Capital of France is “<code>+ countryCapitals.get(</code>“France”<code></code>));`</p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><strong>18. 发送邮件</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p>19</p>
+<p>20</p>
+<p>21</p>
+<p>22</p>
+<p>23</p>
+<p>24</p>
+<p>25</p>
+<p>26</p>
+<p>27</p>
+<p>28</p>
+<p>29</p>
+<p>30</p>
+<p>31</p>
+<p>32</p>
+<p>33</p>
+<p>34</p>
+<p>35</p>
+<p>36</p>
+<p>37</p>
+<p>38</p>
+<p><code>import`</code>javax.mail.*;`</p>
+<p><code>import`</code>javax.mail.internet.*;`</p>
+<p><code>import`</code>java.util.*;`</p>
+<p><code>public`</code>void<code>postMail( String recipients[ ], String subject, String message , String from)` `throws</code>MessagingException`</p>
+<p><code>{</code></p>
+<p><code>boolean`</code>debug =<code></code>false<code></code>;`</p>
+<p><code>//Set the host smtp address</code></p>
+<p><code>Properties props =</code> <code>new`</code>Properties();`</p>
+<p><code>props.put(`</code>“mail.smtp.host”<code>,` `&quot;smtp.example.com&quot;</code>);`</p>
+<p><code>// create some properties and get the default Session</code></p>
+<p><code>Session session = Session.getDefaultInstance(props,</code> <code>null`</code>);`</p>
+<p><code>session.setDebug(debug);</code></p>
+<p><code>// create a message</code></p>
+<p><code>Message msg =</code> <code>new`</code>MimeMessage(session);`</p>
+<p><code>// set the from and to address</code></p>
+<p><code>InternetAddress addressFrom =</code> <code>new`</code>InternetAddress(from);`</p>
+<p><code>msg.setFrom(addressFrom);</code></p>
+<p><code>InternetAddress[] addressTo =</code> <code>new`</code>InternetAddress[recipients.length];`</p>
+<p><code>for`</code>(<code>int</code>i =<code></code>0<code></code>; i &lt; recipients.length; i++)`</p>
+<p><code>{</code></p>
+<p><code>addressTo[i] =</code> <code>new`</code>InternetAddress(recipients[i]);`</p>
+<p><code>}</code></p>
+<p><code>msg.setRecipients(Message.RecipientType.TO, addressTo);</code></p>
+<p><code>// Optional : You can also set your custom headers in the Email if you Want</code></p>
+<p><code>msg.addHeader(`</code>“MyHeaderName”<code>,` `&quot;myHeaderValue&quot;</code>);`</p>
+<p><code>// Setting the Subject and Content Type</code></p>
+<p><code>msg.setSubject(subject);</code></p>
+<p><code>msg.setContent(message,</code> <code>&quot;text/plain&quot;`</code>);`</p>
+<p><code>Transport.send(msg);</code></p>
+<p><code>}</code></p>
+<p><strong>19. 发送代数据的HTTP 请求</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p>16</p>
+<p>17</p>
+<p>18</p>
+<p><code>import`</code>java.io.BufferedReader;`</p>
+<p><code>import`</code>java.io.InputStreamReader;`</p>
+<p><code>import`</code>java.net.URL;`</p>
+<p><code>public`</code>class<code></code>Main {`</p>
+<p><code>public`</code>static<code>void</code>main(String[] args) {`</p>
+<p><code>try`</code>{`</p>
+<p><code>URL my_url =</code> <code>new`</code>URL(<code>&quot;[http://coolshell.cn/](http://coolshell.cn/)&quot;</code>);`</p>
+<p><code>BufferedReader br =</code> <code>new`</code>BufferedReader(<code>new</code>InputStreamReader(my_url.openStream()));`</p>
+<p><code>String strTemp =</code> <code>&quot;&quot;`</code>;`</p>
+<p><code>while`</code>(<code>null</code>!= (strTemp = br.readLine())){`</p>
+<p><code>System.out.println(strTemp);</code></p>
+<p><code>}</code></p>
+<p><code>}</code> <code>catch`</code>(Exception ex) {`</p>
+<p><code>ex.printStackTrace();</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><code>}</code></p>
+<p><strong>20. 改变数组的大小</strong></p>
+<p><a href="http://www.jb51.net/article/66038.htm#" target="_blank" rel="noopener">?</a></p>
+<p><code>1</code></p>
+<p><code>2</code></p>
+<p><code>3</code></p>
+<p><code>4</code></p>
+<p><code>5</code></p>
+<p><code>6</code></p>
+<p><code>7</code></p>
+<p><code>8</code></p>
+<p><code>9</code></p>
+<p><code>10</code></p>
+<p><code>11</code></p>
+<p><code>12</code></p>
+<p><code>13</code></p>
+<p><code>14</code></p>
+<p><code>15</code></p>
+<p><code>16</code></p>
+<p><code>17</code></p>
+<p><code>18</code></p>
+<p><code>19</code></p>
+<p><code>20</code></p>
+<p><code>21</code></p>
+<p><code>22</code></p>
+<p><code>23</code></p>
+<p><code>24</code></p>
+<p><code>25</code></p>
+<p><code>26</code></p>
+<p><code>27</code></p>
+<p><code>/**</code></p>
+<p><code>* Reallocates an array with a new size, and copies the contents</code></p>
+<p><code>* of the old array to the new array.</code></p>
+<p><code>* @param oldArray the old array, to be reallocated.</code></p>
+<p><code>* @param newSize  the new array size.</code></p>
+<p><code>* @return     A new array with the same contents.</code></p>
+<p><code>*/</code></p>
+<p><code>`private` `static` `Object resizeArray (Object oldArray,` `int` `newSize) {`</code></p>
+<p><code>`int` `oldSize = java.lang.reflect.Array.getLength(oldArray);`</code></p>
+<p><code>`Class elementType = oldArray.getClass().getComponentType();`</code></p>
+<p><code>`Object newArray = java.lang.reflect.Array.newInstance(`</code></p>
+<p><code>`elementType,newSize);`</code></p>
+<p><code>`int` `preserveLength = Math.min(oldSize,newSize);`</code></p>
+<figure class="highlight plain"><figcaption><span>`(preserveLength >` `0``)` ```</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">``` `System.arraycopy (oldArray,``0``,newArray,``0``,preserveLength);`</span><br></pre></td></tr></table></figure>
+<p><code>`return` `newArray;`</code></p>
+<p><code>}</code></p>
+<p><code>// Test routine for resizeArray().</code></p>
+<p><code>`public` `static` `void` `main (String[] args) {`</code></p>
+<figure class="highlight plain"><figcaption><span>a </span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">``` `a = (``int``[])resizeArray(a,``5``);`</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">``` `a[``4``] =` `5``;`</span><br></pre></td></tr></table></figure>
+<p><code>`for` `(``int` `i=``0``; i&lt;a.length; i++)`</code></p>
+<p><code>`System.out.println (a[i]);`</code></p>
+<p><code>}</code></p>
+<p>以上所述就是本文的全部内容了，希望大家能够喜欢。</p>
+<p>摘自：<a href="http://www.jb51.net/article/66038.htm" target="_blank" rel="noopener">脚本之家</a></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/05/11/wordpress-e7-bb-91-e5-ae-9a-e5-a4-9a-e4-b8-aa-e5-9f-9f-e5-90-8d-e5-92-8c-e7-a6-81-e6-ad-a2-e6-90-9c-e7-b4-a2-e5-bc-95-e6-93-8e-e6-94-b6-e5-bd-95-e9-9d-9e-e4-b8-bb-e5-9f-9f-e5-90-8d-e7-9a-84-e6-96-b9/" data-toggle="tooltip" data-placement="top" title="WordPress绑定多个域名和禁止搜索引擎收录非主域名的方法">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/04/24/win10-e4-b8-ad-e7-9a-84-e5-88-87-e6-8d-a2-e6-a1-8c-e9-9d-a2-e5-8a-9f-e8-83-bd-e4-bd-bf-e7-94-a8/" data-toggle="tooltip" data-placement="top" title="WIN10中的新建桌面功能使用与快速切换桌面">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#拓展知识" title="拓展知识">拓展知识</a>
+                        
+                        <a class="tag" href="/tags/#JAVA" title="JAVA">JAVA</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

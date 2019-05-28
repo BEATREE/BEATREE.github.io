@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Proxyee-down 百度云网盘不限速的免费开源下载神器｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2018/04/06/proxyee-down-e7-99-be-e5-ba-a6-e4-ba-91-e7-bd-91-e7-9b-98-e4-b8-8d-e9-99-90-e9-80-9f-e7-9a-84-e5-85-8d-e8-b4-b9-e5-bc-80-e6-ba-90-e4-b8-8b-e8-bd-bd-e7-a5-9e-e5-99-a8/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Proxyee-down 百度云网盘不限速的免费开源下载神器</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2018-04-06
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#实用的软件" title="实用的软件">实用的软件</a>
+                        
+                        <a class="tag" href="/tags/#拓展知识" title="拓展知识">拓展知识</a>
+                        
+                        <a class="tag" href="/tags/#小知识" title="小知识">小知识</a>
+                        
+                        <a class="tag" href="/tags/#软件下载" title="软件下载">软件下载</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Proxyee-down 百度云网盘不限速的免费开源下载神器
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p>百度网盘（原百度云）是百度推出的一项云存储服务，首次注册即有机会获得2T的空间，用户将可以轻松将自己的文件上传到网盘上，并可跨终端随时随地查看和分享。 但它对免费用户的限速实在是严苛，即便是100M的宽带，常常也会遇到仅有几十KB/秒的速度，一个大文件不知道要下载到什么时候了。 <a href="http://www.teenshare.club/wp-content/uploads/2018/04/2018040608545882.png" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2018/04/2018040608545882-1024x376.png" alt></a> 曾经也有一些破解百度网盘限速的软件和技术，比如使用 <strong>PanDownload</strong>、<strong>Aria2</strong> 多线程下载等方法，不过这些方法多少已经失效了，或者不能再进行不限速下载了。而现在，又出现了一个更强大的<strong>免登录</strong>帐号且能<strong>突破限速下载百度云网盘的利器</strong>——<strong>Proxyee-down</strong>！</p>
+<h2 id="Proxyee-down-简介"><a href="#Proxyee-down-简介" class="headerlink" title="Proxyee-down 简介"></a>Proxyee-down 简介</h2><p>Proxyee-down 是一款免费且开源的 HTTP 多线程嗅探下载工具，基于 Java 开发，跨平台支持 Windows、Mac 和 Linux 系统。最重要的是，它内置了类似百度网盘下载插件功能，可以突破速度限制，免费达到多线程高速下载的效果。 这款开源工具可帮助我们构建网页代理嗅探百度下载地址，嗅探后的地址直接在网页建立多个连接加速下载。 实测该工具在百兆带宽下下载速度可以达到6~9MB每秒！！！ Github 项目地址：<a href="https://github.com/monkeyWie/proxyee-down" target="_blank" rel="noopener">https://github.com/monkeyWie/proxyee-down</a>  感谢该项目作者的贡献： monkeyWie</p>
+<h2 id="Proxyee-down-的安装使用方法"><a href="#Proxyee-down-的安装使用方法" class="headerlink" title="Proxyee-down 的安装使用方法"></a>Proxyee-down 的安装使用方法</h2><p>Proxyee-down 的工作原理与之前的下载工具有所不同，它是通过在本机建立一个 HTTP 代理服务器，然后设置浏览器 (或操作系统) 的网络连接走这个代理，从而接管到百度网盘的下载请求，并从中嗅探出真实的文件下载地址。</p>
+<h3 id="安装证书"><a href="#安装证书" class="headerlink" title="安装证书"></a>安装证书</h3><p>由于百度云网盘现已采用 HTTPS 加密连接，第三方工具无法直接从网络流量中截获下载请求，因此首次使用 Proxyee-down 时软件会要求你安装一个数字证书，点击确定安装，让系统信任 Proxyee-down 之后才能解密 https，从而让其正常工作。否则会出现由于链接不安全拒绝链接的情况！ <a href="http://www.teenshare.club/wp-content/uploads/2018/04/2018040609064477.jpg" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2018/04/2018040609064477-300x227.jpg" alt></a></p>
+<h3 id="设置代理模式（其选项名称为“嗅探模式”）"><a href="#设置代理模式（其选项名称为“嗅探模式”）" class="headerlink" title="设置代理模式（其选项名称为“嗅探模式”）"></a>设置代理模式（其选项名称为“嗅探模式”）</h3><p>Proxyee-down 的代理提供了两种嗅探模式：<strong>全网嗅探</strong> 和 <strong>百度云嗅探</strong>，我们一般默认使用仅嗅探百度云即可 (仅对百度云网站使用代理)，不需要设置全局代理。 <a href="http://www.teenshare.club/wp-content/uploads/2018/04/2018040609115117.png" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2018/04/2018040609115117.png" alt></a> 以 Windows 版本为例，启动后右键点击右下角托盘图标，选择「嗅探模式」→「百度云」即可，系统的 IE 代理设置会被 Proxyee-down 临时修改，这时，IE 浏览器、Edge 以及绝大多数<strong>支持 IE 代理的浏览器</strong>都已经可以正常使用 Proxyee-down 来接管百度网盘下载了。</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>当证书和代理设置都正确并启动了 Proxyee-down 之后，通过浏览器访问百度云网盘的下载链接时，就会出现一个 <strong>proxyee-down</strong> 字样了，如下图，这时就表明 Proxyee-down 已准备就绪。 <a href="http://www.teenshare.club/wp-content/uploads/2018/04/2018040609160694.png" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2018/04/2018040609160694-300x201.png" alt></a> 直接点击网盘页面的下载按钮，Proxyee-down 就会接管过来，开始下载任务了。剩下的选项大家自己也就明白了！ <a href="http://www.teenshare.club/wp-content/uploads/2018/04/2018040609192220.png" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2018/04/2018040609192220-1024x641.png" alt></a></p>
+<h2 id="Proxyee-down-下载地址"><a href="#Proxyee-down-下载地址" class="headerlink" title="Proxyee-down 下载地址"></a>Proxyee-down 下载地址</h2><p>[fanctdl filename=’Proxyee-down’ filesize=’24.49 MB’ href=’<a href="https://github.com/proxyee-down-org/proxyee-down/wiki/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%BF%90%E8%A1%8C&#39;" target="_blank" rel="noopener">https://github.com/proxyee-down-org/proxyee-down/wiki/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8E%E8%BF%90%E8%A1%8C&#39;</a> filedown=’GITHUB’][/fanctdl]</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/04/10/struts2-e7-9a-84action-e4-b8-ad-e8-8e-b7-e5-8f-96request-e3-80-81session-e3-80-81application-e7-9a-84-e5-9b-9b-e7-a7-8d-e6-96-b9-e5-bc-8f/" data-toggle="tooltip" data-placement="top" title="struts2的action中获取request、session、application的四种方式">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/03/30/jsp-e9-a1-b5-e9-9d-a2-e9-97-b4-e4-bc-a0-e9-80-92-e4-b8-ad-e6-96-87-e5-8f-82-e6-95-b0-e7-9a-84-e4-b9-b1-e7-a0-81-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95-ef-bc-88-e4-bc-a0-e9-80-92-e6-96-b9-e5-bc-8f/" data-toggle="tooltip" data-placement="top" title="JSP页面间传递 中文参数 的乱码解决方法（传递方式）">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Proxyee-down-简介"><span class="toc-text">Proxyee-down 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Proxyee-down-的安装使用方法"><span class="toc-text">Proxyee-down 的安装使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装证书"><span class="toc-text">安装证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置代理模式（其选项名称为“嗅探模式”）"><span class="toc-text">设置代理模式（其选项名称为“嗅探模式”）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用"><span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Proxyee-down-下载地址"><span class="toc-text">Proxyee-down 下载地址</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#实用的软件" title="实用的软件">实用的软件</a>
+                        
+                        <a class="tag" href="/tags/#拓展知识" title="拓展知识">拓展知识</a>
+                        
+                        <a class="tag" href="/tags/#小知识" title="小知识">小知识</a>
+                        
+                        <a class="tag" href="/tags/#软件下载" title="软件下载">软件下载</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

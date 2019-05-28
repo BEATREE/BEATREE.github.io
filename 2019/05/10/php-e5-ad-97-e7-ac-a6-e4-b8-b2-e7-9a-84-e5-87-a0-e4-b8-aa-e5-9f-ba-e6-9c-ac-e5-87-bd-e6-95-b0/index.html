@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        [PHP] 字符串的几个基本函数｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2019/05/10/php-e5-ad-97-e7-ac-a6-e4-b8-b2-e7-9a-84-e5-87-a0-e4-b8-aa-e5-9f-ba-e6-9c-ac-e5-87-bd-e6-95-b0/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>[PHP] 字符串的几个基本函数</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2019-05-10
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#学校题目作业" title="学校题目作业">学校题目作业</a>
+                        
+                        <a class="tag" href="/tags/#个人日志" title="个人日志">个人日志</a>
+                        
+                        <a class="tag" href="/tags/#PHP" title="PHP">PHP</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            [PHP] 字符串的几个基本函数
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <blockquote>
+<p>虽然大树的网站使用 PHP 搭建的，但其实呢，我对于 PHP 并不是十分的熟呢。 只是简单的懂一些 PHP 的皮毛，会一些基本的东西吧~ 这不，这学期学校开了 PHP 这门课，大树正在努力的去学，争取早日修成正果！！</p>
+</blockquote>
+<p>呐，标题说了，要说一下 PHP 中字符串 String 的基本函数方法，那咱就不能跑题是吧？ 这里就简单说一下 PHP 中字符串几个<strong>简单又常用</strong>的函数方法吧！</p>
+<h2 id="strlen-和-mb-strlen-函数"><a href="#strlen-和-mb-strlen-函数" class="headerlink" title="strlen() 和 mb_strlen() 函数"></a>strlen() 和 mb_strlen() 函数</h2><p>我们看这两个函数的名字就知道，他们都是用来计算字符串长度的，那他俩之间有什么不同呢？？我们先来看一段代码：</p>
+<pre><code>header(&quot;Content-type: text/html; charset=utf-8&quot;);
+$str = &quot;友谊地久天长&quot;;
+echo $str . &quot;&lt;br&gt;&quot;;
+echo strlen($str);
+</code></pre><p>我们通过访问页面，可以得到结果，结果是 <strong>18</strong>，大家都疑惑了：<em>诶，这不是六个字吗？怎么回事18呢？一个中文占两个字节，也该是 12的啊！</em>。那为什么是 <strong>18</strong> 呢？ PHP内置的字符串长度函数<code>strlen()</code>是无法正确处理中文字符串的，它得到的只是字符串所占的字节数。对于<strong>GB2312</strong>的中文编码，strlen得到的值是汉字个数的<strong>2倍</strong>，而在<strong>UTF-8</strong>编码下，一个汉字占<strong>3个</strong>字节。所以 6*3=18 了。 那我们怎么能拿到正确的长度呢？ 这就要说到 <code>mb_strlen()</code> 函数了</p>
+<pre><code>header(&quot;Content-type: text/html; charset=utf-8&quot;);
+$str = &quot;友谊地久天长&quot;;
+echo $str . &quot;&lt;br&gt;&quot;;
+echo mb_strlen($str, &apos;utf-8&apos;);
+</code></pre><p>我们看到，和上边第一段的代码中 <code>strlen()</code> 差了一个参数，第二个参数，也正是指定编码格式的参数，通过指定编码格式，函数就可以直接进行对应的转换了！ 不过如果你去菜鸟教程上看的话，你会发现在 <a href="https://www.runoob.com/php/php-ref-string.html" target="_blank" rel="noopener">PHP String 函数</a>页面并没有这个函数！ 这是因为<strong>mb_strlen 并不是PHP核心函数</strong>，使用前需要确保在 <code>php.ini</code> 中加载了 <code>php_mbstring.dll</code> ，<strong>即确保“extension=php_mbstring.dll”这一行存在并且没有被注释掉，否则会出现未定义函数的问题</strong>。</p>
+<h2 id="substr-和-mb-substr-函数"><a href="#substr-和-mb-substr-函数" class="headerlink" title="substr() 和 mb_substr() 函数"></a>substr() 和 mb_substr() 函数</h2><p>这两个就是字符串截取的函数了，当然通过上边的那两个栗子，我们也就知道这两个的区别咯。 首先先说一下这两个的语法结构吧： <code>substr(string,start,length)</code> 其中 第一个参数是要进行截取的字符串变量，第二个则是指定开始的下标，第三个则是指定截取的长度，而 <code>mb_substr()</code> 则是在最后又加上了一个用于<strong>指定 编码类型</strong>的参数，<strong>最后一个参数也可省略不写，它的初衷就是进行中文字符串的截取</strong>。 在我们截取字符串的时候，如果截取英文的，两个用哪个都是一切都好；但是 <code>substr()</code> 截取中文则会出现乱码的情况，即使是将页面编码已经设置为了 ‘utf-8’ 的模式，你截出来的中文还是会变成小黑块。那这个时候我们就要用到 <code>mb_substr()</code> 函数了！</p>
+<pre><code>header(&quot;Content-type: text/html; charset=utf-8&quot;);
+$str = &quot;友谊地久天长&quot;;
+echo substr($str, $i, 1);
+echo mb_substr($str, $i, 1, &apos;utf-8&apos;);
+</code></pre><p>这就是两个函数用法的区别，另外就是 <code>utf-8</code> 也可以省略不写。 再简单列举几个常用的吧，就不再进行仔细的说明了：</p>
+<h3 id="explode-separator-string-limit-：把字符串打散为数组。"><a href="#explode-separator-string-limit-：把字符串打散为数组。" class="headerlink" title="explode(separator,string,limit) ：把字符串打散为数组。"></a>explode(separator,string,limit) ：把字符串打散为数组。</h3><h3 id="implode-separator-array-：-返回一个由数组元素组合成的字符串。"><a href="#implode-separator-array-：-返回一个由数组元素组合成的字符串。" class="headerlink" title="implode(separator,array)： 返回一个由数组元素组合成的字符串。"></a>implode(separator,array)： 返回一个由数组元素组合成的字符串。</h3><h3 id="ltrim-、rtrim-、trim-：分别是移除左侧、右侧、两侧的空白字符或其他字符。"><a href="#ltrim-、rtrim-、trim-：分别是移除左侧、右侧、两侧的空白字符或其他字符。" class="headerlink" title="ltrim()、rtrim()、trim()：分别是移除左侧、右侧、两侧的空白字符或其他字符。"></a>ltrim()、rtrim()、trim()：分别是移除左侧、右侧、两侧的空白字符或其他字符。</h3><p>更多的关于字符串用法的话，建议直接去官方网站进行查看学习，或者一些教程网查看学习，我们一起加油吧~</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/05/19/leetcode-35-e9-a2-98-e6-90-9c-e7-b4-a2-e6-8f-92-e5-85-a5-e4-bd-8d-e7-bd-ae-ef-bc-88search-insert-position-ef-bc-89/" data-toggle="tooltip" data-placement="top" title="[LeetCode] 35题 搜索插入位置（Search Insert Position）">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/03/23/jsonp-e5-8e-9f-e7-90-86-e8-af-a6-e8-a7-a3-e5-bf-ab-e9-80-9f-e4-ba-86-e8-a7-a3jsonp-e6-a6-82-e5-bf-b5/" data-toggle="tooltip" data-placement="top" title="JSONP原理详解——快速了解JSONP概念">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#strlen-和-mb-strlen-函数"><span class="toc-text">strlen() 和 mb_strlen() 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#substr-和-mb-substr-函数"><span class="toc-text">substr() 和 mb_substr() 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#explode-separator-string-limit-：把字符串打散为数组。"><span class="toc-text">explode(separator,string,limit) ：把字符串打散为数组。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#implode-separator-array-：-返回一个由数组元素组合成的字符串。"><span class="toc-text">implode(separator,array)： 返回一个由数组元素组合成的字符串。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ltrim-、rtrim-、trim-：分别是移除左侧、右侧、两侧的空白字符或其他字符。"><span class="toc-text">ltrim()、rtrim()、trim()：分别是移除左侧、右侧、两侧的空白字符或其他字符。</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#学校题目作业" title="学校题目作业">学校题目作业</a>
+                        
+                        <a class="tag" href="/tags/#个人日志" title="个人日志">个人日志</a>
+                        
+                        <a class="tag" href="/tags/#PHP" title="PHP">PHP</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

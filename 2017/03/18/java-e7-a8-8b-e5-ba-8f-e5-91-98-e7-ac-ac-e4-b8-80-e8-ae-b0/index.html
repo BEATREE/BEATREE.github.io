@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        JAVA程序员第一记｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2017/03/18/java-e7-a8-8b-e5-ba-8f-e5-91-98-e7-ac-ac-e4-b8-80-e8-ae-b0/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>JAVA程序员第一记</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2017-03-18
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#优秀文章收藏" title="优秀文章收藏">优秀文章收藏</a>
+                        
+                        <a class="tag" href="/tags/#JAVA" title="JAVA">JAVA</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            JAVA程序员第一记
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p>今天进行第一块的复习，首先是环境的搭建，<a href="http://lib.csdn.net/base/javase" title="Java SE知识库" target="_blank" rel="noopener">Java</a>开发的首先任务就是环境变量的配置和环境的搭建，虽然现在大多数的开发工具都已经集成了这些，但是对于一个初学者来说，了解这些还是有些必要的，首先先配置一下JDK，下载JDK在sun公司的官网里下载即可（虽然被<a href="http://lib.csdn.net/base/oracle" title="Oracle知识库" target="_blank" rel="noopener">Oracle</a>收购了，但还是习惯叫他sun公司），找到jdk安装路径，然后把路径黏贴到环境变量path里面，有图有真相，上图： <img src="http://hi.csdn.net/attachment/201202/22/0_1329888537rIW7.gif" alt> <img src="http://hi.csdn.net/attachment/201202/22/0_13298885555g8R.gif" alt> 然后在dos命令里面<a href="http://lib.csdn.net/base/softwaretest" title="软件测试知识库" target="_blank" rel="noopener">测试</a>一下，如果有下面结果即为配置成功： <img src="http://hi.csdn.net/attachment/201202/22/0_1329888576MqdJ.gif" alt> 环境变量配置好之后，我们就可以进行我们的java开发之旅了，下面进行java基本语法的复习了: 一：首先说一下java中的语句规则： 1.java每行代码以；结尾。 2.Java中的注释有： （1）// 注释一行 以“//”开始，终止于行尾，一般作单行注释，可放在语句的后面 （2）/<em>……</em>/ 一行或多行注释 以“/<em>”开始，最后以“</em>/”结束，中间可写多行。 （3）/<strong>……*/ 以“/</strong>”开始，最后以“<em>/”结束，中间可写多行。这种注释主要是为支持JDK 工具javadoc而采用的。 3.Java中的合法标示符要符合一下规则：1 1）要以大小写字母或者美元符号或者下划线开头，不能以数字开头 2）标示符命名不能用关键字，关键字是java内部所用到的标示符，为了避免混淆，所以不能用。 3）类，变量，方法名命名尽量有一定规则，不要随便命名，虽然系统不会报错，但是为了项目开发后期的维护，所以尽量起比较有意义的名字，并且命名要符合一定的规则，如驼峰规则。 二：java基本数据类型 Java数据类型被分为：基本数据类型和引用数据类型。 Java中有8中基本数据类型： 类型              位长/b    默认值    取值范围 布尔型 (boolean）    1       false      true  false 字节型（byte ）      8        0       -128~127 字符型 (char)        16  ‘\u0000’  ‘\u0000’~’\uffff’即0~65535 短整型(short)        16       0        -32768~32767 整型(int)            32       0        -231~231-1 长整型（long）      64       0        -263~263-1 单精度（float）      32       0.0       +-1.4E-45 或+-3.4028235E+38 双精度（double）    64       0.0       +-4.9E-324 或+-1.797693134862315E+308 注：String类型不是基本数据类型，它被定义为类，属于引用数据类型。，由于字符串是常用的数据类型。Java提供了对String类型特殊操作，直接引用，例如：String s=”hello  world”； 三：引用类型 引用类型是一个对象类型的，它的值是指向内存空间的引用，就是地址，所指向的内存中保存着变量所表示的一个值或一组值。很好理解吧，因为一个对象，比如说一个人，不可能是个数字也不可能是个字符啊，所以要想找它的话只能找它的地址了。 接下来看看基本类型和引用类型变量的不同处理吧。基本类型自然是简单，声明是自然系统就给它空间了。例如， int baijq； baijq=250； //声明变量baijq的同时，系统给baijq分配了空间。 引用类型就不是了，只给变量分配了引用空间，数据空间没有分配，因为谁都不知道数据是什么啊，整数，字符？我们看一个错误的例子： MyDate today； today.day = 4； //发生错误，因为today对象的数据空间未分配。 那我们怎么给它赋值啊？引用类型变量在声明后必须通过实例化开辟数据空间，才能对变量所指向的对象进行访问。举个例子： MyDate today；            //将变量分配一个保存引用的空间 today = new MyDate（）；     //这句话是2步，首先执行new MyDate（），给today变量开辟数据空间，然后再执行赋值操作。 四：定义变/常量和变量的初始化 Java定义变量结构：类型  变量名，这里的变量名要符合标示符规则 1．变量的声明 格式：类型 变量名[，变量名]=初值，… ； 赋值：[类型] 变量名=值 如：int a=5 , b=6 , c , d ; 说明： （1）变量名必须在作用域中是唯一的，不同作用域中才允许相同名字的变量出现; （2）只要在同一代码块没有同名的变量名，可以在程序中任何地方定义变量，一个代码块就是两个相对的“{ }”之间部分。 2．变量的使用范围 每个变量的使用范围只在定义它的代码块中，包括这个代码块中包含的代码块。 在类开始处声明的变量是成员变量，作用范围在整个类； 在方法和块中声明的变量是局部变量，作用范围到它的“}”； 3．变量类型的转换 Java 可以将低精度的数字赋值给高精度的数字型变量，反之则需要强制类型转换。 强制转换格式：（数据类型）数据表达式 字节型 短整型 字符型 整型 长整型 单精度实型 双精度实型 转化规律：由低到高 变量与存储器有着直接关系，定义一个变量就是要编译器分配所需要的内存空间，分配多少空间，这就是根据我们所定义的变量类型所决定的。变量名实际上是代表所分配空间的内存首地址   常量 Java中的常量值是用文字串表示的，它区分为不同的类型，如整型常量123，实型常1.23， 字符常量‘a’，布尔常量true、false以及字符串常量“This is a constant string”。 Java 的常量用final 说明，约定常量名一般全部使用大写字母，如果是多个单词组合在一起的，单词之间用下划线连接，常量在程序执行时不可更改。 如：final int i=1; i=i+1; //错，i 是final（常量），不可更改值 例如：final double IP = 3.14159 D 说明：默认类型为64 位double 双精度类型(D 或d),数字后面加F 或f 则是32 位float 单 精度(实数)类型 五：运算符 1、赋值运算符 赋值运算符用于把一个数赋予一个变量。赋值运算符两边的类型不一致时，那么如果左侧的数据类型的级别高，则右边的数据将转换成左边的数据类型在赋予左边的变量，否则需要强制类型转换。 赋值运算符包括= 、+=、-=、</em>=、%=、/=等。 2、算术运算符 算数运算符用于对整型数或者浮点数进行运算，java语言中的算术运算符包括二元运算符和一元运算符。所谓的几元运算符即参加运算的操作数的个数。 1） 二元运算符 Java的二元运算符有+（加）、-（减）、*（乘）、/（除）、%（取余数）。 2） 一元运算符 Java的一元运算符有++（自加）、–（自减） 3、关系运算符 关系运算符用来比较两个值，返回布尔类型的值true或false。 等于 不等于 小于 小于等于 大于等于 大于 ==    ！=   &lt;     &lt;=       &gt;=      &gt; 4、条件运算符 条件运算符的作用是根据表达式的真假决定变量的值。 1&gt; 格式：条件表达式 ? 表达式2 ：表达式3 2&gt; 功能：条件表达式为true，取“表达式2”值，为false，取“表达式3”的值 例： int a=0x10 , b=010 , max ; max=a&gt;b ? a : b ; System.out.println(max) ; // 输出16 5、 逻辑运算符 运算符    结果 ~        按位非（NOT）（一元运算） &amp;        按位与（AND） |        按位或（OR） ^        按位异或（XOR） &gt;&gt;       右移 &gt;&gt;&gt;     右移，左边空出的位以0填充 ；无符号右移 &lt;&lt;      左移 &amp;=      按位与赋值 |=      按位或赋值 ^=      按位异或赋值 &gt;&gt;=     右移赋值 &gt;&gt;&gt;=    右移赋值，左边空出的位以0填充 ；无符号左移 &lt;&lt;=     左移赋值 按位非（NOT） 按位非也叫做补，一元运算符NOT“~”是对其运算数的每一位取反。例如，数字42，它的二进制代码为： 00101010 经过按位非运算成为 11010101 六：流程控制语句 分支语句 1.简单的if…..else语句 If(条件){ 如果条件为真、、、、 } Else{ 如果条件为假、、、、、、 } 2、只有if的语句： If(条件）{ 如果条件为真，执行。。。如果为假，不执行 } 3、switch语句是多分枝语句，基本语法： Switch(expr){ Case  value1: Statements; Break; …….. Case  valueN: Statements; Break; Default: Statements; Break; } 注：1.expr必须是与int类型兼容的类型，即为byte，short，char和int类型中的其中一种 2.Case  valueN:中valueN也必须是int类型兼容的类型，并且必须是常量 3.各个case子句的valueN表达式的值不同 4.Switch语句中只能有一个default子句。 循环语句 1.while语句2.do……while语句（此处省略三百字） 3.for语句 基本格式：for(初始化；循环条件；迭代部分) 功能：（1）第一次进入for 循环时，对循环控制变量赋初值； （2） 根据判断条件检查是否要继续执行循环。为真执行循环体内语句块，为假则结束循环； （3）执行完循环体内语句后，系统根据“循环控制变量增减方式”改变控制变量值，再回 （3） 到步骤（2）根据判断条件检查是否要继续执行循环。 4.流程跳转语句：break,continue和return语句用来控制流程的跳转 1）break：从switch语句，循环语句或标号标识的代码块中退出 2）continue：跳出本次循环，执行下次循环，或执行标号标识的循环体； 3）return：退出本方法，跳到上层调用方法。 4）Break语句和continue语句可以与标号联合使用。标号用来标识程序中的语句，标号的名字可以是任意的合法标识符。 带有标号的循环体： Loop：switch(expr){ } 七：字符串 字符串的几种用法： 拼接    直接用“+”把两个字符串拼接起来 例如：String firstName = “li”; String secondName = “ming”; String fullName = firstName+secondName; 检测字符串是否相等   检测两个字符串内容是否相等时使用“equals”；比较两个字符串的引用是否相等时用“==” 得到字符串的长度     字符串变量名.length(); <a href="http://blog.csdn.net/ly5156/article/details/6950261" target="_blank" rel="noopener">String，StringBuffer，StringBuild</a>区别 String 字符串常量 StringBuffer 字符串变量（线程安全） StringBuilder 字符串变量（非线程安全） 简要的说， String 类型和 StringBuffer 类型的主要性能区别其实在于 String 是不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要用 String ，因为每次生成对象都会对系统性能产生影响，特别当内存中无引用对象多了以后， JVM 的 GC 就会开始工作，那速度是一定会相当慢的。 而如果是使用 StringBuffer 类则结果就不一样了，每次结果都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，再改变对象引用。所以在一般情况下我们推荐使用 StringBuffer ，特别是字符串对象经常改变的情况下。而在某些特别情况下， String 对象的字符串拼接其实是被 JVM 解释成了 StringBuffer 对象的拼接，所以这些时候 String 对象的速度并不会比 StringBuffer 对象慢，而特别是以下的字符串对象生成中， String 效率是远要比 StringBuffer 快的： String S1 = “This is only a” + “ simple” + “ test”; StringBuffer Sb = new StringBuilder(“This is only a”).append(“ simple”).append(“ test”); 你会很惊讶的发现，生成 String S1 对象的速度简直太快了，而这个时候 StringBuffer 居然速度上根本一点都不占优势。其实这是 JVM 的一个把戏，在 JVM 眼里，这个 String S1 = “This is only a” + “ simple” + “test”; 其实就是： String S1 = “This is only a simple test”; 所以当然不需要太多的时间了。但大家这里要注意的是，如果你的字符串是来自另外的 String 对象的话，速度就没那么快了，譬如： String S2 = “This is only a”; String S3 = “ simple”; String S4 = “ test”; String S1 = S2 +S3 + S4; 这时候 JVM 会规规矩矩的按照原来的方式去做 在大部分情况下 StringBuffer &gt; String StringBuffer Java.lang.StringBuffer线程安全的可变字符序列。一个类似于 String 的字符串缓冲区，但不能修改。虽然在任意时间点上它都包含某种特定的字符序列，但通过某些方法调用可以改变该序列的长度和内容。 可将字符串缓冲区安全地用于多个线程。可以在必要时对这些方法进行同步，因此任意特定实例上的所有操作就好像是以串行顺序发生的，该顺序与所涉及的每个线程进行的方法调用顺序一致。 StringBuffer 上的主要操作是 append 和 insert 方法，可重载这些方法，以接受任意类型的数据。每个方法都能有效地将给定的数据转换成字符串，然后将该字符串的字符追加或插入到字符串缓冲区中。 append 方法始终将这些字符添加到缓冲区的末端；而 insert 方法则在指定的点添加字符。 例如，如果 z 引用一个当前内容是“start”的字符串缓冲区对象，则此方法调用 z.append(“le”) 会使字符串缓冲区包含“startle”，而 z.insert(4, “le”) 将更改字符串缓冲区，使之包含“starlet”。 在大部分情况下 StringBuilder &gt; StringBufferjava.lang.StringBuilder java.lang.StringBuilder 一个可变的字符序列是5.0新增的。此类提供一个与 StringBuffer 兼容的 API，但不保证同步。该类被设计用作 StringBuffer 的一个简易替换，用在字符串缓冲区被单个线程使用的时候（这种情况很普遍）。如果可能，建议优先采用该类，因为在大多数实现中，它比 StringBuffer 要快。两者的方法基本相同。 八、数组 数组是有序数据的集合，数组中的每个元素具有相同的数组名，根据数组名和下标来唯一确定数组中的元素。使用时要先声明后创建 1、一位数组 1） 一维数组的声明 格式： 数据类型 数组名[ ] 或 数据类型 [ ]数组名 例： int a[] ; String s[] ; char []c ; 说明：定义数组，并不为数据元素分配内存，因此“[ ]”中不用指出数组中元素个数。 2 ）一维数组的创建与赋值 创建数组并不是定义数组，而是在数组定义后，为数组分配存储空间，同时对数组元素进行初始化 （1）用运算符new 分配内存再赋值 格式：数组名=new 数据类型[size] 例：int a[] ; a=new int[3] ; // 产生a[0] , a[1] , a[2] 三个元素 a[0]=8 ; a[1]=8 ; a[2]=8 ; 3）直接赋初值并定义数组的大小 例：int i[]={4,5,010,7,3,2,9} ; String names[]={“张三”,”李四”,”王五”,”宋七”} ; 4）测试数组长度（补充） 格式：数组名.length char c[]={‘a’,’b’,’c’,’北’,’京’} ; System.out.print(c.length) ;     // 输出5 2、多维数组 以二维数组为例 例：int d[][] ; // 定义一个二维数组 d=new int[3][4] ; // 分配3 行4 列数组内存 int a[][]=new int[2][] ; a[0]=new int[3] ; // 第二维第一个元素指向3 个整型数 a[1]=new int[5] ; // 第二维第一个元素指向5 个整型数 注意：Java 可以第二维不等长 int i[][]={ {0},{1,4,5},{75,6},{8,50,4,7}} ; //定义和赋初值在一起 下面数组定义正吴的判断 int a[][]=new int[10,10] //错 int a[10][10]=new int[][] //错 int a[][]=new int[10][10] //对 int []a[]=new int[10][10] //对 int [][]a=new int[10][10] //对 注意：java中二维数组分配空间是第二维可以为空，但是第一维必须分配内存。   <strong>最后以一个经典的helloworld代码结束本章的总结</strong> <strong>public class HelloWorldApp{</strong> <strong>public static void main(String[] args){</strong> <strong>System.out.println(“hello world!”);</strong> <strong>}</strong> <strong>}</strong> <strong> 本文来自：曹胜欢博客专栏：<a href="http://blog.csdn.net/csh624366188" target="_blank" rel="noopener">http://blog.csdn.net/csh624366188</a></strong></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/03/24/java-e5-bc-80-e5-8f-91-e8-80-85-e5-bf-85-e5-a4-87-e7-9a-84-e5-85-ad-e6-ac-be-e5-b7-a5-e5-85-b7/" data-toggle="tooltip" data-placement="top" title="Java开发者必备的六款工具">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#优秀文章收藏" title="优秀文章收藏">优秀文章收藏</a>
+                        
+                        <a class="tag" href="/tags/#JAVA" title="JAVA">JAVA</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

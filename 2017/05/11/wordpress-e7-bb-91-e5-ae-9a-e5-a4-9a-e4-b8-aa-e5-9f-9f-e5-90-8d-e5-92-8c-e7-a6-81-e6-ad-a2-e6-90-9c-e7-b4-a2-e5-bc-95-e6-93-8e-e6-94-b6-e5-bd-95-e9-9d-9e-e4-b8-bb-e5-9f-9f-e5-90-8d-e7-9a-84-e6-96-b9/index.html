@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        WordPress绑定多个域名和禁止搜索引擎收录非主域名的方法｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2017/05/11/wordpress-e7-bb-91-e5-ae-9a-e5-a4-9a-e4-b8-aa-e5-9f-9f-e5-90-8d-e5-92-8c-e7-a6-81-e6-ad-a2-e6-90-9c-e7-b4-a2-e5-bc-95-e6-93-8e-e6-94-b6-e5-bd-95-e9-9d-9e-e4-b8-bb-e5-9f-9f-e5-90-8d-e7-9a-84-e6-96-b9/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>WordPress绑定多个域名和禁止搜索引擎收录非主域名的方法</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2017-05-11
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#拓展知识" title="拓展知识">拓展知识</a>
+                        
+                        <a class="tag" href="/tags/#小知识" title="小知识">小知识</a>
+                        
+                        <a class="tag" href="/tags/#wordpress" title="wordpress">wordpress</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            WordPress绑定多个域名和禁止搜索引擎收录非主域名的方法
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="WordPress绑定多个域名"><a href="#WordPress绑定多个域名" class="headerlink" title="WordPress绑定多个域名"></a>WordPress绑定多个域名</h2><p>客户网站绑定了多个域名，部分域名都直接做<a href="http://yusi123.com/tag/301%e9%87%8d%e5%ae%9a%e5%90%91" target="_blank" rel="noopener">301重定向</a>跳转到主域名。但是客户的主域名在做Google AdWords推广的时候被封禁了，所以要求启用其他域名绑定来做Google推广。</p>
+<p>WordPress虽然默认只能绑定一个域名，如果想要把多个域名绑定到同一个站点而且不是以跳转的方式，这个问题不难解决，直接用代码在配置文件里添加一个域名，应该就可以。不过新版本的wordpress好像还是容易出问题，建议使用 WordPress 域名插件 <strong><a href="http://yusi123.com/tag/domain-theme" target="_blank" rel="noopener">Domain Theme</a></strong> （后台搜索即可）来实现。</p>
+<p><img src="http://images.yusi123.com/wp-content/uploads/2016/09/domaint.jpg" alt="domaint"></p>
+<p>WordPress绑定多个域名后，一般情况下都会做301跳转，把所有域名都指向主域名，这样利于增加网站权重和收录。</p>
+<p>例如：本站域名<a href="http://www.yusi123.com做了[301重定向](http://yusi123.com/tag/301%e9%87%8d%e5%ae%9a%e5%90%91)跳转到yusi123.com" target="_blank" rel="noopener">www.yusi123.com做了[301重定向](http://yusi123.com/tag/301%e9%87%8d%e5%ae%9a%e5%90%91)跳转到yusi123.com</a> 。其他域名也是一样的意思。</p>
+<p>但是如果没有做跳转，直接输入域名的时候还是可以访问网站的。</p>
+<p>理论上，<a href="http://yusi123.com/tag/301%e9%87%8d%e5%ae%9a%e5%90%91" target="_blank" rel="noopener">301重定向</a>是对搜索引擎友好的设置，而且搜索引擎也能识别301返回码，从而只收录首选的主域名。</p>
+<p>但是根据客户的要求，另外的一个做Google推广的域名却不能做301跳转，这个时候如果想要搜索引擎不认为你在作弊，最好当然是禁止搜索因为访问这个域名了。</p>
+<p>下面介绍下方法。</p>
+<h2 id="WordPress禁止搜索引擎收录非主域名"><a href="#WordPress禁止搜索引擎收录非主域名" class="headerlink" title="WordPress禁止搜索引擎收录非主域名"></a>WordPress禁止搜索引擎收录非主域名</h2><p>在网站根目录新建wrobots.txt文件，粘贴如下内容：</p>
+<ol>
+<li><code>User-Agent: *</code></li>
+<li><code>Disallow: /</code></li>
+</ol>
+<h3 id="①、Nginx平台"><a href="#①、Nginx平台" class="headerlink" title="①、Nginx平台"></a>①、Nginx平台</h3><p>编辑网站对应的nginx配置文件，比如：</p>
+<ol>
+<li>vim /usr/local/nginx/conf/vhost/yusi123.com.conf</li>
+</ol>
+<p>找到之前301跳转的配置，如：</p>
+<ol>
+<li><code>server {</code></li>
+<li><code>server_name yusi123.com;</code></li>
+<li><code>return 301 $scheme://yusi123.com$request_uri;</code></li>
+<li><code>}</code></li>
+</ol>
+<p>修改为：</p>
+<ol>
+<li><code>server</code></li>
+<li><code>{</code></li>
+<li><code>server_name yusi123.com;</code></li>
+<li><code>root  /home/wwwroot/yusi123.com;</code></li>
+<li><code>location / {</code></li>
+<li><code>rewrite (.*) http://yusi123.com$1 permanent;</code></li>
+<li><code>}</code></li>
+<li><code>location ~ (robots.txt) {</code></li>
+<li><code>rewrite /robots.txt /wrobots.txt last;</code></li>
+<li><code>}</code></li>
+<li><p>}</p>
+<p>执行如下命令，重载nginx即可生效：</p>
+</li>
+<li><p>/usr/local/nginx/sbin/nginx -s reload</p>
+</li>
+</ol>
+<h3 id="②、Apache平台"><a href="#②、Apache平台" class="headerlink" title="②、Apache平台"></a>②、Apache平台</h3><p>编辑 .htaccess 文件，将之前的301跳转规则替换成如下代码即可：</p>
+<ol>
+<li><code>RewriteEngine on</code></li>
+<li><code>RewriteCond %{HTTP_HOST} ^yusi123.com [NC]</code></li>
+<li><code>RewriteRule ^robots.txt wrobots.txt [L]</code></li>
+<li><code>RewriteCond %{REQUEST_FILENAME} !robots.txt</code></li>
+<li><code>RewriteRule ^(.*) http://yusi123.com/$1 [R=301,L]</code></li>
+</ol>
+<p>其中第4行是关键，表示仅在请求名称非robots.txt的时候，才会执行后面的301跳转，从而避免第三条规则被覆盖！</p>
+<h3 id="③、虚拟主机"><a href="#③、虚拟主机" class="headerlink" title="③、虚拟主机"></a>③、虚拟主机</h3><p>在已有的.htaccess文件的最前面加上如下三行代码即可：</p>
+<ol>
+<li><code>RewriteEngine on</code></li>
+<li><code>RewriteCond %{HTTP_HOST} ^yusi123.com [NC]</code></li>
+<li><code>RewriteRule ^robots.txt wrobots.txt [L]</code></li>
+</ol>
+<p>修改后的完整的htaccess的内容如下：</p>
+<ol>
+<li><code>RewriteEngine on</code></li>
+<li><code>RewriteCond %{HTTP_HOST} ^yusi123.com [NC]</code></li>
+<li><code>RewriteRule ^robots.txt wrobots.txt [L]</code></li>
+<li><code>#以下为已存在规则：</code></li>
+<li><code>&lt;IfModule mod_rewrite.c&gt;</code></li>
+<li><code>RewriteEngine on</code></li>
+<li><code>RewriteCond %{REQUEST_FILENAME} !-f</code></li>
+<li><code>RewriteCond %{REQUEST_FILENAME} !-d</code></li>
+<li><code>RewriteBase /</code></li>
+<li><code>RewriteRule . /index.php [L]</code></li>
+<li><code>&lt;/IfModule&gt;</code></li>
+</ol>
+<p>其他虚拟主机、建站程序，可以参考这个实例来修改即可，注意避免和主机已有的301发生规则冲突即可。</p>
+<p>最后，效果可以直接访问域名的robots.txt文件，或者使用百度站长平台的robots工具来检测。</p>
+<p>上面的方法测试可以用，但是<strong>还有一个更简单的方法</strong>，只要在网站的head部分加入如下代码即可：</p>
+<ol>
+<li><code>&lt;?php</code></li>
+<li><code>if($_SERVER[&#39;HTTP_HOST&#39;] == &#39;禁止收录域名1&#39;)</code></li>
+<li><code>if($_SERVER[&#39;HTTP_HOST&#39;] == &#39;禁止收录域名2&#39;){</code></li>
+<li><code>?&gt;</code></li>
+<li><code>&lt;meta name=&quot;robots&quot; content=&quot;noindex,nofollow&quot; /&gt;</code></li>
+<li><code>&lt;?php } ?&gt;</code></li>
+</ol>
+<p>另外补充一下相关<strong>meta robots</strong>的说明，可以自行选用：</p>
+<ol>
+<li><code>&lt;META NAME=&quot;ROBOTS&quot; CONTENT=&quot;INDEX,FOLLOW&quot; /&gt; 可以抓取本页，而且可以顺着本页继续索引别的链接</code></li>
+<li><code>&lt;META NAME=&quot;ROBOTS&quot; CONTENT=&quot;NOINDEX,FOLLOW&quot; /&gt; 不许抓取本页，但是可以顺着本页抓取索引别的链接</code></li>
+<li><code>&lt;META NAME=&quot;ROBOTS&quot; CONTENT=&quot;INDEX,NOFOLLOW&quot; /&gt; 可以抓取本页，但是不许顺着本页抓取索引别的链接</code></li>
+<li><p><code>&lt;META NAME=&quot;ROBOTS&quot; CONTENT=&quot;NOINDEX,NOFOLLOW&quot; /&gt; 不许抓取本页，也不许顺着本页抓取索引别的链接。</code></p>
+<p>特别说明：用这个方法需要取消301重定向功能，否则不会有meta申明的输出！</p>
+</li>
+</ol>
+<h3 id="所以，将robots和META这2种方法结合一下，新站架设前可以这样设置："><a href="#所以，将robots和META这2种方法结合一下，新站架设前可以这样设置：" class="headerlink" title="所以，将robots和META这2种方法结合一下，新站架设前可以这样设置："></a>所以，将robots和META这2种方法结合一下，新站架设前可以这样设置：</h3><p>无须设置301重定向，先在nginx配置文件中，将监听<a href="http://www.yusi123.com(非首选域名)的配置修改如下：" target="_blank" rel="noopener">www.yusi123.com(非首选域名)的配置修改如下：</a></p>
+<ol>
+<li><code>server</code></li>
+<li><code>{</code></li>
+<li><code>listen 80;</code></li>
+<li><code>server_name yusi123.com;</code></li>
+<li><code>index index.html index.htm index.php default.html default.htm default.php;</code></li>
+<li><code>root  /home/wwwroot/yusi123.com;</code></li>
+<li><code>#以下是robots的重写规则</code></li>
+<li><code>location ~ (robots.txt) {</code></li>
+<li><code>rewrite /robots.txt /wrobots.txt last;</code></li>
+<li><code>}</code></li>
+<li><code>#以下其他需要的规则，和首选域名保持一致</code></li>
+<li><code>*******</code></li>
+<li><code>}</code></li>
+</ol>
+<p>然后，在header.php里面新增如下代码：</p>
+<ol>
+<li><code>&lt;?php if($_SERVER[&#39;HTTP_HOST&#39;] == &#39;www.yusi123.com&#39;) { ?&gt;</code></li>
+<li><code>&lt;meta name=&quot;robots&quot; content=&quot;noindex,nofollow&quot; /&gt;</code></li>
+<li><code>&lt;?php } ?&gt;</code></li>
+</ol>
+<p>如此，就做好了WordPress绑定多个域名和禁止搜索引擎收录非主域名的方法的设置！</p>
+<hr>
+<p>内容出处： <a href="http://yusi123.com/3808.html" target="_blank" rel="noopener">WordPress绑定多个域名和禁止搜索引擎收录非主域名的方法</a></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/05/11/photoshop-e5-8e-bb-e9-99-a4-e6-b0-b4-e5-8d-b0-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e6-b3-95/" data-toggle="tooltip" data-placement="top" title="photoshop去除水印的几种方法">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/05/02/java-e4-b8-ad-e5-b8-b8-e7-94-a8-e7-9a-84-e4-bb-a3-e7-a0-81-e6-b1-87-e6-80-bb/" data-toggle="tooltip" data-placement="top" title="Java中常用的代码汇总">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#WordPress绑定多个域名"><span class="toc-text">WordPress绑定多个域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WordPress禁止搜索引擎收录非主域名"><span class="toc-text">WordPress禁止搜索引擎收录非主域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#①、Nginx平台"><span class="toc-text">①、Nginx平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#②、Apache平台"><span class="toc-text">②、Apache平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#③、虚拟主机"><span class="toc-text">③、虚拟主机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#所以，将robots和META这2种方法结合一下，新站架设前可以这样设置："><span class="toc-text">所以，将robots和META这2种方法结合一下，新站架设前可以这样设置：</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#拓展知识" title="拓展知识">拓展知识</a>
+                        
+                        <a class="tag" href="/tags/#小知识" title="小知识">小知识</a>
+                        
+                        <a class="tag" href="/tags/#wordpress" title="wordpress">wordpress</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

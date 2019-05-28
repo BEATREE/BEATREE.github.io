@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        javascript第一天学习｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2017/04/15/javascript-e7-ac-ac-e4-b8-80-e5-a4-a9-e5-ad-a6-e4-b9-a0/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>javascript第一天学习</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2017-04-15
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            javascript第一天学习
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p><strong>JavaScript 是世界上最流行的编程语言。</strong></p>
+<p><strong>这门语言可用于 HTML 和 web，更可广泛用于服务器、PC、笔记本电脑、平板电脑和智能手机等设备。</strong></p>
+<hr>
+<h2 id="JavaScript-是脚本语言"><a href="#JavaScript-是脚本语言" class="headerlink" title="JavaScript 是脚本语言"></a>JavaScript 是脚本语言</h2><p>JavaScript 是一种轻量级的编程语言。</p>
+<p>JavaScript 是可插入 HTML 页面的编程代码。</p>
+<p>JavaScript 插入 HTML 页面后，可由所有的现代浏览器执行。</p>
+<hr>
+<p>第一次学习javascript，我学习呢，是因为我在制作页面时，想要完成和用户的交互，结果发现仅靠html是无法实现的，需要javascript来加入来实现这个功能。于是，我在网上找的课程来学习，今天呢，就先来写我第一天学习的心得和收获吧！</p>
+<hr>
+<h2 id="①-JavaScript：写入-HTML-输出"><a href="#①-JavaScript：写入-HTML-输出" class="headerlink" title="①  JavaScript：写入 HTML 输出"></a>①  JavaScript：写入 HTML 输出</h2><p><code>1</code></p>
+<p><code>2</code></p>
+<p><code>3</code></p>
+<p><code>4</code></p>
+<p><code>5</code></p>
+<p><code>6</code></p>
+<p><code>7</code></p>
+<p><code>8</code></p>
+<p><code>9</code></p>
+<p><code>10</code></p>
+<p><code>11</code></p>
+<p><code>12</code></p>
+<p><code>13</code></p>
+<p><code>14</code></p>
+<p><code>15</code></p>
+<p><code>16</code></p>
+<p><code>&lt;!DOCTYPE html&gt;</code> <code>&lt;html&gt;</code> <code>&lt;body&gt;</code> <code>&lt;p&gt;</code> <code>JavaScript 能够直接写入 HTML 输出流中：</code> <code>&lt;/p&gt;</code> <code>&lt;script&gt;</code> <code>document.write(&quot;&lt;h1&gt;This is a heading&lt;/h1&gt;&quot;);</code> <code>document.write(&quot;&lt;p&gt;This is a paragraph.&lt;/p&gt;&quot;);</code> <code>&lt;/script&gt;</code> <code>&lt;p&gt;</code> <code>您只能在 HTML 输出流中使用 &lt;strong&gt;document.write&lt;/strong&gt;。</code> <code>如果您在文档已加载后使用它（比如在函数中），会覆盖整个文档。</code> <code>&lt;/p&gt;</code> <code>&lt;/body&gt;</code> <code>&lt;/html&gt;</code></p>
+<p>提示：您只能在 HTML 输出中使用 document.write。如果您在文档加载后使用该方法，会覆盖整个文档。</p>
+<p>  其中的 “document.write(“”)”表示输出什么什么，8、9行代码则是表示输出：This is a heading   的信息，同理推出九行的内容 我们可以看到它写在script标签之中，也可以输出想要的内容，而且html中的标签在其中也可以使用，例如：</p><h1> 、<p> 等等。    </p>
+<hr>
+<h2 id="②-JavaScript：对事件作出反应"><a href="#②-JavaScript：对事件作出反应" class="headerlink" title="② JavaScript：对事件作出反应"></a>② JavaScript：对事件作出反应</h2><p><code>1</code></p>
+<p><code>2</code></p>
+<p><code>3</code></p>
+<p><code>4</code></p>
+<p><code>5</code></p>
+<p><code>6</code></p>
+<p><code>7</code></p>
+<p><code>8</code></p>
+<p><code>9</code></p>
+<p><code>10</code></p>
+<p><code>11</code></p>
+<p><code>&lt;!DOCTYPE html&gt;</code> <code>&lt;html&gt;</code> <code>&lt;body&gt;</code> <code>&lt;h1&gt;我的第一段 JavaScript&lt;/h1&gt;</code></p>
+<p><code>&lt;p&gt;</code> <code>JavaScript 能够对事件作出反应。比如对按钮的点击：</code> <code>&lt;/p&gt;</code></p>
+<p><code>&lt;button type=&quot;button&quot; onclick=&quot;alert(&#39;Welcome!&#39;)&quot;&gt;点击这里&lt;/button&gt;</code> <code>&lt;/body&gt;</code> <code>&lt;/html&gt;</code></p>
+<p>ps：alert() 函数在 JavaScript 中并不常用，但它对于代码测试非常方便。</p>
+<p>onclick 事件只是最近应该学习的众多事件之一。</p>
+<p>这串代码，其中并未出现 <script>标签，那么它的交互作用在哪里体现的呢？在 “ onclick=”alert(‘Welcome!’)” 。当点击设置 的按钮时，会触动 “onclick” 则，它其中所写的代码，也会相应的相应，浏览器会弹出提示框，具体效果，大家可以复制代码来进行实验一下。ie浏览器中如果版本低或者浏览器本身不支持的话，效果不会实现的。</p>
+<hr>
+<h2 id="③-JavaScript：改变-HTML-内容"><a href="#③-JavaScript：改变-HTML-内容" class="headerlink" title="③ JavaScript：改变 HTML 内容"></a>③ JavaScript：改变 HTML 内容</h2><p>使用 JavaScript 来处理 HTML 内容是非常强大的功能。</p>
+<p><code>1</code></p>
+<p><code>2</code></p>
+<p><code>3</code></p>
+<p><code>4</code></p>
+<p><code>5</code></p>
+<p><code>6</code></p>
+<p><code>7</code></p>
+<p><code>8</code></p>
+<p><code>9</code></p>
+<p><code>10</code></p>
+<p><code>11</code></p>
+<p><code>12</code></p>
+<p><code>13</code></p>
+<p><code>14</code></p>
+<p><code>15</code></p>
+<p><code>16</code></p>
+<p><code>17</code></p>
+<p><code>18</code></p>
+<p><code>19</code></p>
+<p><code>&lt;!DOCTYPE html&gt;</code> <code>&lt;html&gt;</code> <code>&lt;body&gt;</code></p>
+<p><code>&lt;h1&gt;我的第一段 JavaScript&lt;/h1&gt;</code></p>
+<p><code>&lt;p id=&quot;demo&quot;&gt;</code> <code>JavaScript 能改变 HTML 元素的内容。</code> <code>&lt;/p&gt;</code></p>
+<p><code>&lt;script&gt;</code> <code>function myFunction()</code> <code>{</code> <code>x=document.getElementById(&quot;demo&quot;); // 找到元素</code> <code>x.innerHTML=&quot;Hello JavaScript!&quot;; // 改变内容</code> <code>}</code> <code>&lt;/script&gt;</code></p>
+<p><code>&lt;button type=&quot;button&quot; onclick=&quot;myFunction()&quot;&gt;点击这里&lt;/button&gt;</code> <code>&lt;/body&gt;</code> <code>&lt;/html&gt;</code></p>
+<p>我们会经常看到 <strong>document.getElementByID(“<em>some id</em>“)</strong>。这个方法是 HTML DOM 中定义的。</p>
+<p>DOM（文档对象模型）是用以访问 HTML 元素的正式 W3C 标准。</p>
+<p>其中<p>标签中，定义了<strong>id</strong>属性 ; 而且button标签中呢，也定义了<onclick>属性，内容为“my Function（）”  ；<script>标签中的内容则是对onclick的一个执行语句，即，onclick代表执行它下边所写的语句，当执行时：使用<strong>document.getElementByID(“<em>some id</em>“)</strong>方法找到id相同的内容，下边的语句则是对其更改，使用了<strong>innerHTML</strong>方法。</p>
+<p>注意：一定要注意id属性，因为只有id相对应，才可以寻找到相对应的内容，并对内容进行修改。</p>
+<p>转载请注明：转载自：<a href="http://www.teenshare.club">TeenShare 梯云分享</a></p>
+</script></p></h1>
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/04/22/java-e5-a4-9a-e7-ba-bf-e7-a8-8b-e5-90-8c-e6-ad-a5-e5-92-8c-e5-bc-82-e6-ad-a5-e8-af-a6-e8-a7-a3/" data-toggle="tooltip" data-placement="top" title="Java 多线程同步和异步详解">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/04/15/javascript-e7-ae-80-e4-bb-8b/" data-toggle="tooltip" data-placement="top" title="JavaScript简介">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-是脚本语言"><span class="toc-text">JavaScript 是脚本语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#①-JavaScript：写入-HTML-输出"><span class="toc-text">①  JavaScript：写入 HTML 输出</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text"> 、 等等。    
+
+② JavaScript：对事件作出反应1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;body&gt; &lt;h1&gt;我的第一段 JavaScript&lt;/h1&gt;
+&lt;p&gt; JavaScript 能够对事件作出反应。比如对按钮的点击： &lt;/p&gt;
+&lt;button type=&quot;button&quot; onclick=&quot;alert(&#39;Welcome!&#39;)&quot;&gt;点击这里&lt;/button&gt; &lt;/body&gt; &lt;/html&gt;
+ps：alert() 函数在 JavaScript 中并不常用，但它对于代码测试非常方便。
+onclick 事件只是最近应该学习的众多事件之一。
+这串代码，其中并未出现 标签，那么它的交互作用在哪里体现的呢？在 “ onclick=”alert(‘Welcome!’)” 。当点击设置 的按钮时，会触动 “onclick” 则，它其中所写的代码，也会相应的相应，浏览器会弹出提示框，具体效果，大家可以复制代码来进行实验一下。ie浏览器中如果版本低或者浏览器本身不支持的话，效果不会实现的。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;③-JavaScript：改变-HTML-内容&quot;&gt;&lt;a href=&quot;#③-JavaScript：改变-HTML-内容&quot; class=&quot;headerlink&quot; title=&quot;③ JavaScript：改变 HTML 内容&quot;&gt;&lt;/a&gt;③ JavaScript：改变 HTML 内容&lt;/h2&gt;&lt;p&gt;使用 JavaScript 来处理 HTML 内容是非常强大的功能。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;2&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;3&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;4&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;5&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;6&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;7&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;8&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;9&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;10&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;11&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;12&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;13&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;14&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;15&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;16&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;17&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;18&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;19&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;h1&amp;gt;我的第一段 JavaScript&amp;lt;/h1&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;p id=&amp;quot;demo&amp;quot;&amp;gt;&lt;/code&gt; &lt;code&gt;JavaScript 能改变 HTML 元素的内容。&lt;/code&gt; &lt;code&gt;&amp;lt;/p&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; &lt;code&gt;function myFunction()&lt;/code&gt; &lt;code&gt;{&lt;/code&gt; &lt;code&gt;x=document.getElementById(&amp;quot;demo&amp;quot;); // 找到元素&lt;/code&gt; &lt;code&gt;x.innerHTML=&amp;quot;Hello JavaScript!&amp;quot;; // 改变内容&lt;/code&gt; &lt;code&gt;}&lt;/code&gt; &lt;code&gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;button type=&amp;quot;button&amp;quot; onclick=&amp;quot;myFunction()&amp;quot;&amp;gt;点击这里&amp;lt;/button&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;/html&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;我们会经常看到 &lt;strong&gt;document.getElementByID(“&lt;em&gt;some id&lt;/em&gt;“)&lt;/strong&gt;。这个方法是 HTML DOM 中定义的。&lt;/p&gt;
+&lt;p&gt;DOM（文档对象模型）是用以访问 HTML 元素的正式 W3C 标准。&lt;/p&gt;
+&lt;p&gt;其中&lt;p&gt;标签中，定义了&lt;strong&gt;id&lt;/strong&gt;属性 ; 而且button标签中呢，也定义了&lt;onclick&gt;属性，内容为“my Function（）”  ；&lt;script&gt;标签中的内容则是对onclick的一个执行语句，即，onclick代表执行它下边所写的语句，当执行时：使用&lt;strong&gt;document.getElementByID(“&lt;em&gt;some id&lt;/em&gt;“)&lt;/strong&gt;方法找到id相同的内容，下边的语句则是对其更改，使用了&lt;strong&gt;innerHTML&lt;/strong&gt;方法。&lt;/p&gt;
+&lt;p&gt;注意：一定要注意id属性，因为只有id相对应，才可以寻找到相对应的内容，并对内容进行修改。&lt;/p&gt;
+&lt;p&gt;转载请注明：转载自：&lt;a href=&quot;http://www.teenshare.club&quot;&gt;TeenShare 梯云分享&lt;/a&gt;&lt;/p&gt;
+</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#②-JavaScript：对事件作出反应"><span class="toc-text">② JavaScript：对事件作出反应</span></a></li></ol>
+                </li></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

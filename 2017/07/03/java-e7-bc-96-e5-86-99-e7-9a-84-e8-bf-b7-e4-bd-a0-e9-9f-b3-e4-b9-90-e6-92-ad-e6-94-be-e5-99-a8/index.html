@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        JAVA编写的迷你音乐播放器｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2017/07/03/java-e7-bc-96-e5-86-99-e7-9a-84-e8-bf-b7-e4-bd-a0-e9-9f-b3-e4-b9-90-e6-92-ad-e6-94-be-e5-99-a8/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>JAVA编写的迷你音乐播放器</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2017-07-03
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#学习心得" title="学习心得">学习心得</a>
+                        
+                        <a class="tag" href="/tags/#JAVA" title="JAVA">JAVA</a>
+                        
+                        <a class="tag" href="/tags/#学校题目作业" title="学校题目作业">学校题目作业</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            JAVA编写的迷你音乐播放器
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p>[v_notice]有人说JAVA可以写音乐播放器么？我想说，JAVA可以写音乐播放器，相对于其他一些来说，可能会有些不爽，但是他还是可以实现的！[/v_notice]</p>
+<p>今天，我就上传一下自己在闲暇时间写的一个简易的音乐播放器，好的，有兴趣的呢，可以复制代码来看一下效果，如果其中有一些代码出现了问题呢，可以评论我，我一定会在第一时间回复哦！</p>
+<p>需要的外包支持：</p>
+<pre><code>[mp3spi1.9.4.jar](http://pan.baidu.com/s/1qY39y6S)  、[ jmf.jar](http://pan.baidu.com/s/1eSd50VS)  、[ jgoodies-forms-1.8.0-sources.jar](http://pan.baidu.com/s/1cGTmMU)  、  [jaudiotagger-2.0.3.jar](http://pan.baidu.com/s/1jHCYRTO)  、[jl1.0.jar](http://pan.baidu.com/s/1pL8vjg3)   （点击即可下载）
+</code></pre><p>外包下载后只需要加到   “引用的库” 中 即可 。</p>
+<p>package player;</p>
+<p>import java.awt.Color;<br>import java.awt.Desktop;<br>import java.awt.Dimension;<br>import java.awt.FileDialog;<br>import java.awt.Label;<br>import java.awt.List;<br>import java.awt.Toolkit;<br>import java.awt.event.ActionEvent;<br>import java.awt.event.ActionListener;<br>import java.awt.event.MouseAdapter;<br>import java.awt.event.MouseEvent;<br>import java.io.File;<br>import java.io.FileInputStream;<br>import java.io.FileNotFoundException;<br>import java.io.FilenameFilter;<br>import java.io.IOException;<br>import java.net.MalformedURLException;<br>import java.net.URI;<br>import java.net.URISyntaxException;<br>import javax.sound.sampled.AudioFormat;<br>import javax.sound.sampled.AudioInputStream;<br>import javax.sound.sampled.AudioSystem;<br>import javax.sound.sampled.DataLine;<br>import javax.sound.sampled.SourceDataLine;<br>import javax.swing.ButtonGroup;<br>import javax.swing.ImageIcon;<br>import javax.swing.JButton;<br>import javax.swing.JFrame;<br>import javax.swing.JLabel;<br>import javax.swing.JMenuItem;<br>import javax.swing.JOptionPane;<br>import javax.swing.JPanel;<br>import javax.swing.JPopupMenu;<br>import javax.swing.JProgressBar;<br>import javax.swing.JRadioButton;<br>import javax.swing.JTextArea;<br>import javax.swing.Timer;<br>import javax.swing.border.EmptyBorder;<br>import javazoom.jl.decoder.Bitstream;<br>import javazoom.jl.decoder.BitstreamException;<br>import javazoom.jl.decoder.Header;</p>
+<p>public class Player extends JFrame{</p>
+<pre><code>private JButton backplay,frontplay, play,stop,openMusic,online;
+
+private Label MusicName;
+private JProgressBar timeJProgressBar;
+private JLabel Start;
+private JLabel Endtime ;
+private JPanel contentPane;
+private JTextArea textArea;
+private JPopupMenu popupMenu;
+private JMenuItem items\[\];
+
+private JRadioButton selfPlay,liebiao,suiji;
+private ButtonGroup radiobutton;
+
+
+
+String filepath;// 播放文件目录
+String filename;// 播放文件名称
+
+AudioInputStream audioInputStream;// 文件流
+AudioFormat audioFormat;// 文件格式
+SourceDataLine sourceDataLine;// 输出设备
+
+List list;// 文件列表
+JLabel labelfilepath;//播放目录显示标签
+
+boolean isStop = true;// 控制播放线程
+boolean hasStop = true;// 播放线程状态
+int n;//用于切换上一首下一首
+int max;//获取歌曲列表的最大下标
+int a=0;
+
+
+public Player(){
+
+    Color color=new Color(187,255,255);
+
+
+    //设置主面板样式
+    setIconImage(Toolkit.getDefaultToolkit().getImage(Player.class.getResource(&quot;/images/titleico.png&quot;)));
+    setTitle(&quot;\\u8FF7\\u4F60\\u97F3\\u4E50\\u64AD\\u653E\\u5668&quot;);
+
+    Toolkit toolkit=Toolkit.getDefaultToolkit();
+    Dimension dimension=toolkit.getScreenSize();
+    setDefaultCloseOperation(JFrame.EXIT\_ON\_CLOSE);
+    setBounds((dimension.width-660)/2, (dimension.height-479)/2, 660, 479);
+    this.setResizable(false);
+
+    //添加组件，并定位
+    //添加jpanel
+    contentPane = new JPanel();
+    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+    contentPane.setBackground(color);
+    setContentPane(contentPane);
+    contentPane.setLayout(null);
+
+    //歌曲名称
+    MusicName=new Label(&quot;MusicName&quot;);
+
+    MusicName.setBounds(14, 23, 500, 18);
+    contentPane.add(MusicName);
+
+
+    //存储路径
+    labelfilepath=new JLabel();
+    labelfilepath.setBounds(310, 68, 500, 18);
+    contentPane.add(labelfilepath);
+
+
+    //播放进度
+    timeJProgressBar=new JProgressBar();
+
+    timeJProgressBar.setBounds(24, 54, 263, 7);
+    contentPane.add(timeJProgressBar);
+
+
+    //播放时间
+    Start = new JLabel(&quot;00:00&quot;);
+    Start.setBounds(24, 62, 46, 18);
+    contentPane.add(Start);
+
+    Endtime = new JLabel(&quot;00:00&quot;);
+    Endtime.setBounds(260, 62, 46, 18);
+    contentPane.add(Endtime);
+
+    //按钮组件
+    backplay = new JButton(&quot;&quot;);
+    backplay.setIcon(new ImageIcon(Player.class.getResource(&quot;/images/back.png&quot;)));
+    backplay.setBounds(24, 93, 38, 30);
+    contentPane.add(backplay);
+
+
+    play = new JButton(&quot;&quot;);
+    play.setIcon(new ImageIcon(Player.class.getResource(&quot;/images/play.png&quot;)));
+    play.setBounds(76, 93, 38, 30);
+    contentPane.add(play);
+
+    stop=new JButton(&quot;&quot;);
+    stop.setIcon(new ImageIcon(Player.class.getResource(&quot;/images/app.png&quot;)));
+    stop.setBounds(128, 93, 38, 30);
+    contentPane.add(stop);
+
+    frontplay = new JButton(&quot;&quot;);
+    frontplay.setIcon(new ImageIcon(Player.class.getResource(&quot;/images/front.png&quot;)));
+    frontplay.setBounds(180, 93, 38, 30);
+    contentPane.add(frontplay);
+
+    //创建列表
+    list = new List(10);
+    list.setBounds(24, 163, 270, 250);
+    contentPane.add(list);
+
+
+
+    //播放模式
+    selfPlay=new JRadioButton(&quot;单曲循环&quot;, true);
+    selfPlay.setBounds(380, 335, 100, 20);
+    selfPlay.setBackground(color);
+    contentPane.add(selfPlay);
+
+    liebiao=new JRadioButton(&quot;列表循环&quot;, false);
+    liebiao.setBounds(490, 335, 100, 20);
+    liebiao.setBackground(color);
+    contentPane.add(liebiao);
+
+
+    radiobutton=new ButtonGroup();
+    radiobutton.add(liebiao);
+    radiobutton.add(selfPlay);
+
+
+
+    //弹出式菜单
+    popupMenu=new JPopupMenu();
+    items=new JMenuItem\[4\];
+    items\[0\]=new JMenuItem(&quot;添加歌曲&quot;);
+    items\[1\]=new JMenuItem(&quot;播放歌曲&quot;);
+    items\[2\]=new JMenuItem(&quot;删除选中歌曲&quot;);
+    items\[3\]=new JMenuItem(&quot;清空列表&quot;);
+    for (int i = 0; i &lt; items.length; i++) { popupMenu.add(items\[i\]); items\[i\].addActionListener(new popupMenuListener()); } textArea=new JTextArea(); textArea.setBounds(308, 85, 300, 18); textArea.setBackground(color); textArea.setEditable(false); contentPane.add(textArea); openMusic=new JButton(&quot;添加音乐&quot;); openMusic.setBounds(350, 370, 100, 40); contentPane.add(openMusic); online=new JButton(&quot;在线听歌&quot;); online.setBounds(480, 370, 100, 40); contentPane.add(online); backplay.addMouseListener(new MouseAdapter() { public void mouseClicked(MouseEvent e) { // 点击时处理 if (e.getClickCount() == 1) { // 播放上一首 if (filename==null) { JOptionPane.showMessageDialog(null, &quot;未选择歌曲！&quot;); } else { if (n&gt;0) {
+                        filename = list.getItem(n-1);
+                        n--;       //
+                        play();timeBar();
+                    } else {
+                        max=list.getItemCount();
+                        filename = list.getItem(max-1);
+                        n=max-1;
+                        play();timeBar();
+                    }
+                }
+
+            }
+        }
+
+    });
+
+
+    play.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            // 点击时处理
+            if (e.getClickCount() == 1) {
+                // 播放选中的文件
+                filename = list.getSelectedItem();
+
+                if (filename==null) {
+                    JOptionPane.showMessageDialog(null, &quot;未选择歌曲！&quot;);
+                } else {
+
+                    play();timeBar();
+                }
+            }
+
+        }
+    });
+
+
+    stop.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            // 点击时处理
+            if (e.getClickCount() == 1) {
+                // 停止播放
+                isStop=true;
+                hasStop=true;
+                textArea.setText(&quot;已停止播放      &quot;+filename);
+
+
+            }
+        }
+    });
+
+
+
+    frontplay.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            // 点击时处理
+
+            if (e.getClickCount() == 1) {
+                // 播放下一首
+                if (filename==null) {
+                    JOptionPane.showMessageDialog(null, &quot;未选择歌曲！&quot;);
+                } else {
+
+                    max=list.getItemCount();
+                    if (n==max-1) {
+                        filename=list.getItem(0);
+                        n=0;
+                        play();timeBar();
+                    } else {
+                        filename = list.getItem(n+1);
+                        n++;
+                        play();timeBar();
+                    }
+                }
+
+            }
+        }
+
+    });
+
+
+
+    list.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            // 双击时处理
+            if (e.getClickCount() == 2) {
+                // 播放选中的文件
+                filename = list.getSelectedItem();
+
+                if (filename==null) {
+                    JOptionPane.showMessageDialog(null, &quot;未选中，无法播放&quot;);
+                    textArea.setText(&quot;未选中，无法播放&quot;);
+                }else{
+                    n=list.getSelectedIndex();//获取
+                play();timeBar();
+
+                }
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent arg0) {
+            checkForTriggerEvent(arg0);
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent arg0) {
+            checkForTriggerEvent(arg0);
+        }
+
+        public void checkForTriggerEvent(MouseEvent event){           //方法学于书本  P516
+            if(event.isPopupTrigger()){
+                popupMenu.show(event.getComponent(), event.getX(), event.getY());
+            }
+
+        }
+    });
+
+
+    openMusic.addActionListener(new ActionListener() {
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            open();
+
+        }
+    });
+
+
+    online.addMouseListener(new MouseAdapter() {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            try {
+                URI website=new URI(&quot;http://music.baidu.com/top&quot;);
+                Desktop desktop=Desktop.getDesktop();
+                if (Desktop.isDesktopSupported()&amp;&amp;desktop.isSupported(Desktop.Action.BROWSE)) {
+                    desktop.browse(website);
+                }
+            } catch (MalformedURLException e1) {
+                // TODO 自动生成的 catch 块
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                // TODO 自动生成的 catch 块
+                e1.printStackTrace();
+            } catch (URISyntaxException e1) {
+                // TODO 自动生成的 catch 块
+                e1.printStackTrace();
+            }
+
+        }
+
+    });
+
+    this.setVisible(true);
+}
+   private void open() {
+
+        FileDialog dialog = new FileDialog(this, &quot;Open&quot;, 0);
+
+        dialog.setFilenameFilter(new FilenameFilter() {
+
+            @Override
+            public boolean accept(File dir, String name) {
+
+                return name.endsWith(&quot;.mp3&quot;)||name.endsWith(&quot;.mid&quot;)||name.endsWith(&quot;.wav&quot;);
+            }
+        });
+        dialog.setVisible(true);
+        filepath = dialog.getDirectory();
+        if (filepath != null) {
+
+            labelfilepath.setText(&quot;目录：&quot; + filepath);
+
+            // 显示文件列表
+            list.removeAll();
+            File filedir = new File(filepath);
+            File\[\] filelist = filedir.listFiles();
+            for (File file : filelist) {
+                String filename = file.getName().toLowerCase();
+                if (filename.endsWith(&quot;.mp3&quot;) || filename.endsWith(&quot;.wav&quot;)) {
+                    list.add(filename);
+                }
+            }
+        }
+    }
+
+
+   //获取时间
+   public static String getAudioPlayTime(String filePath){
+
+        FileInputStream stream;
+        int time = 0;
+        try {
+            stream = new FileInputStream(new File(filePath));
+            int b = stream.available();
+            Bitstream bt = new Bitstream(stream);
+            Header h = bt.readFrame();
+            time = (int) h.total_ms(b);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (BitstreamException e) {
+            e.printStackTrace();
+        }
+        int i = time/1000; //s
+        int m = i/60;
+        int s = i%60;
+</code></pre><p>//            System.out.println(“mp3时长为:”+i+”s”);<br>            String longtime=new String(m+”:”+s);<br>            return longtime;</p>
+<pre><code> }
+//自定义进度条的方法
+private void timeBar(){
+    programThread gramthread=new programThread();
+    gramthread.start();
+
+
+}
+
+//定义播放的方法
+private void play() {
+     try {
+         isStop = true;// 停止播放线程
+         // 等待播放线程停止
+
+
+
+         textArea.setEditable(true);
+         textArea.setText(&quot;正在播放：&quot; + filename+&quot;\\n&quot;);//状态栏显示播放情况
+         textArea.setEditable(false);
+
+
+         while (!hasStop) {
+
+             try {
+                 Thread.sleep(10);
+             } catch (Exception e) {
+             }
+         }
+                     //换行操作
+         File file = new File(filepath + filename);
+         MusicName.setText(&quot;歌曲名称：&quot; + filename);
+
+         // 取得文件输入流
+         audioInputStream = AudioSystem.getAudioInputStream(file);
+         audioFormat = audioInputStream.getFormat();
+
+         //获取歌曲时长
+         String time= getAudioPlayTime(filepath+filename);
+         Endtime.setText(time);
+
+
+         // 转换mp3文件编码
+         if (audioFormat.getEncoding() != AudioFormat.Encoding.PCM_SIGNED) {
+             audioFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,
+                     audioFormat.getSampleRate(), 16, audioFormat
+                             .getChannels(), audioFormat.getChannels() * 2,
+                     audioFormat.getSampleRate(), false);
+             audioInputStream = AudioSystem.getAudioInputStream(audioFormat,
+                     audioInputStream);
+         }
+
+
+         // 打开输出设备
+         DataLine.Info dataLineInfo = new DataLine.Info(
+                 SourceDataLine.class, audioFormat,
+                 AudioSystem.NOT_SPECIFIED);
+         sourceDataLine = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
+
+         sourceDataLine.open(audioFormat);
+         sourceDataLine.start();
+
+
+
+         // 创建独立线程进行播放
+         isStop = false;
+         Thread playThread = new Thread(new PlayThread());
+</code></pre><p>//                programThread gramthread=new programThread();<br>//                gramthread.start();<br>                playThread.start();</p>
+<pre><code>     } catch (Exception e) {
+         e.printStackTrace();
+     }
+
+ }
+
+
+class PlayThread extends Thread {
+     byte tempBuffer\[\] = new byte\[320\];
+
+     public void run() {
+         try {
+             int cnt;
+             hasStop = false;
+
+             // 读取数据到缓存数据
+             while ((cnt = audioInputStream.read(tempBuffer, 0,
+                     tempBuffer.length)) != -1) {
+                 if (isStop){
+                     break;
+                 }
+                 if (cnt &gt; 0) {
+                     // 写入缓存数据
+                     sourceDataLine.write(tempBuffer, 0, cnt);
+                 }
+             }
+             // Block等待临时数据被输出为空
+             sourceDataLine.drain();
+             sourceDataLine.close();
+             hasStop = true;
+         } catch (Exception e) {
+             e.printStackTrace();
+             System.exit(0);
+         }
+     }
+ }
+class xunhuan extends Thread {
+
+ @Override
+ public void run() {
+
+     if (a==0) {
+
+         if (selfPlay.isSelected()) {
+             filename = list.getItem(n);
+             play();
+         }
+         if (liebiao.isSelected()) {
+             max=list.getItemCount();
+             if (n==max-1) {
+                 filename=list.getItem(0);
+                 n=0;
+                 play();timeBar();
+             } else {
+                 filename = list.getItem(n+1);
+                 n++;
+                 play();
+             }
+         }
+
+     }
+     super.run();
+ }
+
+}
+
+public static int programTime(String filePath){
+
+     FileInputStream stream;
+     int time = 0;
+     try {
+         stream = new FileInputStream(new File(filePath));
+         int b = stream.available();
+         Bitstream bt = new Bitstream(stream);
+         Header h = bt.readFrame();
+         time = (int) h.total_ms(b);
+     } catch (FileNotFoundException e) {
+         e.printStackTrace();
+     } catch (IOException e) {
+         e.printStackTrace();
+     } catch (BitstreamException e) {
+         e.printStackTrace();
+     }
+     int i = time/1000; //s
+     return i;
+
+ }
+
+//进度条，还是不流畅，一步一步的走
+</code></pre><p> class programThread extends Thread{</p>
+<pre><code>     Timer timer=new Timer(1000, new ActionListener() {
+
+             @Override
+                 public void actionPerformed(ActionEvent e) {
+                     a++;
+
+                 }
+     });
+
+
+       int ptime=programTime(filepath+filename);
+
+
+       public void run(){
+           timeJProgressBar.setMinimum(0);
+           timeJProgressBar.setMaximum(ptime);
+           timeJProgressBar.setValue(0);
+
+           timer.start();
+
+           while (a&lt;ptime) {
+
+                timeJProgressBar.setValue(a);
+                int m=a/60;
+                int s=a%60;
+                if (m&lt;9) {
+                    if (s&lt;=9) { String start=new String(&quot;0&quot;+m+&quot;:0&quot;+s); Start.setText(start); } if (s&gt;9) {
+                        String start=new String(&quot;0&quot;+m+&quot;:&quot;+s);
+                        Start.setText(start);
+                    }
+                }
+                if (m&gt;9) {
+                    if (s&lt;=9) { String start=new String(m+&quot;:0&quot;+s); Start.setText(start); } if (s&gt;9) {
+                        String start=new String(m+&quot;:&quot;+s);
+                        Start.setText(start);
+                    }
+                }
+
+                if (isStop){
+                    timer.stop();
+                    a=0;
+                    break;
+                }
+            }
+           timer.stop();
+           a=0;
+           timeJProgressBar.setValue(a);
+
+           Start.setText(&quot;00:00&quot;);
+
+           xunhuan name=new xunhuan();
+           name.start();
+       }
+
+   }
+     class popupMenuListener implements ActionListener  {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource()==items\[0\]) {
+                open();
+            }
+            if (e.getSource()==items\[1\]) {
+                     filename = list.getSelectedItem();
+
+                    if (filename==null) {
+                        JOptionPane.showMessageDialog(null, &quot;未选择歌曲！&quot;);
+                    } else {
+
+                        play();
+                    }
+            }
+            if (e.getSource()==items\[2\]) {
+                    filename = list.getSelectedItem();
+
+                    if (filename==null) {
+                        JOptionPane.showMessageDialog(null, &quot;未选择歌曲！&quot;);
+                    } else {
+                        list.remove(filename);
+                    }
+            }
+            if (e.getSource()==items\[3\]) {
+                int n=list.getItemCount();
+                if (n==0) {
+                    JOptionPane.showMessageDialog(null, &quot;不需要清空&quot;);
+                } else {
+                    list.removeAll();
+                }
+        }
+
+        }
+
+     }
+
+
+
+public static void main(String\[\] args) {
+    Player player=new Player();
+
+}
+</code></pre><p>}</p>
+<pre><code>感觉不错，留个言顶一下吧！有问题可以通过留言提问哦，如果觉得博主很良心的话，可以在下方“赏”的地方投个币哦~！
+</code></pre>
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/09/17/wordpress-e4-b8-ba-e5-af-bc-e8-88-aa-e6-a0-8f-e6-b7-bb-e5-8a-a0-e5-8f-af-e7-88-b1-e5-9b-be-e6-a0-87/" data-toggle="tooltip" data-placement="top" title="WordPress为导航栏添加可爱图标">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/06/20/java-e8-8e-b7-e5-8f-96mp3-e6-96-87-e4-bb-b6-e6-97-b6-e9-95-bf-e4-bf-a1-e6-81-af-ef-bc-88-e7-bb-9d-e5-af-b9-e6-89-a7-e8-a1-8c-e7-89-88-ef-bc-89/" data-toggle="tooltip" data-placement="top" title="java 获取MP3文件时长信息（绝对执行版）">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#学习心得" title="学习心得">学习心得</a>
+                        
+                        <a class="tag" href="/tags/#JAVA" title="JAVA">JAVA</a>
+                        
+                        <a class="tag" href="/tags/#学校题目作业" title="学校题目作业">学校题目作业</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

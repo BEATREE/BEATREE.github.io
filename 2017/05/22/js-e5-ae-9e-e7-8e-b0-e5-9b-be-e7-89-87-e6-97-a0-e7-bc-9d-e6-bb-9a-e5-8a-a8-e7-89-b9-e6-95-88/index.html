@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        js实现图片无缝滚动特效｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2017/05/22/js-e5-ae-9e-e7-8e-b0-e5-9b-be-e7-89-87-e6-97-a0-e7-bc-9d-e6-bb-9a-e5-8a-a8-e7-89-b9-e6-95-88/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>js实现图片无缝滚动特效</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2017-05-22
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#HTML5和CSS3" title="HTML5和CSS3">HTML5和CSS3</a>
+                        
+                        <a class="tag" href="/tags/#学习心得" title="学习心得">学习心得</a>
+                        
+                        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            js实现图片无缝滚动特效
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h3 id="这篇文章主要介绍了js实现图片无缝循环滚动特效的相关资料-本实例在网页中较为常见，需要的朋友可以参考下"><a href="#这篇文章主要介绍了js实现图片无缝循环滚动特效的相关资料-本实例在网页中较为常见，需要的朋友可以参考下" class="headerlink" title="这篇文章主要介绍了js实现图片无缝循环滚动特效的相关资料,本实例在网页中较为常见，需要的朋友可以参考下"></a>这篇文章主要介绍了js实现图片无缝循环滚动特效的相关资料,本实例在网页中较为常见，需要的朋友可以参考下</h3><p>首先，无缝滚动的第一个重点就是——动。关于怎么让页面的元素节点动起来，这就得学明白关于JavaScript中定时器的相关知识。</p>
+<p>　　JS中的创建定时器的方法包括两种：setTimeout和setInterval。首先它们接收的参数相同：第一个参数是一个函数，用于定时器执行，第二个参数是一个数字，代表过多少毫秒之后定时器执行函数。它们的不同在于：setTimeout 是在经过指定的时间之后，只执行一次函数，而setInterval，则是每间隔指定时间，就执行函数一次，说简单点的话，就是setInterval是setTimeout的循环版。</p>
+<p>　　关于定时器还有一个用法：消除定时器，方法同样有两种：clearTimeout 和 clearInterval，它们分别对应不同类型的定时器。另外，它们都只接收一个参数，这个参数是定时器返回的一个值（我在chrome中调试发现这个返回值都是数字），用于指定消除那个定时器。</p>
+<p>　　定时器的知识掌握之后，就开始分析怎样使用定时器让元素动起来。其实这个很简单，就是类似电影的原理一样，让元素在很短的时间内发生连续的位移，我们看起来的话这个元素就想是在不停地运动啦。关于怎么让元素产生位移，通过JS修改元素的样式就可以实现，例如</p>
+<p>1</p>
+<pre><code>oUl.style.left = oUl.offsetLeft + speed + &apos;px&apos;;
+</code></pre><p>　　上面的代码中speed就是每次产生的位移。关于speed使用还挺有意思的：我们可以修改speed的正负值来修改滚动的方向。</p>
+<p>　　另外，关于元素的属性 offsetLeft 我个人认为需要注意两点：offsetLeft的值由它自己通过定位的left和自己设定的margin的和、offsetLeft它是相对于它的包含层的距离（offsetTop类似）。当然这都是我自己的理解，肯定不是很准确，这个坑记着，下次专门解决它。</p>
+<p>　　让元素动起来的原理基本就是这样，下面开始分析这个无缝滚动展示图片的实现方法，我举得例子都是向左滚动的,向右的原理一样，代码中有提到：</p>
+<p>　　首先假设需要循环滚动的图片只有4张，为了满足图片滚动起来有循环的要求，就需要把图片如图（1）这样做：</p>
+<p><a href="http://www.teenshare.club/wp-content/uploads/2017/05/2017052219121192.png" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2017/05/2017052219121192.png" alt="图片丢失了，样式分析"></a></p>
+<p>这样当第一张图片1滚动出边框时，后面的图片1则出现在图片4的后面，这样效果看起来就和循环一样~</p>
+<p>当图片滚动到下面的这种情况时：、</p>
+<p><a href="http://www.teenshare.club/wp-content/uploads/2017/05/2017052219171633.png" target="_blank" rel="noopener"><img src="http://www.teenshare.club/wp-content/uploads/2017/05/2017052219171633.png" alt="图片丢失了，样式分析"></a></p>
+<p>继续滚动就会导致图片后面出现空白，就不是循环滚动的效果了，其实这点也是程序的关键所在，每当图片滚动到图（2）这种情况时，就应该让图片重新回到图（1）那种状态再继续滚动，这样的话就形成了无缝循环滚动的效果。</p>
+<p>另外拓展一下程序写了鼠标移入图片停止滚动，移出继续滚动的效果，就是利用消除定时器的方法实现的，代码很简单就不介绍了。还有我为了样式好看一点，把图片都设置为160*120的尺寸使用的，大家运行代码是需要自己准备图片。</p>
+<p>代码如下：</p>
+<p>  Title<br>  *{<br>      margin: 0;<br>      padding: 0;<br>    }</p>
+<pre><code>#div1{
+  width: 640px;
+  height: 120px;
+  margin: 100px auto;
+  background-color: #646464;
+  position: relative;
+  overflow: hidden;
+}
+#div1 ul{
+  position:absolute;
+  left:0;
+  top:0;
+  overflow: hidden;
+  background-color: #3b7796;
+}
+
+#div1 ul li{
+  float: left;
+  width: 160px;
+  height: 120px;
+  list-style: none;
+} 
+</code></pre><p>  window.onload = function(){<br>      var oDiv = document.getElementById(‘div1’);<br>      var oUl = document.getElementById(‘ul1’);<br>      var speed = 2;//初始化速度</p>
+<pre><code>  oUl.innerHTML += oUl.innerHTML;//图片内容*2-----参考图（2）
+  var oLi= document.getElementsByTagName(&apos;li&apos;);
+  oUl.style.width = oLi.length*160+&apos;px&apos;;//设置ul的宽度使图片可以放下
+
+  var oBtn1 = document.getElementById(&apos;btn1&apos;);
+  var oBtn2 = document.getElementById(&apos;btn2&apos;);
+
+
+  function move(){
+    if(oUl.offsetLeft&lt;-(oUl.offsetWidth/2)){//向左滚动，当靠左的图4移出边框时
+      oUl.style.left = 0;
+    }
+
+    if(oUl.offsetLeft &gt; 0){//向右滚动，当靠右的图1移出边框时
+      oUl.style.left = -(oUl.offsetWidth/2)+&apos;px&apos;;
+    }
+
+    oUl.style.left = oUl.offsetLeft + speed + &apos;px&apos;;
+  }
+
+  oBtn1.addEventListener(&apos;click&apos;,function(){
+    speed = -2;
+  },false);
+  oBtn2.addEventListener(&apos;click&apos;,function(){
+    speed = 2;
+  },false);
+
+  var timer = setInterval(move,30);//全局变量 ，保存返回的定时器
+
+  oDiv.addEventListener(&apos;mouseout&apos;, function () {
+    timer = setInterval(move,30);
+  },false);
+  oDiv.addEventListener(&apos;mousemove&apos;, function () {
+    clearInterval(timer);//鼠标移入清除定时器
+  },false);
+} 
+
+
+
+
+
+
+
+
+  *   ![](http://www.teenshare.club/wp-content/uploads/2017/06/img_1-1.jpg)
+  *   ![](http://www.teenshare.club/wp-content/uploads/2017/06/img_2-1.jpg)
+  *   ![](http://www.teenshare.club/wp-content/uploads/2017/06/img_3-1.jpg)
+  *   ![](http://www.teenshare.club/wp-content/uploads/2017/06/img_4-1.jpg)
+</code></pre><p>以上就是JS实现无缝滚动特效的详细代码，希望对大家有帮助。</p>
+<hr>
+<p>转载自：<a href="http://www.jb51.net/article/78342.htm" target="_blank" rel="noopener">脚本之家</a></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/05/23/html-e8-a7-86-e9-a2-91-ef-bc-88videos-ef-bc-89/" data-toggle="tooltip" data-placement="top" title="HTML 视频（Videos）">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/05/11/photoshop-e5-8e-bb-e9-99-a4-e6-b0-b4-e5-8d-b0-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e6-b3-95/" data-toggle="tooltip" data-placement="top" title="photoshop去除水印的几种方法">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#这篇文章主要介绍了js实现图片无缝循环滚动特效的相关资料-本实例在网页中较为常见，需要的朋友可以参考下"><span class="toc-text">这篇文章主要介绍了js实现图片无缝循环滚动特效的相关资料,本实例在网页中较为常见，需要的朋友可以参考下</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#HTML5和CSS3" title="HTML5和CSS3">HTML5和CSS3</a>
+                        
+                        <a class="tag" href="/tags/#学习心得" title="学习心得">学习心得</a>
+                        
+                        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Java实现二叉树三种遍历算法（递归以及非递归）｜BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/2017/12/10/javasxecssf/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Java实现二叉树三种遍历算法（递归以及非递归）</h1>
+                    
+                    <span class="meta">
+                         作者 做棵大树
+                        <span>
+                          日期 2017-12-10
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#学习心得" title="学习心得">学习心得</a>
+                        
+                        <a class="tag" href="/tags/#JAVA" title="JAVA">JAVA</a>
+                        
+                        <a class="tag" href="/tags/#二叉树" title="二叉树">二叉树</a>
+                        
+                        <a class="tag" href="/tags/#数据结构" title="数据结构">数据结构</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Java实现二叉树三种遍历算法（递归以及非递归）
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p>首先需要定义一个二叉树的类</p>
+<p>//首先定义二叉树类<br>package mm.test.tree;  </p>
+<p>public class BinaryTree {  </p>
+<pre><code>char data;                  //根节点  
+BinaryTree leftChild;       //左孩子  
+BinaryTree rightChild;      //右孩子  
+
+public BinaryTree() {  
+
+}  
+
+public void visit() {  
+    System.out.println(this.data);  
+}  
+
+public BinaryTree(char data) {  
+    this.data = data;  
+    this.leftChild = null;  
+    this.rightChild = null;  
+}  
+
+public BinaryTree getLeftChild() {  
+    return leftChild;  
+}  
+
+public void setLeftChild(BinaryTree leftChild) {  
+    this.leftChild = leftChild;  
+}  
+
+public BinaryTree getRightChild() {  
+    return rightChild;  
+}  
+
+public void setRightChild(BinaryTree rightChild) {  
+    this.rightChild = rightChild;  
+}  
+
+public char getData() {  
+    return data;  
+}  
+
+public void setData(char data) {  
+    this.data = data;  
+}  
+</code></pre><p>}  </p>
+<p>先序遍历思想：根左右。首先遍历根节点，然后遍历左子树和右子树。 </p>
+<p>package mm.test.tree;  </p>
+<p>import java.util.Stack;  </p>
+<p>public class VisitBinaryTree {  </p>
+<pre><code>//先序遍历非递归算法  
+private void preOrder(BinaryTree root) {  
+
+    if(root!=null) {  
+
+        Stack stack = new Stack();  
+
+        for (BinaryTree node = root; !stack.empty() || node != null;) {  
+
+            //当遍历至节点位空的时候出栈  
+            if(node == null) {  
+                node = stack.pop();  
+            }  
+
+            node.visit();  
+
+            //遍历右孩子存入栈内  
+            if(node.getRightChild()!=null) {  
+                stack.push(node.getRightChild());  
+            }  
+
+            //遍历左子树节点  
+            node = node.getLeftChild();  
+
+        }  
+
+    }  
+
+}  
+
+//先序遍历递归算法  
+public void preOrderRecursion(BinaryTree root) {  
+    if(root!=null) {  
+        root.visit();  
+        preOrderRecursion(root.getLeftChild());  
+        preOrderRecursion(root.getRightChild());  
+    }  
+}  
+</code></pre><p>}  </p>
+<p>测试代码：</p>
+<p>public static void main(String args[]) {  </p>
+<pre><code>     BinaryTree node = new BinaryTree(&apos;A&apos;);    
+     BinaryTree root = node;   
+     BinaryTree nodeL1;  
+     BinaryTree nodeL;  
+     BinaryTree nodeR;  
+     node.setLeftChild(new BinaryTree(&apos;B&apos;));    
+     node.setRightChild(new BinaryTree(&apos;C&apos;));    
+
+     nodeL1 = node.getLeftChild();    
+    nodeL1.setLeftChild(new BinaryTree(&apos;D&apos;));    
+    nodeL1.setRightChild(new BinaryTree(&apos;E&apos;));   
+
+   nodeL = nodeL1.getLeftChild();    
+   nodeL.setLeftChild(new BinaryTree(&apos;F&apos;));  
+
+   node = node.getRightChild();    
+   node.setLeftChild(new BinaryTree(&apos;G&apos;));    
+  node.setRightChild(new BinaryTree(&apos;H&apos;));    
+
+ nodeR = node.getLeftChild();    
+ nodeR.setLeftChild(new BinaryTree(&apos;I&apos;));    
+nodeR.setRightChild(new BinaryTree(&apos;J&apos;));   
+
+ VisitBinaryTree vt= new VisitBinaryTree();    
+
+    //先序遍历递归和非递归测试  
+    vt.preOrder(root);  
+    vt.preOrderRecursion(root);  
+
+}  
+</code></pre><p>中序遍历算法：</p>
+<p>//中序遍历的非递归算法<br>    public void inOrder(BinaryTree root) {  </p>
+<pre><code>    if(root!=null) {  
+
+        Stack stack = new Stack();  
+
+        for (BinaryTree node = root; !stack.empty() || node != null; ) {  
+
+            //寻找最左的左子树节点,并将遍历的左节点进栈  
+            while(node!=null) {  
+                stack.push(node);  
+                node = node.getLeftChild();  
+            }  
+
+            if(!stack.empty()) {  
+                node = stack.pop();      //出栈  
+                node.visit();            //读取节点值  
+                node = node.getRightChild();  
+            }  
+        }  
+    }  
+}  
+
+//中序遍历的递归算法  
+public void inOrderRecursion (BinaryTree root) {  
+
+        if(root!=null) {  
+            inOrderRecursion(root.getLeftChild());  
+            root.visit();  
+            inOrderRecursion(root.getRightChild());  
+        }  
+
+}  
+</code></pre><p>测试代码：</p>
+<p>public static void main(String args[]) {  </p>
+<pre><code>BinaryTree node = new BinaryTree(&apos;A&apos;);    
+    BinaryTree root = node;    
+    BinaryTree nodeL1;  
+    BinaryTree nodeL;  
+    BinaryTree nodeR;  
+    node.setLeftChild(new BinaryTree(&apos;B&apos;));    
+    node.setRightChild(new BinaryTree(&apos;C&apos;));    
+
+    nodeL1 = node.getLeftChild();    
+    nodeL1.setLeftChild(new BinaryTree(&apos;D&apos;));    
+    nodeL1.setRightChild(new BinaryTree(&apos;E&apos;));   
+
+    nodeL = nodeL1.getLeftChild();    
+    nodeL.setLeftChild(new BinaryTree(&apos;F&apos;));  
+
+    node = node.getRightChild();    
+    node.setLeftChild(new BinaryTree(&apos;G&apos;));    
+    node.setRightChild(new BinaryTree(&apos;H&apos;));    
+
+    nodeR = node.getLeftChild();    
+    nodeR.setLeftChild(new BinaryTree(&apos;I&apos;));    
+    nodeR.setRightChild(new BinaryTree(&apos;J&apos;));   
+
+    VisitBinaryTree vt= new VisitBinaryTree();    
+
+    //中序遍历递归和非递归测试  
+    vt.inOrder(root);  
+    vt.inOrderRecursion(root);  
+
+}  
+</code></pre><p>后序遍历：</p>
+<p>//后序遍历非递归算法<br>    private void postOrder(BinaryTree root) {<br>        if(root!=null) {<br>            Stack stack = new Stack();  </p>
+<pre><code>        for (BinaryTree node = root; !stack.empty() || node != null;) {  
+            while(root!=null) {  
+                stack.push(root);  
+                root = root.getLeftChild();  
+            }  
+
+            while(!stack.empty() &amp;&amp; root == stack.peek().getRightChild()) {  
+                root = stack.pop();    
+                root.visit();    
+            }  
+
+            if (stack.empty()) {    
+                return;    
+            } else {    
+                root = stack.peek().getRightChild();    
+            }    
+        }  
+    }  
+}  
+
+//后序遍历递归算法  
+private void postOrderRecursion(BinaryTree root) {  
+    if(root!=null) {  
+        postOrderRecursion(root.getLeftChild());  
+        postOrderRecursion(root.getRightChild());  
+        root.visit();  
+    }  
+}  
+</code></pre><p>测试方法：</p>
+<p>public static void main(String args[]) {  </p>
+<pre><code>BinaryTree node = new BinaryTree(&apos;A&apos;);    
+    BinaryTree root = node;    
+    BinaryTree nodeL1;  
+    BinaryTree nodeL;  
+    BinaryTree nodeR;  
+    node.setLeftChild(new BinaryTree(&apos;B&apos;));    
+    node.setRightChild(new BinaryTree(&apos;C&apos;));    
+
+    nodeL1 = node.getLeftChild();    
+    nodeL1.setLeftChild(new BinaryTree(&apos;D&apos;));    
+    nodeL1.setRightChild(new BinaryTree(&apos;E&apos;));   
+
+    nodeL = nodeL1.getLeftChild();    
+    nodeL.setLeftChild(new BinaryTree(&apos;F&apos;));  
+
+    node = node.getRightChild();    
+    node.setLeftChild(new BinaryTree(&apos;G&apos;));    
+    node.setRightChild(new BinaryTree(&apos;H&apos;));    
+
+    nodeR = node.getLeftChild();    
+    nodeR.setLeftChild(new BinaryTree(&apos;I&apos;));    
+    nodeR.setRightChild(new BinaryTree(&apos;J&apos;));   
+
+    VisitBinaryTree vt= new VisitBinaryTree();    
+
+    //后序遍历递归和非递归测试  
+    vt.postOrder(root);  
+    vt.postOrderRecursion(root);  
+
+}
+</code></pre>
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/12/19/if-ef-bc-88rs-next-ef-bc-89-e4-b8-8ewhilers-next-e5-90-84-e8-87-aa-e7-9a-84-e7-94-a8-e9-80-94-e5-92-8c-e5-8c-ba-e5-88-ab/" data-toggle="tooltip" data-placement="top" title="if（rs.next()）与while(rs.next())各自的用途和区别">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/12/09/rjxz/" data-toggle="tooltip" data-placement="top" title="软件下载">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#学习心得" title="学习心得">学习心得</a>
+                        
+                        <a class="tag" href="/tags/#JAVA" title="JAVA">JAVA</a>
+                        
+                        <a class="tag" href="/tags/#二叉树" title="二叉树">二叉树</a>
+                        
+                        <a class="tag" href="/tags/#数据结构" title="数据结构">数据结构</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="https://teenshare.club">梯云博客</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>

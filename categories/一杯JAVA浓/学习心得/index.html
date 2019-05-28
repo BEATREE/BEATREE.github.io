@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="肖尊严在 Github 上的个人博客">
+    <meta name="keyword" content="BEATREE, 做棵大树, 肖尊严">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://media.teenshare.club/wp-content/uploads/2018/07/2018070615115710.png">
+    <link rel="alternate" type="application/atom+xml" title="BEATREE" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        BEATREE&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://beatree.github.io/categories/一杯JAVA浓/学习心得/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="false" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    BEATREE
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+
+<!-- Page Header -->
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
+    <div class="row">
+        <header class="intro-header">
+            <div class="container">
+                <div class="site-heading text-center">
+                    <div class="about-me">
+                        <!--移动端头部显示-->
+                        <img src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+                        <h5><a href="/about/">做棵大树</a></h5>
+                        <p>BE BRAVE AND AMBITIOUS, STRONG BUT MODEST.</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+<!-- Main Content -->
+<div class="container custom-haojen-container">
+    <!-- Post Container -->
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
+            <!-- Main Content -->
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2017/12/20/java-e4-b8-adqueue-e7-9a-84-e4-bd-bf-e7-94-a8/">
+        <h2 class="post-title">
+            java中queue的使用
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-12-20
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                java中queue的使用
+Queue接口与List、Set同一级别，都是继承了Collection接口。LinkedList实现了Queue接 口。Queue接口窄化了对LinkedList的方法的访问权限（即在方法中的参数类型如果是Queue时，就完全只能访问Queue接口所定义的方法 了，..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2017/12/20/java-e4-b8-ad-string-e5-92-8c-int-e4-ba-92-e7-9b-b8-e8-bd-ac-e5-8c-96/">
+        <h2 class="post-title">
+            java中 string 和 int 互相转化
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-12-20
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                1 如何将字串 String 转换成整数 int? A. 有两个方法:
+1). int i = Integer.parseInt([String]); 或
+i = Integer.parseInt([String],[int radix]);
+2). int i = Integer.valueO..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2017/11/12/java-e4-b8-adscanner-e7-9a-84nextintnextnextline-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/">
+        <h2 class="post-title">
+            Java中Scanner的nextInt(),next(),nextLine()方法总结
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-11-12
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                [v_tips]前言：借别人的例子做个总结。 原文出处：http://www.cnblogs.com/gold-worker/archive/2013/04/10/3013063.html[/v_tips]
+代码一
+
+package cn.dx; import java.util.Scanner..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2017/10/29/java-e6-96-87-e4-bb-b6-e4-b8-ad-e6-96-87-e5-9c-a8myeclipse-e4-b8-ad-e6-89-93-e5-bc-80-e5-8f-98-e6-88-90-e4-ba-86-e4-b9-b1-e7-a0-81/">
+        <h2 class="post-title">
+            java文件中文在MyEclipse中打开变成了乱码
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-10-29
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                我在使用Myeclipse时出现一个问题，由于有几个类是在一个压缩包中想要使用，于是我就直接将它复制到了Myeclipse中了。然后打开时就出现了以下的情况：   
+中文乱码是因为编码格式不一致导致的。
+　　进入Eclipse,导入一个项目工程,如果项目文件的编码与你的工具编码不一致 将会造成乱..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2017/07/03/java-e7-bc-96-e5-86-99-e7-9a-84-e8-bf-b7-e4-bd-a0-e9-9f-b3-e4-b9-90-e6-92-ad-e6-94-be-e5-99-a8/">
+        <h2 class="post-title">
+            JAVA编写的迷你音乐播放器
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-07-03
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                [v_notice]有人说JAVA可以写音乐播放器么？我想说，JAVA可以写音乐播放器，相对于其他一些来说，可能会有些不爽，但是他还是可以实现的！[/v_notice]
+今天，我就上传一下自己在闲暇时间写的一个简易的音乐播放器，好的，有兴趣的呢，可以复制代码来看一下效果，如果其中有一些代码出现了..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2017/06/17/java-e8-8e-b7-e5-8f-96mp3-e9-9f-b3-e4-b9-90-e6-96-87-e4-bb-b6-e6-97-b6-e9-95-bf/">
+        <h2 class="post-title">
+            Java获取MP3音乐文件时长
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-06-17
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                一：使用javasound api：public void method1() {    File file = new File(“C:\\music\\test2.mp3”);    long total = 0;    try {        AudioFileFormat aff = ..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2017/04/22/java-e5-a4-9a-e7-ba-bf-e7-a8-8b-e5-90-8c-e6-ad-a5-e5-92-8c-e5-bc-82-e6-ad-a5-e8-af-a6-e8-a7-a3/">
+        <h2 class="post-title">
+            Java 多线程同步和异步详解
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-04-22
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                java线程 同步与异步 线程池1）多线程并发时，多个线程同时请求同一个资源，必然导致此资源的数据不安全，A线程修改了B线程的处理的数据，而B线程又修改了A线程处理的数理。显然这是由于全局资源造成的，有时为了解决此问题，优先考虑使用局部变量，退而求其次使用同步代码块，出于这样的安全考虑就必须牺牲..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview " style="background-image: url('')">
+    <a href="/2017/04/13/java-e5-8f-af-e8-a7-86-e5-8c-96-e7-bc-96-e7-a8-8b-eclipse-e5-ae-89-e8-a3-85windowbuilder-e6-8f-92-e4-bb-b6/">
+        <h2 class="post-title">
+            Java可视化编程-eclipse安装windowbuilder插件
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-04-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                图形用户界面：Graphical User Interfaces, 简称GUI。
+图形用户界面：
+
+已经成为面向用户的应用程序的基本要求
+几乎所有的单机版程序和客户端/服务器程序（Client/Server）的客户端部分都采用图形用户界面
+图形用户界面的好坏，图形界面程序的编写性能，直接影响一种..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+
+<!-- 翻页 pager -->
+
+<ul class="pager">
+    
+    
+    <li class="next">
+        <a href="/categories/一杯JAVA浓/学习心得/page/2/">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
+
+
+        </div>
+        <!-- Sidebar Container -->
+        <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+
+            <!-- About Me -->
+            <section class="visible-md visible-lg" style="padding: 0 18px">
+                <div class="short-about">
+                    <!--侧边栏头像-->
+                    
+                    <img src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+                    
+                    <h5><a href="/about/">做棵大树</a></h5>
+                    
+                    <p>BE BRAVE AND AMBITIOUS, STRONG BUT MODEST.</p>
+                    
+                    <hr>
+                    <!-- SNS Link 社交 -->
+                    <ul class="list-inline">
+                        
+                        
+                        
+                        <li>
+                            <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+
+                        
+                        <li>
+                            <a target="_blank" href="http://weibo.com/2562244197">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+
+                        
+
+                        
+                        <li>
+                            <a target="_blank" href="https://github.com/BEATREE">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+
+                        
+                        <li>
+                            <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Featured Tags  标签 -->
+            
+            <section>
+                <div class="tags">
+                    
+                    
+                    <a href="/tags/#Hibernate" title="Hibernate" rel="3">Hibernate</a>
+                    
+                    
+                    
+                    <a href="/tags/#优秀文章收藏" title="优秀文章收藏" rel="6">优秀文章收藏</a>
+                    
+                    
+                    
+                    <a href="/tags/#程序错误日志" title="程序错误日志" rel="6">程序错误日志</a>
+                    
+                    
+                    
+                    <a href="/tags/#HTML5和CSS3" title="HTML5和CSS3" rel="2">HTML5和CSS3</a>
+                    
+                    
+                    
+                    <a href="/tags/#学习心得" title="学习心得" rel="32">学习心得</a>
+                    
+                    
+                    
+                    <a href="/tags/#好玩的玩意儿" title="好玩的玩意儿" rel="2">好玩的玩意儿</a>
+                    
+                    
+                    
+                    <a href="/tags/#实用的软件" title="实用的软件" rel="7">实用的软件</a>
+                    
+                    
+                    
+                    <a href="/tags/#拓展知识" title="拓展知识" rel="12">拓展知识</a>
+                    
+                    
+                    
+                    <a href="/tags/#JSP" title="JSP" rel="9">JSP</a>
+                    
+                    
+                    
+                    <a href="/tags/#Adobe 软件" title="Adobe 软件" rel="3">Adobe 软件</a>
+                    
+                    
+                    
+                    <a href="/tags/#JAVA" title="JAVA" rel="18">JAVA</a>
+                    
+                    
+                    
+                    <a href="/tags/#学校题目作业" title="学校题目作业" rel="3">学校题目作业</a>
+                    
+                    
+                    
+                    <a href="/tags/#二叉树" title="二叉树" rel="2">二叉树</a>
+                    
+                    
+                    
+                    <a href="/tags/#数据结构" title="数据结构" rel="3">数据结构</a>
+                    
+                    
+                    
+                    <a href="/tags/#eclipse" title="eclipse" rel="3">eclipse</a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="/tags/#MyEclipse" title="MyEclipse" rel="2">MyEclipse</a>
+                    
+                    
+                    
+                    <a href="/tags/#JavaScript" title="JavaScript" rel="6">JavaScript</a>
+                    
+                    
+                    
+                    <a href="/tags/#小知识" title="小知识" rel="10">小知识</a>
+                    
+                    
+                    
+                    <a href="/tags/#struts" title="struts" rel="7">struts</a>
+                    
+                    
+                    
+                    <a href="/tags/#框架" title="框架" rel="2">框架</a>
+                    
+                    
+                    
+                    <a href="/tags/#个人日志" title="个人日志" rel="4">个人日志</a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="/tags/#Photoshop" title="Photoshop" rel="3">Photoshop</a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="/tags/#软件下载" title="软件下载" rel="4">软件下载</a>
+                    
+                    
+                    
+                    <a href="/tags/#Python" title="Python" rel="8">Python</a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="/tags/#UML" title="UML" rel="3">UML</a>
+                    
+                    
+                    
+                    <a href="/tags/#UML类图" title="UML类图" rel="2">UML类图</a>
+                    
+                    
+                    
+                    <a href="/tags/#win10" title="win10" rel="4">win10</a>
+                    
+                    
+                    
+                    <a href="/tags/#wordpress" title="wordpress" rel="5">wordpress</a>
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </section>
+            
+
+            
+            <hr>
+            <h5 style="text-align: center;">Friends</h5>
+            <ul class="list-inline" style="text-align: center;">
+                
+                <li><a href="https://teenshare.club" target="_blank">梯云博客</a></li>
+                
+            </ul>
+            
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fang-xu-48-26">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2562244197">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/BEATREE">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/beatree">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; BEATREE 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://beatree.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg">
+</body>
+
+</html>
