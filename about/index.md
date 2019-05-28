@@ -1,4 +1,3 @@
-<link href="http://kevinburke.bitbucket.org/markdowncss/markdown.css" rel="stylesheet"></link>
 # 肖尊严
 <!-- <img src="https://media.teenshare.club/wp-content/uploads/2017/12/2017123015473464.jpg" style="float:right;margin-top:0px;"> -->
 期望岗位：Java工程师<br>
